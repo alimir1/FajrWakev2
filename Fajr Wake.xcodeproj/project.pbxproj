@@ -8,20 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		4979A2B31F969C29007071E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4979A2B21F969C29007071E2 /* AppDelegate.swift */; };
-		4979A2B51F969C2A007071E2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4979A2B41F969C2A007071E2 /* ViewController.swift */; };
+		4979A2B51F969C2A007071E2 /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4979A2B41F969C2A007071E2 /* SetupViewController.swift */; };
 		4979A2B81F969C2A007071E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4979A2B61F969C2A007071E2 /* Main.storyboard */; };
 		4979A2BA1F969C2A007071E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4979A2B91F969C2A007071E2 /* Assets.xcassets */; };
 		4979A2BD1F969C2A007071E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4979A2BB1F969C2A007071E2 /* LaunchScreen.storyboard */; };
+		4979A2C51F96ACCD007071E2 /* Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4979A2C41F96ACCD007071E2 /* Brand.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4979A2AF1F969C29007071E2 /* Fajr Wake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fajr Wake.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4979A2B21F969C29007071E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4979A2B41F969C2A007071E2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4979A2B41F969C2A007071E2 /* SetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
 		4979A2B71F969C2A007071E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4979A2B91F969C2A007071E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4979A2BC1F969C2A007071E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4979A2BE1F969C2A007071E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4979A2C41F96ACCD007071E2 /* Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brand.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,13 +57,30 @@
 			isa = PBXGroup;
 			children = (
 				4979A2B21F969C29007071E2 /* AppDelegate.swift */,
-				4979A2B41F969C2A007071E2 /* ViewController.swift */,
+				4979A2C71F96AD6D007071E2 /* Controllers */,
+				4979A2C61F96ACF0007071E2 /* Extensions */,
 				4979A2B61F969C2A007071E2 /* Main.storyboard */,
 				4979A2B91F969C2A007071E2 /* Assets.xcassets */,
 				4979A2BB1F969C2A007071E2 /* LaunchScreen.storyboard */,
 				4979A2BE1F969C2A007071E2 /* Info.plist */,
 			);
 			path = "Fajr Wake";
+			sourceTree = "<group>";
+		};
+		4979A2C61F96ACF0007071E2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4979A2C41F96ACCD007071E2 /* Brand.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		4979A2C71F96AD6D007071E2 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4979A2B41F969C2A007071E2 /* SetupViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,7 +155,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4979A2B51F969C2A007071E2 /* ViewController.swift in Sources */,
+				4979A2B51F969C2A007071E2 /* SetupViewController.swift in Sources */,
+				4979A2C51F96ACCD007071E2 /* Brand.swift in Sources */,
 				4979A2B31F969C29007071E2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -281,7 +301,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Fajr-Wake";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -296,7 +316,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Fajr-Wake";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
