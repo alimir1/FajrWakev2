@@ -16,6 +16,7 @@ internal class SetupViewController: UIViewController {
     
     @IBOutlet private var segmentedControl: UISegmentedControl!
     @IBOutlet private var minsAdjustLabel: UILabel!
+    @IBOutlet private var wakeUpTimeLabel: UILabel!
     @IBOutlet private var onOffButton: UIButton!
     @IBOutlet private var settingsBarButtonItem: UIBarButtonItem!
     @IBOutlet private var closeBarButtonItem: UIBarButtonItem!
@@ -97,6 +98,7 @@ internal class SetupViewController: UIViewController {
     
     @IBAction private func onToggleOnOff(sender: Any) {
         isAlarmOn = !isAlarmOn
+        
     }
     
     @IBAction private func onDismiss(sender: Any) {

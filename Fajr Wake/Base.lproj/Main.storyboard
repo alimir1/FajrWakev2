@@ -28,43 +28,43 @@
                                     <segment title="Fajr"/>
                                     <segment title="Sunrise"/>
                                 </segments>
-                                <color key="tintColor" red="0.70444036989795911" green="0.33474121476122964" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="1" green="0.47843137254901957" blue="0.011764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="onSegmentChangeWithSender:" destination="BN0-Km-3Pg" eventType="valueChanged" id="5iD-W7-Cwh"/>
                                 </connections>
                             </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LOP-21-FAU">
-                                <rect key="frame" x="0.0" y="248" width="375" height="170"/>
+                                <rect key="frame" x="0.0" y="268" width="375" height="130"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;&lt;&lt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YM7-ih-fqG">
-                                        <rect key="frame" x="8" y="74.5" width="32" height="21"/>
+                                        <rect key="frame" x="8" y="54.5" width="32" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.34509803921568627" green="0.34509803921568627" blue="0.34509803921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;&lt;&lt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0az-Sg-GMH">
-                                        <rect key="frame" x="48" y="74.5" width="32" height="21"/>
+                                        <rect key="frame" x="48" y="54.5" width="32" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.20400191326530615" green="0.20400191326530615" blue="0.20400191326530615" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&gt;&gt;&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rBT-e1-CM0">
-                                        <rect key="frame" x="295" y="74.5" width="32" height="21"/>
+                                        <rect key="frame" x="295" y="54.5" width="32" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.2040019133" green="0.2040019133" blue="0.2040019133" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&gt;&gt;&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2qb-wL-gzc">
-                                        <rect key="frame" x="335" y="74.5" width="32" height="21"/>
+                                        <rect key="frame" x="335" y="54.5" width="32" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.34509803921568627" green="0.34509803921568627" blue="0.34509803921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+59" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HLM-74-iRY">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="170"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="130"/>
                                         <gestureRecognizers/>
                                         <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="100"/>
-                                        <color key="textColor" red="0.70444036990000003" green="0.33474121480000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="rXp-OO-LT9" appends="YES" id="j92-Mr-3GQ"/>
@@ -75,7 +75,7 @@
                                     <constraint firstItem="HLM-74-iRY" firstAttribute="top" secondItem="LOP-21-FAU" secondAttribute="top" id="1hq-mT-KvI"/>
                                     <constraint firstItem="YM7-ih-fqG" firstAttribute="centerY" secondItem="LOP-21-FAU" secondAttribute="centerY" id="2TR-Or-oM6"/>
                                     <constraint firstItem="2qb-wL-gzc" firstAttribute="centerY" secondItem="LOP-21-FAU" secondAttribute="centerY" id="6ee-1W-xQt"/>
-                                    <constraint firstAttribute="height" constant="170" id="6vj-gv-4AA"/>
+                                    <constraint firstAttribute="height" constant="130" id="6vj-gv-4AA"/>
                                     <constraint firstItem="HLM-74-iRY" firstAttribute="leading" secondItem="LOP-21-FAU" secondAttribute="leading" id="HL8-rt-EB2"/>
                                     <constraint firstItem="0az-Sg-GMH" firstAttribute="leading" secondItem="YM7-ih-fqG" secondAttribute="trailing" constant="8" id="I8L-C3-BEk"/>
                                     <constraint firstItem="rBT-e1-CM0" firstAttribute="centerY" secondItem="LOP-21-FAU" secondAttribute="centerY" id="JcJ-x5-PdY"/>
@@ -89,7 +89,7 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xc2-Ug-hjr">
                                 <rect key="frame" x="0.0" y="617" width="375" height="50"/>
-                                <color key="backgroundColor" red="0.70588235294117641" green="0.33333333333333331" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="1" green="0.47772954760000003" blue="0.01278254742" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="AQX-yZ-hgc"/>
                                 </constraints>
@@ -101,6 +101,30 @@
                                     <action selector="onToggleOnOffWithSender:" destination="BN0-Km-3Pg" eventType="touchUpInside" id="NSl-PX-WRk"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yCL-1n-dof">
+                                <rect key="frame" x="122" y="147" width="131" height="47"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="10:30">
+                                        <attributes>
+                                            <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <font key="NSFont" metaFont="system" size="40"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="PM">
+                                        <attributes>
+                                            <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <font key="NSFont" size="20" name=".SFNSDisplay"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Wake" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wxX-Vh-Ojx">
+                                <rect key="frame" x="155.5" y="122" width="64.5" height="17"/>
+                                <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.47772954760650022" blue="0.012782547420909673" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.045161033163265252" green="0.045161033163265252" blue="0.045161033163265252" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -110,18 +134,22 @@
                             <constraint firstItem="LOP-21-FAU" firstAttribute="centerY" secondItem="BbY-vm-Ssz" secondAttribute="centerY" id="FeL-b5-BrD"/>
                             <constraint firstItem="IHu-Hj-OOD" firstAttribute="trailing" secondItem="xc2-Ug-hjr" secondAttribute="trailing" id="MO9-Eu-WPO"/>
                             <constraint firstItem="LOP-21-FAU" firstAttribute="centerX" secondItem="BbY-vm-Ssz" secondAttribute="centerX" id="N06-kB-T9a"/>
+                            <constraint firstItem="yCL-1n-dof" firstAttribute="top" secondItem="wxX-Vh-Ojx" secondAttribute="bottom" constant="8" id="OXe-th-U4W"/>
                             <constraint firstItem="dno-3X-YTY" firstAttribute="leading" secondItem="IHu-Hj-OOD" secondAttribute="leading" id="SbR-wF-KR2"/>
                             <constraint firstItem="IHu-Hj-OOD" firstAttribute="bottom" secondItem="xc2-Ug-hjr" secondAttribute="bottom" id="Wzz-w5-dLc"/>
+                            <constraint firstItem="wxX-Vh-Ojx" firstAttribute="centerX" secondItem="BbY-vm-Ssz" secondAttribute="centerX" id="Yfu-k3-8BE"/>
+                            <constraint firstItem="wxX-Vh-Ojx" firstAttribute="top" secondItem="dno-3X-YTY" secondAttribute="bottom" constant="30" id="oar-hd-7GT"/>
                             <constraint firstItem="xc2-Ug-hjr" firstAttribute="leading" secondItem="IHu-Hj-OOD" secondAttribute="leading" id="qh3-MF-P1H"/>
+                            <constraint firstItem="yCL-1n-dof" firstAttribute="centerX" secondItem="BbY-vm-Ssz" secondAttribute="centerX" id="uSM-yx-vBv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="IHu-Hj-OOD"/>
                     </view>
                     <navigationItem key="navigationItem" id="WvB-9r-r0a">
                         <barButtonItem key="leftBarButtonItem" image="Settings" id="rC1-Vp-ha2">
-                            <color key="tintColor" red="0.70444036990000003" green="0.33474121480000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" red="1" green="0.47772954760000003" blue="0.01278254742" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="stop" id="EOX-Zu-DxV">
-                            <color key="tintColor" red="0.70444036990000003" green="0.33474121480000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" red="1" green="0.47772954760000003" blue="0.01278254742" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="onDismissWithSender:" destination="BN0-Km-3Pg" id="iyu-EL-KiD"/>
                             </connections>
@@ -133,6 +161,7 @@
                         <outlet property="onOffButton" destination="xc2-Ug-hjr" id="PJz-va-C3L"/>
                         <outlet property="segmentedControl" destination="dno-3X-YTY" id="SBg-RA-bAo"/>
                         <outlet property="settingsBarButtonItem" destination="rC1-Vp-ha2" id="WsE-Mv-mdq"/>
+                        <outlet property="wakeUpTimeLabel" destination="yCL-1n-dof" id="x4I-uV-W8L"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZtY-75-UbA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -153,20 +182,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="4oF-dP-qlo">
-                                <rect key="frame" x="8" y="50" width="359" height="48.5"/>
+                                <rect key="frame" x="8" y="50" width="359" height="45.5"/>
                                 <subviews>
-                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 6:35 am" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZn-ql-hpC">
-                                        <rect key="frame" x="0.0" y="0.0" width="359" height="20"/>
+                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 6:35 am" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZn-ql-hpC">
+                                        <rect key="frame" x="0.0" y="0.0" width="359" height="17"/>
                                         <gestureRecognizers/>
                                         <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="17"/>
-                                        <color key="textColor" red="0.70588235290000001" green="0.33333333329999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" red="1" green="0.47772954760000003" blue="0.01278254742" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="0SR-M5-kp9" appends="YES" id="SWd-U9-aD7"/>
                                         </connections>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="55 mins before Fajr" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wYZ-xe-ae5">
-                                        <rect key="frame" x="0.0" y="28" width="359" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="25" width="359" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>

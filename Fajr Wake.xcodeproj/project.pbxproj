@@ -8,17 +8,28 @@
 
 /* Begin PBXBuildFile section */
 		49028AF81F96B1BF009B95D7 /* Prayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49028AF71F96B1BF009B95D7 /* Prayer.swift */; };
+		491E3F3C1F97BAA30014B8C1 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 491E3F3B1F97BA480014B8C1 /* FontAwesome.ttf */; };
+		491E3F3E1F97BF590014B8C1 /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491E3F3D1F97BF590014B8C1 /* Sound.swift */; };
 		4979A2B31F969C29007071E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4979A2B21F969C29007071E2 /* AppDelegate.swift */; };
 		4979A2B51F969C2A007071E2 /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4979A2B41F969C2A007071E2 /* SetupViewController.swift */; };
 		4979A2B81F969C2A007071E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4979A2B61F969C2A007071E2 /* Main.storyboard */; };
 		4979A2BA1F969C2A007071E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4979A2B91F969C2A007071E2 /* Assets.xcassets */; };
 		4979A2BD1F969C2A007071E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4979A2BB1F969C2A007071E2 /* LaunchScreen.storyboard */; };
-		4979A2C51F96ACCD007071E2 /* Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4979A2C41F96ACCD007071E2 /* Brand.swift */; };
+		4979A2C51F96ACCD007071E2 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4979A2C41F96ACCD007071E2 /* UIColor.swift */; };
 		49A2C63F1F9718AA00F7A23E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A2C63E1F9718AA00F7A23E /* HomeViewController.swift */; };
+		49A2C6421F971F6A00F7A23E /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A2C6411F971F6A00F7A23E /* Alarm.swift */; };
+		49A2C6441F9723BB00F7A23E /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A2C6431F9723BB00F7A23E /* Date.swift */; };
+		49A2C6461F97242000F7A23E /* SwiftyUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A2C6451F97242000F7A23E /* SwiftyUserDefaults.swift */; };
+		49A2C6491F97244F00F7A23E /* Ringtones.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A2C6481F97244F00F7A23E /* Ringtones.swift */; };
+		49A2C64B1F97245B00F7A23E /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A2C64A1F97245B00F7A23E /* Settings.swift */; };
+		49A2C64D1F97247700F7A23E /* LocalNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A2C64C1F97247700F7A23E /* LocalNotifications.swift */; };
+		49A2C6621F97267300F7A23E /* PrayTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A2C6611F97267300F7A23E /* PrayTime.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		49028AF71F96B1BF009B95D7 /* Prayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prayer.swift; sourceTree = "<group>"; };
+		491E3F3B1F97BA480014B8C1 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
+		491E3F3D1F97BF590014B8C1 /* Sound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
 		4979A2AF1F969C29007071E2 /* Fajr Wake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fajr Wake.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4979A2B21F969C29007071E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4979A2B41F969C2A007071E2 /* SetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
@@ -26,9 +37,32 @@
 		4979A2B91F969C2A007071E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4979A2BC1F969C2A007071E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4979A2BE1F969C2A007071E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4979A2C41F96ACCD007071E2 /* Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brand.swift; sourceTree = "<group>"; };
+		4979A2C41F96ACCD007071E2 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		49A2C63E1F9718AA00F7A23E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		49A2C6401F9719B300F7A23E /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
+		49A2C6411F971F6A00F7A23E /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
+		49A2C6431F9723BB00F7A23E /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		49A2C6451F97242000F7A23E /* SwiftyUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyUserDefaults.swift; sourceTree = "<group>"; };
+		49A2C6481F97244F00F7A23E /* Ringtones.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ringtones.swift; sourceTree = "<group>"; };
+		49A2C64A1F97245B00F7A23E /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		49A2C64C1F97247700F7A23E /* LocalNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotifications.swift; sourceTree = "<group>"; };
+		49A2C6501F97261100F7A23E /* AbatharAlHalawaji.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = AbatharAlHalawaji.aiff; sourceTree = "<group>"; };
+		49A2C6511F97261700F7A23E /* Rozayghi.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Rozayghi.aiff; sourceTree = "<group>"; };
+		49A2C6521F97261700F7A23E /* DuaKumayl.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = DuaKumayl.aiff; sourceTree = "<group>"; };
+		49A2C6531F97261800F7A23E /* Crickets.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Crickets.aiff; sourceTree = "<group>"; };
+		49A2C6541F97261800F7A23E /* MozenZadeh.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = MozenZadeh.aiff; sourceTree = "<group>"; };
+		49A2C6551F97261900F7A23E /* MunajatMuhibeen.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = MunajatMuhibeen.aiff; sourceTree = "<group>"; };
+		49A2C6561F97261A00F7A23E /* AbdulBasit.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = AbdulBasit.aiff; sourceTree = "<group>"; };
+		49A2C6571F97261B00F7A23E /* BirdsChirping2.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = BirdsChirping2.aiff; sourceTree = "<group>"; };
+		49A2C6581F97261B00F7A23E /* KazemZadeh.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = KazemZadeh.aiff; sourceTree = "<group>"; };
+		49A2C6591F97261B00F7A23E /* MunajatImamAli.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = MunajatImamAli.aiff; sourceTree = "<group>"; };
+		49A2C65A1F97261C00F7A23E /* BirdsChirping.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = BirdsChirping.aiff; sourceTree = "<group>"; };
+		49A2C65B1F97261D00F7A23E /* DuaMujeer.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = DuaMujeer.aiff; sourceTree = "<group>"; };
+		49A2C65C1F97261E00F7A23E /* Ocean.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Ocean.aiff; sourceTree = "<group>"; };
+		49A2C65D1F97261E00F7A23E /* DuaJaushanKabeer.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = DuaJaushanKabeer.aiff; sourceTree = "<group>"; };
+		49A2C65E1F97261F00F7A23E /* TasviehChi.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = TasviehChi.aiff; sourceTree = "<group>"; };
+		49A2C65F1F97265700F7A23E /* PrayTime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrayTime.h; sourceTree = "<group>"; };
+		49A2C6601F97267300F7A23E /* Fajr Wake-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Fajr Wake-Bridging-Header.h"; sourceTree = "<group>"; };
+		49A2C6611F97267300F7A23E /* PrayTime.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PrayTime.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,7 +79,15 @@
 		49028AF91F96B1C2009B95D7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				49A2C6411F971F6A00F7A23E /* Alarm.swift */,
+				491E3F3D1F97BF590014B8C1 /* Sound.swift */,
+				49A2C6481F97244F00F7A23E /* Ringtones.swift */,
+				49A2C64A1F97245B00F7A23E /* Settings.swift */,
+				49A2C64C1F97247700F7A23E /* LocalNotifications.swift */,
 				49028AF71F96B1BF009B95D7 /* Prayer.swift */,
+				49A2C65F1F97265700F7A23E /* PrayTime.h */,
+				49A2C6611F97267300F7A23E /* PrayTime.m */,
+				49A2C6601F97267300F7A23E /* Fajr Wake-Bridging-Header.h */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -73,9 +115,8 @@
 				49028AF91F96B1C2009B95D7 /* Models */,
 				4979A2C71F96AD6D007071E2 /* Controllers */,
 				4979A2B61F969C2A007071E2 /* Main.storyboard */,
-				4979A2B91F969C2A007071E2 /* Assets.xcassets */,
 				4979A2BB1F969C2A007071E2 /* LaunchScreen.storyboard */,
-				49A2C6401F9719B300F7A23E /* FontAwesome.ttf */,
+				49A2C64E1F9725D800F7A23E /* Assets */,
 				4979A2BE1F969C2A007071E2 /* Info.plist */,
 				4979A2C61F96ACF0007071E2 /* Extensions */,
 			);
@@ -85,7 +126,9 @@
 		4979A2C61F96ACF0007071E2 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				4979A2C41F96ACCD007071E2 /* Brand.swift */,
+				49A2C6451F97242000F7A23E /* SwiftyUserDefaults.swift */,
+				4979A2C41F96ACCD007071E2 /* UIColor.swift */,
+				49A2C6431F9723BB00F7A23E /* Date.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -97,6 +140,38 @@
 				4979A2B41F969C2A007071E2 /* SetupViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		49A2C64E1F9725D800F7A23E /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				491E3F3B1F97BA480014B8C1 /* FontAwesome.ttf */,
+				4979A2B91F969C2A007071E2 /* Assets.xcassets */,
+				49A2C64F1F9725F200F7A23E /* Sounds */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		49A2C64F1F9725F200F7A23E /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				49A2C6501F97261100F7A23E /* AbatharAlHalawaji.aiff */,
+				49A2C6561F97261A00F7A23E /* AbdulBasit.aiff */,
+				49A2C65A1F97261C00F7A23E /* BirdsChirping.aiff */,
+				49A2C6571F97261B00F7A23E /* BirdsChirping2.aiff */,
+				49A2C6531F97261800F7A23E /* Crickets.aiff */,
+				49A2C65D1F97261E00F7A23E /* DuaJaushanKabeer.aiff */,
+				49A2C6521F97261700F7A23E /* DuaKumayl.aiff */,
+				49A2C65B1F97261D00F7A23E /* DuaMujeer.aiff */,
+				49A2C6581F97261B00F7A23E /* KazemZadeh.aiff */,
+				49A2C6541F97261800F7A23E /* MozenZadeh.aiff */,
+				49A2C6591F97261B00F7A23E /* MunajatImamAli.aiff */,
+				49A2C6551F97261900F7A23E /* MunajatMuhibeen.aiff */,
+				49A2C65C1F97261E00F7A23E /* Ocean.aiff */,
+				49A2C6511F97261700F7A23E /* Rozayghi.aiff */,
+				49A2C65E1F97261F00F7A23E /* TasviehChi.aiff */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,6 +206,7 @@
 				TargetAttributes = {
 					4979A2AE1F969C29007071E2 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -161,6 +237,7 @@
 				4979A2BD1F969C2A007071E2 /* LaunchScreen.storyboard in Resources */,
 				4979A2BA1F969C2A007071E2 /* Assets.xcassets in Resources */,
 				4979A2B81F969C2A007071E2 /* Main.storyboard in Resources */,
+				491E3F3C1F97BAA30014B8C1 /* FontAwesome.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,11 +248,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				491E3F3E1F97BF590014B8C1 /* Sound.swift in Sources */,
+				49A2C64D1F97247700F7A23E /* LocalNotifications.swift in Sources */,
+				49A2C6461F97242000F7A23E /* SwiftyUserDefaults.swift in Sources */,
 				49A2C63F1F9718AA00F7A23E /* HomeViewController.swift in Sources */,
 				4979A2B51F969C2A007071E2 /* SetupViewController.swift in Sources */,
-				4979A2C51F96ACCD007071E2 /* Brand.swift in Sources */,
+				49A2C6441F9723BB00F7A23E /* Date.swift in Sources */,
+				49A2C6621F97267300F7A23E /* PrayTime.m in Sources */,
+				49A2C64B1F97245B00F7A23E /* Settings.swift in Sources */,
+				4979A2C51F96ACCD007071E2 /* UIColor.swift in Sources */,
 				49028AF81F96B1BF009B95D7 /* Prayer.swift in Sources */,
+				49A2C6491F97244F00F7A23E /* Ringtones.swift in Sources */,
 				4979A2B31F969C29007071E2 /* AppDelegate.swift in Sources */,
+				49A2C6421F971F6A00F7A23E /* Alarm.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,12 +397,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 396S2E45WK;
 				INFOPLIST_FILE = "Fajr Wake/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Fajr-Wake";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Fajr Wake/Models/Fajr Wake-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -327,12 +415,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 396S2E45WK;
 				INFOPLIST_FILE = "Fajr Wake/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Fajr-Wake";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Fajr Wake/Models/Fajr Wake-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

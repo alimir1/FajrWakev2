@@ -20,11 +20,11 @@ internal class HomeViewController: UIViewController {
     
     // MARK: - Stored Properties
     
-    var currentTimeUpdateTimer: Timer?
+    private var currentTimeUpdateTimer: Timer?
     
     // MARK: - Computed Properties
     
-    let dateFormatter: (time: DateFormatter, ampm: DateFormatter) = {
+    private let dateFormatter: (time: DateFormatter, ampm: DateFormatter) = {
         let timeFormatter = DateFormatter()
         timeFormatter.dateFormat = "h:mm:ss"
         let ampmFormatter = DateFormatter()
