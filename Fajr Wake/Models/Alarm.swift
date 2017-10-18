@@ -8,6 +8,12 @@
 
 import Foundation
 
+// MARK: - Alarm Notification
+
+extension Notification.Name {
+    static let AlarmDidFireNotification = Notification.Name("ALARMDIDFIRENOTIFICATION")
+}
+
 // MARK: - Alarm Statuses
 
 internal enum AlarmStatuses: String {
@@ -27,10 +33,10 @@ internal class Alarm: CustomStringConvertible {
     // MARK: - Stored Properties
     
     private var timer: Timer?
-    private(set) var adjustMins: Int = 0
-    private(set) var selectedPrayer: Prayer = .fajr
-    private(set) var praytime = Praytime(setting: PrayTimeSetting(calcMethod: .jafari, latitude: 37.34, longitude: -121.89))
-    private(set) var soundPlayer = SoundPlayer(setting: SoundSetting(ringtoneID: "AbatharAlHalawaji", ringtoneExtension: "aiff", isRepeated: true))
+    private(set) var adjustMins: Int
+    private(set) var selectedPrayer: Prayer
+    private(set) var praytime: Praytime
+    private(set) var soundPlayer: SoundPlayer
     
     // MARK: - Property Observers
     
@@ -86,7 +92,13 @@ internal class Alarm: CustomStringConvertible {
     
     // 'private' prevent others from using the default '()' initializer
     private init() {
-        loadAlarm()
+        self.adjustMins = Alarm.Settings.minsToAdjust ?? 0
+        let prayerSetting = Alarm.Settings.prayerTimeSetting ?? PrayTimeSetting(calcMethod: .jafari, latitude: 37.34, longitude: -121.89)
+        self.praytime = Praytime(setting: prayerSetting)
+        let soundSetting = SoundSetting(ringtoneID: "AbatharAlHalawaji", ringtoneExtension: "aiff", isRepeated: true)
+        self.soundPlayer = SoundPlayer(setting: soundSetting)
+        self.selectedPrayer = Alarm.Settings.selectedPrayer ?? .fajr
+        self.status = Alarm.Settings.status ?? .inActive
     }
     
     // MARK: - Methods
@@ -127,7 +139,8 @@ internal class Alarm: CustomStringConvertible {
     
     @objc func fireAlarm() {
         status = .activeAndFired
-        soundPlayer.playAlarmSound()
+        soundPlayer.play()
+        NotificationCenter.default.post(name: .AlarmDidFireNotification, object: nil)
     }
     
     private func invalidateTimer() {
@@ -147,7 +160,7 @@ internal class Alarm: CustomStringConvertible {
         fireDate = nil
         removeLocalNotifications()
         invalidateTimer()
-        soundPlayer.stopAlarmSound()
+        soundPlayer.stop()
     }
     
     internal func setAdjustMins(_ mins: Int) {
@@ -173,16 +186,6 @@ internal class Alarm: CustomStringConvertible {
         turnOff()
         praytime.setting = setting
         Alarm.Settings.prayerTimeSetting = setting
-    }
-    
-    private func loadAlarm() {
-        if let minsToAdjust = Alarm.Settings.minsToAdjust, let prayerSetting = Alarm.Settings.prayerTimeSetting, let soundSetting = Alarm.Settings.soundSetting, let selectedPrayer = Alarm.Settings.selectedPrayer, let status = Alarm.Settings.status {
-            self.adjustMins = minsToAdjust
-            self.praytime.setting = prayerSetting
-            self.soundPlayer.setSetting(setting: soundSetting)
-            self.selectedPrayer = selectedPrayer
-            self.status = status
-        }
     }
     
     private func saveAlarm() {

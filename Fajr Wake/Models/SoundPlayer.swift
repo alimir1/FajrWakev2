@@ -16,20 +16,20 @@ struct SoundSetting {
 }
 
 class SoundPlayer {
-    private var alarmSoundPlayer: AVAudioPlayer?
+    private var soundPlayer: AVAudioPlayer?
     private(set)var setting: SoundSetting
     
     init(setting: SoundSetting) {
         self.setting = setting
     }
     
-    func playAlarmSound() {
-        stopAlarmSound()
+    func play() {
+        stop()
         let url = Bundle.main.url(forResource: setting.ringtoneID, withExtension: setting.ringtoneExtension)!
         do {
-            alarmSoundPlayer = try AVAudioPlayer(contentsOf: url)
-            guard let player = alarmSoundPlayer else { return }
-            alarmSoundPlayer?.setVolume(1.0, fadeDuration: 3)
+            soundPlayer = try AVAudioPlayer(contentsOf: url)
+            guard let player = soundPlayer else { return }
+            soundPlayer?.setVolume(1.0, fadeDuration: 3)
             if setting.isRepeated {
                 player.numberOfLoops = -1
             }
@@ -40,15 +40,15 @@ class SoundPlayer {
         }
     }
     
-    func stopAlarmSound() {
-        if alarmSoundPlayer != nil {
-            alarmSoundPlayer?.stop()
-            alarmSoundPlayer = nil
+    func stop() {
+        if soundPlayer != nil {
+            soundPlayer?.stop()
+            soundPlayer = nil
         }
     }
     
     func setSetting(setting: SoundSetting) {
-        stopAlarmSound()
+        stop()
         self.setting = setting
     }
 }

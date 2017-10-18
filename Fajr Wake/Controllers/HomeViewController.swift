@@ -39,37 +39,56 @@ internal class HomeViewController: UIViewController {
         return timeFormatter
     }()
     
+    // MARK: - Initializers and Deinitializers
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .AlarmDidFireNotification, object: nil)
+    }
+    
     // MARK: - Lifecycles
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setupOutlets()
+        updateOutlets()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        currentTimeUpdateTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(setupCurrentTimeLabel), userInfo: nil, repeats: true)
+        currentTimeUpdateTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCurrentTimeLabel), userInfo: nil, repeats: true)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleAlarmFireOff), name: .AlarmDidFireNotification, object: nil)
     }
     
     // MARK: - Views Setup
     
-    private func setupOutlets() {
+    private func updateOutlets() {
         let alarm = Alarm.shared
-        setupCurrentTimeLabel()
+        updateCurrentTimeLabel()
         messageLabel.text = alarm.statusMessage
         alarmDescriptionLabel.text = alarm.status != .inActive ? alarm.description : ""
         alarmTimeLabel.text = alarm.fireDate != nil ? " \(standardDateFormatter.string(from: alarm.fireDate!))" : " Setup Alarm"
         stopButton.isHidden = alarm.status != .activeAndFired
     }
     
-    @objc private func setupCurrentTimeLabel() {
+    @objc private func updateCurrentTimeLabel() {
         let curDate = Date()
         let formatter = dateFormatter
         let ampm = formatter.ampm.string(from: curDate)
         let time = formatter.time.string(from: curDate)
         currentTimeLabel.text = "\(time) \(ampm)"
         messageLabel.text = Alarm.shared.statusMessage
+    }
+    
+    // MARK: - Target-actions
+    
+    @IBAction private func onStopAlarm(sender: Any) {
+        Alarm.shared.turnOff()
+        updateOutlets()
+    }
+    
+    // MARK: - Helpers
+    
+    @objc private func handleAlarmFireOff() {
+        updateOutlets()
     }
     
 }

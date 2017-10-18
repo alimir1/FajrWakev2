@@ -10,6 +10,21 @@
 		49028AF81F96B1BF009B95D7 /* Prayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49028AF71F96B1BF009B95D7 /* Prayer.swift */; };
 		491E3F3C1F97BAA30014B8C1 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 491E3F3B1F97BA480014B8C1 /* FontAwesome.ttf */; };
 		491E3F3E1F97BF590014B8C1 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491E3F3D1F97BF590014B8C1 /* SoundPlayer.swift */; };
+		491E3F3F1F97F3930014B8C1 /* AbatharAlHalawaji.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 49A2C6501F97261100F7A23E /* AbatharAlHalawaji.aiff */; };
+		491E3F401F97F3980014B8C1 /* AbdulBasit.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 49A2C6561F97261A00F7A23E /* AbdulBasit.aiff */; };
+		491E3F411F97F3980014B8C1 /* BirdsChirping.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 49A2C65A1F97261C00F7A23E /* BirdsChirping.aiff */; };
+		491E3F421F97F3980014B8C1 /* BirdsChirping2.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 49A2C6571F97261B00F7A23E /* BirdsChirping2.aiff */; };
+		491E3F431F97F3980014B8C1 /* Crickets.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 49A2C6531F97261800F7A23E /* Crickets.aiff */; };
+		491E3F441F97F3980014B8C1 /* DuaJaushanKabeer.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 49A2C65D1F97261E00F7A23E /* DuaJaushanKabeer.aiff */; };
+		491E3F451F97F3980014B8C1 /* DuaKumayl.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 49A2C6521F97261700F7A23E /* DuaKumayl.aiff */; };
+		491E3F461F97F3980014B8C1 /* DuaMujeer.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 49A2C65B1F97261D00F7A23E /* DuaMujeer.aiff */; };
+		491E3F471F97F3980014B8C1 /* KazemZadeh.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 49A2C6581F97261B00F7A23E /* KazemZadeh.aiff */; };
+		491E3F481F97F3980014B8C1 /* MozenZadeh.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 49A2C6541F97261800F7A23E /* MozenZadeh.aiff */; };
+		491E3F491F97F3980014B8C1 /* MunajatImamAli.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 49A2C6591F97261B00F7A23E /* MunajatImamAli.aiff */; };
+		491E3F4A1F97F3980014B8C1 /* MunajatMuhibeen.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 49A2C6551F97261900F7A23E /* MunajatMuhibeen.aiff */; };
+		491E3F4B1F97F3980014B8C1 /* Ocean.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 49A2C65C1F97261E00F7A23E /* Ocean.aiff */; };
+		491E3F4C1F97F3980014B8C1 /* Rozayghi.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 49A2C6511F97261700F7A23E /* Rozayghi.aiff */; };
+		491E3F4D1F97F3980014B8C1 /* TasviehChi.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 49A2C65E1F97261F00F7A23E /* TasviehChi.aiff */; };
 		4979A2B31F969C29007071E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4979A2B21F969C29007071E2 /* AppDelegate.swift */; };
 		4979A2B51F969C2A007071E2 /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4979A2B41F969C2A007071E2 /* SetupViewController.swift */; };
 		4979A2B81F969C2A007071E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4979A2B61F969C2A007071E2 /* Main.storyboard */; };
@@ -234,10 +249,25 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				491E3F481F97F3980014B8C1 /* MozenZadeh.aiff in Resources */,
+				491E3F431F97F3980014B8C1 /* Crickets.aiff in Resources */,
+				491E3F411F97F3980014B8C1 /* BirdsChirping.aiff in Resources */,
+				491E3F4D1F97F3980014B8C1 /* TasviehChi.aiff in Resources */,
+				491E3F491F97F3980014B8C1 /* MunajatImamAli.aiff in Resources */,
+				491E3F421F97F3980014B8C1 /* BirdsChirping2.aiff in Resources */,
+				491E3F4A1F97F3980014B8C1 /* MunajatMuhibeen.aiff in Resources */,
+				491E3F4B1F97F3980014B8C1 /* Ocean.aiff in Resources */,
 				4979A2BD1F969C2A007071E2 /* LaunchScreen.storyboard in Resources */,
 				4979A2BA1F969C2A007071E2 /* Assets.xcassets in Resources */,
+				491E3F441F97F3980014B8C1 /* DuaJaushanKabeer.aiff in Resources */,
+				491E3F401F97F3980014B8C1 /* AbdulBasit.aiff in Resources */,
+				491E3F3F1F97F3930014B8C1 /* AbatharAlHalawaji.aiff in Resources */,
+				491E3F471F97F3980014B8C1 /* KazemZadeh.aiff in Resources */,
+				491E3F461F97F3980014B8C1 /* DuaMujeer.aiff in Resources */,
+				491E3F4C1F97F3980014B8C1 /* Rozayghi.aiff in Resources */,
 				4979A2B81F969C2A007071E2 /* Main.storyboard in Resources */,
 				491E3F3C1F97BAA30014B8C1 /* FontAwesome.ttf in Resources */,
+				491E3F451F97F3980014B8C1 /* DuaKumayl.aiff in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
