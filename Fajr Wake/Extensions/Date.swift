@@ -19,7 +19,7 @@ extension Date {
     static func date(hour: Int, minute: Int, from date: Date) -> Date {
         let calendar = Calendar(identifier: .gregorian)
         let cmpts: Set<Calendar.Component> = [.year, .month, .day, .hour, .minute, .second]
-        var components = calendar.dateComponents(cmpts, from: Date())
+        var components = calendar.dateComponents(cmpts, from: date)
         components.hour = hour
         components.minute = minute
         components.second = 0

@@ -84,11 +84,12 @@ internal class Praytime {
         return ptime
     }
     
-    func date(for prayer: Prayer, andDate date: Date) -> Date {
+    func date(for prayer: Prayer, andDate date: Date, minsAdjustment: Int) -> Date {
         let ptimes = praytimes(for: date)
-        let ptime = ptimes[prayer.rawValue]
+        let ptime =  ptimes[prayer.rawValue]
         let time = Praytime.timeComponents(from: ptime)
-        return Date.date(hour: time.hour, minute: time.minute, from: date)
+        let adjustedMins = time.minute + minsAdjustment
+        return Date.date(hour: time.hour, minute: adjustedMins, from: date)
     }
     
     private class func timeComponents(from string: String) -> (hour: Int, minute: Int) {

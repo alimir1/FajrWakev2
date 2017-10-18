@@ -34,7 +34,8 @@ internal class HomeViewController: UIViewController {
     
     private let standardDateFormatter: DateFormatter = {
         let timeFormatter = DateFormatter()
-        timeFormatter.dateFormat = "h:mm a"
+        timeFormatter.dateFormat = "MM-dd-yyyy h:mm a"
+//        timeFormatter.dateFormat = "h:mm a"
         return timeFormatter
     }()
     
@@ -57,7 +58,7 @@ internal class HomeViewController: UIViewController {
         let alarm = Alarm.shared
         setupCurrentTimeLabel()
         messageLabel.text = alarm.statusMessage
-        alarmDescriptionLabel.text = alarm.alarmDescription
+        alarmDescriptionLabel.text = alarm.status != .inActive ? alarm.description : ""
         alarmTimeLabel.text = alarm.fireDate != nil ? " \(standardDateFormatter.string(from: alarm.fireDate!))" : " Setup Alarm"
         stopButton.isHidden = alarm.status != .activeAndFired
     }
@@ -68,6 +69,7 @@ internal class HomeViewController: UIViewController {
         let ampm = formatter.ampm.string(from: curDate)
         let time = formatter.time.string(from: curDate)
         currentTimeLabel.text = "\(time) \(ampm)"
+        messageLabel.text = Alarm.shared.statusMessage
     }
     
 }

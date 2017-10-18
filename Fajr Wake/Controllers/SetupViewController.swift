@@ -21,42 +21,51 @@ internal class SetupViewController: UIViewController {
     @IBOutlet private var settingsBarButtonItem: UIBarButtonItem!
     @IBOutlet private var closeBarButtonItem: UIBarButtonItem!
     
-    // MARK: - Stored properties
+    // MARK: - Getters and setters
     
-    var alarmMode: Prayer = .fajr {
-        didSet {
-            setupTitleLabel()
-            segmentedControl.selectedSegmentIndex = alarmMode.rawValue
+    var alarmMode: Prayer {
+        
+        get {
+            return Alarm.shared.selectedPrayer
+        }
+        
+        set {
+            Alarm.shared.setSelectedPrayer(newValue)
+            updateOutlets()
         }
     }
     
-    // MARK: - Property Observers
-    
-    var isAlarmOn: Bool = false {
-        didSet {
-            onOffButton.backgroundColor = isAlarmOn ? .red : UIColor.brand.theme
-            onOffButton.setTitle("\(isAlarmOn ? "Turn off" : "Turn on")", for: .normal)
+    var isAlarmOn: Bool {
+        get {
+            return Alarm.shared.status != .inActive
         }
-    }
-    
-    var minsToAdjust: Int = 0 {
-        didSet {
-            if minsToAdjust == 0 {
-                minsAdjustLabel.text = "At"
+        
+        set {
+            if newValue {
+                Alarm.shared.turnOn()
             } else {
-                minsAdjustLabel.text = minsToAdjust > 0 ? "+\(minsToAdjust)" : "\(minsToAdjust)"
+                Alarm.shared.turnOff()
             }
-            setupTitleLabel()
+            updateOutlets()
+        }
+    }
+    
+    var minsToAdjust: Int {
+        get {
+            return Alarm.shared.adjustMins
+        }
+        
+        set {
+            Alarm.shared.setAdjustMins(newValue)
+            updateOutlets()
         }
     }
     
     // MARK: - Lifecycles
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewDidLoad()
-        minsToAdjust = 0
-        isAlarmOn = false
-        alarmMode = .fajr
+        super.viewWillAppear(animated)
+        updateOutlets()
     }
     
     override func viewDidLoad() {
@@ -65,13 +74,33 @@ internal class SetupViewController: UIViewController {
     
     // MARK: - Views Setup
     
-    private func setupTitleLabel() {
+    private func updateOutlets() {
+        segmentedControl.selectedSegmentIndex = alarmMode.rawValue
+        updateTitleLabel()
+        updateMinsToAdjustLabel()
+        updateOnOffButton()
+    }
+    
+    private func updateTitleLabel() {
         let wakeupTime = alarmMode.description
         if minsToAdjust == 0 {
             navigationItem.title = "At \(wakeupTime)"
         } else {
-            navigationItem.title = "\(abs(minsToAdjust)) mins \(minsToAdjust > 0 ? "after" : "before") \(wakeupTime)"
+            navigationItem.title = Alarm.shared.description
         }
+    }
+    
+    func updateMinsToAdjustLabel() {
+        if minsToAdjust == 0 {
+            minsAdjustLabel.text = "At"
+        } else {
+            minsAdjustLabel.text = minsToAdjust > 0 ? "+\(minsToAdjust)" : "\(minsToAdjust)"
+        }
+    }
+    
+    func updateOnOffButton() {
+        onOffButton.backgroundColor = isAlarmOn ? .red : UIColor.brand.theme
+        onOffButton.setTitle("\(isAlarmOn ? "Turn off" : "Turn on")", for: .normal)
     }
     
     // MARK: - Target-actions
@@ -88,17 +117,14 @@ internal class SetupViewController: UIViewController {
                 updateMinsToAdjust(incrementValue: incrementValue)
             }
         }
-        turnOffAndReConfigureAlarm()
     }
     
     @IBAction private func onSegmentChange(sender: Any) {
         alarmMode = Prayer(rawValue: segmentedControl.selectedSegmentIndex) ?? .fajr
-        turnOffAndReConfigureAlarm()
     }
     
     @IBAction private func onToggleOnOff(sender: Any) {
         isAlarmOn = !isAlarmOn
-        
     }
     
     @IBAction private func onDismiss(sender: Any) {
@@ -110,10 +136,5 @@ internal class SetupViewController: UIViewController {
     private func updateMinsToAdjust(incrementValue: Int) {
         minsToAdjust = abs(minsToAdjust + incrementValue) != 0 && abs(minsToAdjust + incrementValue) != 60 ? minsToAdjust + incrementValue : 0
     }
-    
-    private func turnOffAndReConfigureAlarm() {
-        
-    }
-    
 }
 

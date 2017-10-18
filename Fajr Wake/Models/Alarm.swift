@@ -18,7 +18,7 @@ internal enum AlarmStatuses: String {
 
 // MARK: - Alarm
 
-internal class Alarm {
+internal class Alarm: CustomStringConvertible {
     
     // MARK: - Singleton
     
@@ -53,40 +53,40 @@ internal class Alarm {
         case .inActive:
             return "Alarm is not set!"
         case .activeAndFired:
-            return "Wake up, it's \(alarmDescription)!"
+            return "Wake up, it's \(description)!"
         }
     }
     
-    var alarmDescription: String {
-        guard status != .inActive else { return "" }
-        var retStr = ""
+    var description: String {
         if adjustMins == 0 {
-            retStr = "\(selectedPrayer)"
+            return "\(selectedPrayer)"
         } else {
-           retStr = "\(abs(adjustMins)) mins \(adjustMins > 0 ? "after" : "before") \(selectedPrayer)"
+            return "\(abs(adjustMins)) mins \(adjustMins > 0 ? "after" : "before") \(selectedPrayer)"
         }
-
-        return retStr
     }
     
-    var fireDate: Date? {
-        guard status != .inActive else { return nil }
-        return dateForCurrentSetting
+    private(set) var fireDate: Date? {
+        get {
+            guard status != .inActive else { return nil }
+            return dateForCurrentSetting
+        }
+        set { }
     }
 
     var dateForCurrentSetting: Date {
-        var dateToAlarm = Date()
-        if dateToAlarm.timeIntervalSinceNow < 0 {
-            dateToAlarm = Calendar.current.date(byAdding: .day, value: 1, to: Date()) ?? Date()
+        var alarmDate = praytime.date(for: selectedPrayer, andDate: Date(), minsAdjustment: adjustMins)
+        if alarmDate.timeIntervalSinceNow < 0 {
+            alarmDate = praytime.date(for: selectedPrayer, andDate: Date().addingTimeInterval(24*60*60), minsAdjustment: adjustMins)
         }
-        return praytime.date(for: selectedPrayer, andDate: dateToAlarm)
+        
+        return alarmDate
     }
     
     // MARK: - Initializers
     
     // 'private' prevent others from using the default '()' initializer
     private init() {
-        saveAlarm()
+        loadAlarm()
     }
     
     // MARK: - Methods
@@ -144,6 +144,7 @@ internal class Alarm {
     
     internal func turnOff() {
         status = .inActive
+        fireDate = nil
         removeLocalNotifications()
         invalidateTimer()
         soundPlayer.stopAlarmSound()
@@ -172,6 +173,16 @@ internal class Alarm {
         turnOff()
         praytime.setting = setting
         Alarm.Settings.prayerTimeSetting = setting
+    }
+    
+    private func loadAlarm() {
+        if let minsToAdjust = Alarm.Settings.minsToAdjust, let prayerSetting = Alarm.Settings.prayerTimeSetting, let soundSetting = Alarm.Settings.soundSetting, let selectedPrayer = Alarm.Settings.selectedPrayer, let status = Alarm.Settings.status {
+            self.adjustMins = minsToAdjust
+            self.praytime.setting = prayerSetting
+            self.soundPlayer.setSetting(setting: soundSetting)
+            self.selectedPrayer = selectedPrayer
+            self.status = status
+        }
     }
     
     private func saveAlarm() {

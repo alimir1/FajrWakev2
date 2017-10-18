@@ -52,7 +52,7 @@ extension Alarm {
             let content = UNMutableNotificationContent()
             let alarmSoundName = alarm.soundPlayer.setting.ringtoneID + "." + alarm.soundPlayer.setting.ringtoneExtension
             content.title = "Alarm"
-            content.subtitle = "It's \(alarm.alarmDescription)!"
+            content.subtitle = "It's \(alarm.description)!"
             content.body = "Open app to stop."
             content.sound = UNNotificationSound(named: alarmSoundName)
             return content
