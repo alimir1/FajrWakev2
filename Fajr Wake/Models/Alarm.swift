@@ -71,12 +71,15 @@ internal class Alarm {
     
     var fireDate: Date? {
         guard status != .inActive else { return nil }
+        return dateForCurrentSetting
+    }
+
+    var dateForCurrentSetting: Date {
         var dateToAlarm = Date()
         if dateToAlarm.timeIntervalSinceNow < 0 {
             dateToAlarm = Calendar.current.date(byAdding: .day, value: 1, to: Date()) ?? Date()
         }
-        let fireDate = praytime.date(for: selectedPrayer, andDate: dateToAlarm)
-        return fireDate
+        return praytime.date(for: selectedPrayer, andDate: dateToAlarm)
     }
     
     // MARK: - Initializers
