@@ -8,16 +8,6 @@
 
 import Foundation
 
-// MARK: - Alarm Setting
-
-internal struct AlarmSetting {
-    var ringtoneID: String
-    var ringtoneExtension: String
-    var adjustMins: Int
-    var prayer: Prayer
-    var prayerSetting: PrayTimeSetting
-}
-
 // MARK: - Alarm Statuses
 
 internal enum AlarmStatuses: String {
@@ -37,8 +27,18 @@ internal class Alarm {
     // MARK: - Stored Properties
     
     private var timer: Timer?
-    private(set) var status: AlarmStatuses = AlarmStatuses.inActive
-    private(set) var settings: AlarmSetting = AlarmSetting(ringtoneID: "", ringtoneExtension: "", adjustMins: 0, prayer: .fajr, prayerSetting: PrayTimeSetting(calcMethod: .jafari, latitude: 0.0, longitude: 0.0))
+    private(set) var adjustMins: Int = 0
+    private(set) var selectedPrayer: Prayer = .fajr
+    private(set) var praytime = Praytime(setting: PrayTimeSetting(calcMethod: .jafari, latitude: 37.34, longitude: -121.89))
+    private(set) var soundPlayer = SoundPlayer(setting: SoundSetting(ringtoneID: "AbatharAlHalawaji", ringtoneExtension: "aiff", isRepeated: true))
+    
+    // MARK: - Property Observers
+    
+    private(set) var status: AlarmStatuses = AlarmStatuses.inActive {
+        didSet {
+            Alarm.Settings.status = status
+        }
+    }
     
     // MARK: - Computed Properties
     
@@ -59,19 +59,29 @@ internal class Alarm {
     
     var alarmDescription: String {
         var retStr = ""
-        if settings.adjustMins == 0 {
-            retStr = "\(settings.prayer)"
+        if adjustMins == 0 {
+            retStr = "\(selectedPrayer)"
         } else {
-           retStr = "\(abs(settings.adjustMins)) mins \(settings.adjustMins > 0 ? "after" : "before") \(settings.prayer)"
+           retStr = "\(abs(adjustMins)) mins \(adjustMins > 0 ? "after" : "before") \(selectedPrayer)"
         }
 
         return retStr
     }
     
     var fireDate: Date? {
-        let dateOfAlarm = Calendar.current.date(byAdding: .day, value: 1, to: Date()) ?? Date()
-        let fireDate = Praytime.prayerDate(for: settings.prayerSetting, for: settings.prayer, andDate: dateOfAlarm)
+        var dateToAlarm = Date()
+        if dateToAlarm.timeIntervalSinceNow < 0 {
+            dateToAlarm = Calendar.current.date(byAdding: .day, value: 1, to: Date()) ?? Date()
+        }
+        let fireDate = praytime.date(for: selectedPrayer, andDate: dateToAlarm)
         return fireDate
+    }
+    
+    // MARK: - Initializers
+    
+    // 'private' prevent others from using the default '()' initializer
+    private init() {
+        saveAlarm()
     }
     
     // MARK: - Methods
@@ -106,12 +116,13 @@ internal class Alarm {
             print("Alarm fireAlarmWithTimer(): invalid FireDate!")
             return
         }
+        scheduleLocalNotifications()
         timer = Timer.scheduledTimer(timeInterval: fireDate.timeIntervalSinceNow, target: self, selector: #selector(self.fireAlarm), userInfo: nil, repeats: false)
     }
     
     @objc func fireAlarm() {
         status = .activeAndFired
-//        playAlarmSound(ringtoneID: settings.ringtoneID, withExtension: settings.ringtoneExtension, isRepeated: true)
+        soundPlayer.playAlarmSound()
     }
     
     private func invalidateTimer() {
@@ -123,7 +134,6 @@ internal class Alarm {
     
     internal func turnOn() {
         status = .activeAndNotFired
-        scheduleLocalNotifications()
         triggerAlarmWithTimer()
     }
     
@@ -131,7 +141,39 @@ internal class Alarm {
         status = .inActive
         removeLocalNotifications()
         invalidateTimer()
-        // stopSound()
+        soundPlayer.stopAlarmSound()
     }
     
+    internal func setAdjustMins(_ mins: Int) {
+        turnOff()
+        adjustMins = mins
+        Alarm.Settings.minsToAdjust = mins
+    }
+    
+    internal func setSelectedPrayer(_ prayer: Prayer) {
+        turnOff()
+        selectedPrayer = prayer
+        Alarm.Settings.selectedPrayer = prayer
+    }
+    
+    internal func setSoundSetting(_ setting: SoundSetting) {
+        turnOff()
+        soundPlayer.setSetting(setting: setting)
+        turnOn()
+        Alarm.Settings.soundSetting = setting
+    }
+    
+    internal func setPrayerTimeSetting(_ setting: PrayTimeSetting) {
+        turnOff()
+        praytime.setting = setting
+        Alarm.Settings.prayerTimeSetting = setting
+    }
+    
+    private func saveAlarm() {
+        Alarm.Settings.minsToAdjust = adjustMins
+        Alarm.Settings.prayerTimeSetting = praytime.setting
+        Alarm.Settings.soundSetting = soundPlayer.setting
+        Alarm.Settings.selectedPrayer = selectedPrayer
+        Alarm.Settings.status = status
+    }
 }

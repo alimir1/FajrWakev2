@@ -33,6 +33,7 @@ extension DefaultsKeys {
     static let prayer = DefaultsKey<Prayer?>("FW-PRAYERTIME")
     static let ringtoneID = DefaultsKey<String?>("FW-RINGTONEID")
     static let ringtoneExtension = DefaultsKey<String?>("FW-RINGTONEEXTENSION")
+    static let isSoundRepeated = DefaultsKey<Bool?>("FW-ISSOUNDREPEATED")
     static let minsToAdjust = DefaultsKey<Int?>("FW-MINSTOADJUST")
     static let fireDate = DefaultsKey<Date?>("FW-FIREDATE")
     static let userExitDate = DefaultsKey<Date?>("FW-PROGRAMEXITDATE")
@@ -44,72 +45,114 @@ extension DefaultsKeys {
 }
 
 extension Alarm {
-    
     struct Settings {
-        static var isLocalNotificationPermissionGranted: Bool {
-            return Defaults[.isLocalNotificationPermissionGranted]
-        }
         
-        static var previousFireDate: Date? {
-            return Defaults[.fireDate]
-        }
-        
-        static var previousPrayertimeDate: Date? {
-            return Defaults[.prayertimeDate]
-        }
-        
-        static var alarmStatus: AlarmStatuses? {
-            return Defaults[.status]
-        }
-        
-        static var userExitDate: Date? {
-            return Defaults[.userExitDate]
-        }
-        
-        static func fajrAlarmSetting() -> AlarmSetting? {
-            guard let prayer = Defaults[.prayer], let ringtoneID = Defaults[.ringtoneID], let ringtoneExtension = Defaults[.ringtoneExtension], let minsToAdjust = Defaults[.minsToAdjust], let latitude = Defaults[.latitude], let longitude = Defaults[.longitude], let calcMethod = Defaults[.calcMethod]  else {
-                return nil
+        static var isGrantedPermissionForLocalNotification: Bool? {
+            get {
+                return Defaults[.isLocalNotificationPermissionGranted]
             }
-            let prayerSetting = PrayTimeSetting(calcMethod: calcMethod, latitude: latitude, longitude: longitude)
-            return AlarmSetting(ringtoneID: ringtoneID, ringtoneExtension: ringtoneExtension, adjustMins: minsToAdjust, prayer: prayer, prayerSetting: prayerSetting)
+            set {
+                if let isGranted = newValue {
+                    Defaults[.isLocalNotificationPermissionGranted] = isGranted
+                }
+            }
         }
         
-        static func saveUserPreference(fireDate: Date?, alarmStatus: AlarmStatuses, alarmSetting: AlarmSetting) {
-            saveFireDate(fireDate)
-            saveUserExitDate(Date())
-            saveAlarmSetting(alarmSetting)
-            saveAlarmStatus(alarmStatus)
+        static var prayerTimeSetting: PrayTimeSetting? {
+            get {
+                guard let latitude = Defaults[.latitude], let longitude = Defaults[.longitude], let calcMethod = Defaults[.calcMethod] else {
+                    return nil
+                }
+                return PrayTimeSetting(calcMethod: calcMethod, latitude: latitude, longitude: longitude)
+            }
+            
+            set {
+                guard let setting = prayerTimeSetting else {
+                    return
+                }
+                Defaults[.latitude] = setting.latitude
+                Defaults[.longitude] = setting.longitude
+                Defaults[.calcMethod] = setting.calcMethod
+            }
         }
         
-        static func saveFireDate(_ date: Date?) {
-            Defaults[.fireDate] = date
+        
+        static var soundSetting: SoundSetting? {
+            get {
+                if let ringtoneID = Defaults[.ringtoneID], let ringExt = Defaults[.ringtoneExtension], let isRepeated = Defaults[.isSoundRepeated] {
+                    return SoundSetting(ringtoneID: ringtoneID, ringtoneExtension: ringExt, isRepeated: isRepeated)
+                } else {
+                    return nil
+                }
+            }
+            
+            set {
+                if let setting = newValue {
+                    Defaults[.ringtoneID] = setting.ringtoneID
+                    Defaults[.ringtoneExtension] = setting.ringtoneExtension
+                    Defaults[.isSoundRepeated] = setting.isRepeated
+                }
+            }
         }
         
-        static func savePrayertimeDate(_ date: Date?) {
-            Defaults[.prayertimeDate] = date
+        static var minsToAdjust: Int? {
+            get {
+                return Defaults[.minsToAdjust]
+            }
+            
+            set {
+                if let minsToAdjust = newValue {
+                    Defaults[.minsToAdjust] = minsToAdjust
+                }
+            }
         }
         
-        static func saveUserExitDate(_ date: Date) {
-            Defaults[.userExitDate] = date
+        static var selectedPrayer: Prayer? {
+            get {
+                return Defaults[.prayer]
+            }
+            set {
+                if let prayer = newValue {
+                    Defaults[.prayer] = prayer
+                }
+            }
         }
         
-        static func saveAlarmSetting(_ setting: AlarmSetting) {
-            Defaults[.prayer] = setting.prayer
-            Defaults[.ringtoneID] = setting.ringtoneID
-            Defaults[.ringtoneExtension] = setting.ringtoneExtension
-            Defaults[.minsToAdjust] = setting.adjustMins
-            Defaults[.latitude] = setting.prayerSetting.latitude
-            Defaults[.longitude] = setting.prayerSetting.longitude
-            Defaults[.calcMethod] = setting.prayerSetting.calcMethod
+        static var status: AlarmStatuses? {
+            get {
+                return Defaults[.status]
+            }
+            set {
+                if let status = status {
+                    Defaults[.status] = status
+                }
+            }
         }
         
-        static func saveLocalNotificationPermission(_ isGranted: Bool) {
-            Defaults[.isLocalNotificationPermissionGranted] = isGranted
-        }
+//
+//        static func saveFireDate(_ date: Date?) {
+//            Defaults[.fireDate] = date
+//        }
+//
+//        static func savePrayertimeDate(_ date: Date?) {
+//            Defaults[.prayertimeDate] = date
+//        }
+//
+//        static func saveUserExitDate(_ date: Date) {
+//            Defaults[.userExitDate] = date
+//        }
         
-        static func saveAlarmStatus(_ status: AlarmStatuses) {
-            Defaults[.status] = status
-        }
+//        static var previousFireDate: Date? {
+//            return Defaults[.fireDate]
+//        }
+//
+//        static var previousPrayertimeDate: Date? {
+//            return Defaults[.prayertimeDate]
+//        }
+//
+//        static var userExitDate: Date? {
+//            return Defaults[.userExitDate]
+//        }
     }
 }
 

@@ -62,7 +62,14 @@ internal struct PrayTimeSetting {
 }
 
 internal class Praytime {
-    private class func praytimes(for setting: PrayTimeSetting, date: Date) -> [String] {
+    
+    internal var setting: PrayTimeSetting
+    
+    init(setting: PrayTimeSetting) {
+        self.setting = setting
+    }
+    
+    private func praytimes(for date: Date) -> [String] {
         let praytime = PrayTime()
         praytime.setTimeFormat(Int32(PrayTime().time12))
         praytime.setCalcMethod(Int32(setting.calcMethod.rawValue))
@@ -71,16 +78,16 @@ internal class Praytime {
         return ptimes
     }
     
-    class func praytimeString(for setting: PrayTimeSetting, prayer: Prayer, date: Date) -> String {
-        let ptimes = Praytime.praytimes(for: setting, date: date)
+    func praytimeString(prayer: Prayer, date: Date) -> String {
+        let ptimes = praytimes(for: date)
         let ptime = ptimes[prayer.rawValue]
         return ptime
     }
     
-    class func prayerDate(for setting: PrayTimeSetting, for prayer: Prayer, andDate date: Date) -> Date {
-        let ptimes = Praytime.praytimes(for: setting, date: date)
+    func date(for prayer: Prayer, andDate date: Date) -> Date {
+        let ptimes = praytimes(for: date)
         let ptime = ptimes[prayer.rawValue]
-        let time = timeComponents(from: ptime)
+        let time = Praytime.timeComponents(from: ptime)
         return Date.date(hour: time.hour, minute: time.minute, from: date)
     }
     
