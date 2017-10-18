@@ -22,10 +22,21 @@ internal class SetupViewController: UIViewController {
     
     // MARK: - Stored properties
     
-    var isAlarmOn: Bool = false
-    var alarmMode: Prayer = .fajr
+    var alarmMode: Prayer = .fajr {
+        didSet {
+            setupTitleLabel()
+            segmentedControl.selectedSegmentIndex = alarmMode.rawValue
+        }
+    }
     
     // MARK: - Property Observers
+    
+    var isAlarmOn: Bool = false {
+        didSet {
+            onOffButton.backgroundColor = isAlarmOn ? .red : UIColor.brand.theme
+            onOffButton.setTitle("\(isAlarmOn ? "Turn off" : "Turn on")", for: .normal)
+        }
+    }
     
     var minsToAdjust: Int = 0 {
         didSet {
@@ -40,15 +51,21 @@ internal class SetupViewController: UIViewController {
     
     // MARK: - Lifecycles
     
-    override func viewDidLoad() {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewDidLoad()
         minsToAdjust = 0
+        isAlarmOn = false
+        alarmMode = .fajr
     }
     
-    // MARK: - View Setup
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    // MARK: - Views Setup
     
     private func setupTitleLabel() {
-        let wakeupTime = Prayer(rawValue: segmentedControl.selectedSegmentIndex)?.description ?? ""
+        let wakeupTime = alarmMode.description
         if minsToAdjust == 0 {
             navigationItem.title = "At \(wakeupTime)"
         } else {
@@ -57,6 +74,7 @@ internal class SetupViewController: UIViewController {
     }
     
     // MARK: - Target-actions
+    
     @IBAction private func onPanMinsLabel(sender: UIPanGestureRecognizer) {
         let velocity = sender.velocity(in: minsAdjustLabel)
         let translation = sender.translation(in: minsAdjustLabel)
@@ -69,16 +87,30 @@ internal class SetupViewController: UIViewController {
                 updateMinsToAdjust(incrementValue: incrementValue)
             }
         }
+        turnOffAndReConfigureAlarm()
     }
     
     @IBAction private func onSegmentChange(sender: Any) {
-        setupTitleLabel()
+        alarmMode = Prayer(rawValue: segmentedControl.selectedSegmentIndex) ?? .fajr
+        turnOffAndReConfigureAlarm()
+    }
+    
+    @IBAction private func onToggleOnOff(sender: Any) {
+        isAlarmOn = !isAlarmOn
+    }
+    
+    @IBAction private func onDismiss(sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     // MARK: - Helpers
     
     private func updateMinsToAdjust(incrementValue: Int) {
         minsToAdjust = abs(minsToAdjust + incrementValue) != 0 && abs(minsToAdjust + incrementValue) != 60 ? minsToAdjust + incrementValue : 0
+    }
+    
+    private func turnOffAndReConfigureAlarm() {
+        
     }
     
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5Hm-21-eyB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zPH-3f-Jz4">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -8,6 +8,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="FontAwesome.ttf">
+            <string>FontAwesome</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Setup View Controller-->
         <scene sceneID="hF3-B7-baX">
@@ -89,12 +94,15 @@
                                     <constraint firstAttribute="height" constant="50" id="AQX-yZ-hgc"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <state key="normal" title="Turn On">
+                                <state key="normal" title="Turn on">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="onToggleOnOffWithSender:" destination="BN0-Km-3Pg" eventType="touchUpInside" id="NSl-PX-WRk"/>
+                                </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.045161033163265252" green="0.045161033163265252" blue="0.045161033163265252" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="dno-3X-YTY" firstAttribute="trailing" secondItem="IHu-Hj-OOD" secondAttribute="trailing" id="3X6-gb-3Dq"/>
                             <constraint firstItem="LOP-21-FAU" firstAttribute="width" secondItem="BbY-vm-Ssz" secondAttribute="width" id="89u-F9-yry"/>
@@ -114,6 +122,9 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="stop" id="EOX-Zu-DxV">
                             <color key="tintColor" red="0.70444036990000003" green="0.33474121480000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="onDismissWithSender:" destination="BN0-Km-3Pg" id="iyu-EL-KiD"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -131,7 +142,92 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1720.8" y="132.68365817091455"/>
+            <point key="canvasLocation" x="1953" y="141"/>
+        </scene>
+        <!--Home View Controller-->
+        <scene sceneID="KOe-Di-cg0">
+            <objects>
+                <viewController id="zPH-3f-Jz4" customClass="HomeViewController" customModule="Fajr_Wake" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="c0D-Kv-9qB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="4oF-dP-qlo">
+                                <rect key="frame" x="8" y="50" width="359" height="48.5"/>
+                                <subviews>
+                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 6:35 am" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZn-ql-hpC">
+                                        <rect key="frame" x="0.0" y="0.0" width="359" height="20"/>
+                                        <gestureRecognizers/>
+                                        <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="17"/>
+                                        <color key="textColor" red="0.70588235290000001" green="0.33333333329999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="0SR-M5-kp9" appends="YES" id="SWd-U9-aD7"/>
+                                        </connections>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="55 mins before Fajr" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wYZ-xe-ae5">
+                                        <rect key="frame" x="0.0" y="28" width="359" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="yjK-cj-Yxs">
+                                <rect key="frame" x="8" y="289.5" width="359" height="88.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9:36 pm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qWq-KE-ZSW">
+                                        <rect key="frame" x="0.0" y="0.0" width="359" height="60"/>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="50"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24 hrs and 59 min until alarm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8is-RO-MoS">
+                                        <rect key="frame" x="0.0" y="68" width="359" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tOB-6U-g7L">
+                                <rect key="frame" x="161" y="428" width="53" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="STOP">
+                                    <color key="titleColor" red="0.90588235289999997" green="0.084356428479999995" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.045161033160000003" green="0.045161033160000003" blue="0.045161033160000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="tOB-6U-g7L" firstAttribute="top" secondItem="yjK-cj-Yxs" secondAttribute="bottom" constant="50" id="30I-Uv-SfV"/>
+                            <constraint firstItem="4oF-dP-qlo" firstAttribute="leading" secondItem="LEc-ZL-aSs" secondAttribute="leading" constant="8" id="Dz3-XW-l4L"/>
+                            <constraint firstItem="LEc-ZL-aSs" firstAttribute="trailing" secondItem="4oF-dP-qlo" secondAttribute="trailing" constant="8" id="I6T-Yd-NRM"/>
+                            <constraint firstItem="yjK-cj-Yxs" firstAttribute="centerX" secondItem="c0D-Kv-9qB" secondAttribute="centerX" id="IJu-9k-EUX"/>
+                            <constraint firstItem="LEc-ZL-aSs" firstAttribute="trailing" secondItem="yjK-cj-Yxs" secondAttribute="trailing" constant="8" id="Pn0-Ws-Z1s"/>
+                            <constraint firstItem="tOB-6U-g7L" firstAttribute="centerX" secondItem="c0D-Kv-9qB" secondAttribute="centerX" id="fk5-8n-SYO"/>
+                            <constraint firstItem="yjK-cj-Yxs" firstAttribute="leading" secondItem="LEc-ZL-aSs" secondAttribute="leading" constant="8" id="hON-eR-EQE"/>
+                            <constraint firstItem="4oF-dP-qlo" firstAttribute="top" secondItem="LEc-ZL-aSs" secondAttribute="top" constant="30" id="hhm-bZ-lbb"/>
+                            <constraint firstItem="yjK-cj-Yxs" firstAttribute="centerY" secondItem="c0D-Kv-9qB" secondAttribute="centerY" id="x0u-sZ-itJ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="LEc-ZL-aSs"/>
+                    </view>
+                    <connections>
+                        <outlet property="alarmDescriptionLabel" destination="wYZ-xe-ae5" id="J5h-CC-0qb"/>
+                        <outlet property="alarmTimeLabel" destination="fZn-ql-hpC" id="SQz-CR-58h"/>
+                        <outlet property="currentTimeLabel" destination="qWq-KE-ZSW" id="Qte-wq-aAX"/>
+                        <outlet property="messageLabel" destination="8is-RO-MoS" id="hg6-jt-Te1"/>
+                        <outlet property="stopButton" destination="tOB-6U-g7L" id="DRz-SV-PWy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2fJ-Vc-zDF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="0SR-M5-kp9">
+                    <connections>
+                        <segue destination="5Hm-21-eyB" kind="presentation" id="Lgf-vK-xhD"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="-218" y="141"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="GtT-BT-izL">
