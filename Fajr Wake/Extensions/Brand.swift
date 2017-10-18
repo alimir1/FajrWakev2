@@ -9,7 +9,7 @@
 import UIKit
 
 extension UIColor {
-    struct Brand {
+    struct brand {
         static let theme = UIColor(red: 0.7059, green: 0.3333, blue: 0, alpha: 1.0)
     }
 }
