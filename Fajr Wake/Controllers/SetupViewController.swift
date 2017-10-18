@@ -61,6 +61,16 @@ internal class SetupViewController: UIViewController {
         }
     }
     
+    // MARK: - Computed Properties
+    
+    private let dateFormatter: (time: DateFormatter, ampm: DateFormatter) = {
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "h:mm"
+        let ampmFormatter = DateFormatter()
+        ampmFormatter.dateFormat = "a"
+        return (time: timeFormatter, ampm: ampmFormatter)
+    }()
+    
     // MARK: - Lifecycles
     
     override func viewWillAppear(_ animated: Bool) {
@@ -79,6 +89,26 @@ internal class SetupViewController: UIViewController {
         updateTitleLabel()
         updateMinsToAdjustLabel()
         updateOnOffButton()
+        updateWakeupTimeLabel()
+    }
+    
+    private func updateWakeupTimeLabel() {
+        let formatter = dateFormatter
+        let ampm = formatter.ampm.string(from: Alarm.shared.alarmDateForCurrentSetting)
+        let time = formatter.time.string(from: Alarm.shared.alarmDateForCurrentSetting)
+        
+        let attributedString = NSMutableAttributedString(string: time)
+        
+        let combination = NSMutableAttributedString()
+        let timeThing = NSMutableAttributedString(string: time)
+        let amPmThing = NSMutableAttributedString(string: ampm)
+        timeThing.addAttribute(.font, value: UIFont.systemFont(ofSize: 40.0), range: NSMakeRange(0, time.count))
+        amPmThing.addAttribute(.font, value: UIFont.systemFont(ofSize: 20.0), range: NSMakeRange(0, ampm.count))
+        combination.append(timeThing)
+        combination.append(amPmThing)
+        
+        wakeUpTimeLabel.attributedText = combination
+        
     }
     
     private func updateTitleLabel() {

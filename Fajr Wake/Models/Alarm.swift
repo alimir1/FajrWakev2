@@ -68,12 +68,12 @@ internal class Alarm: CustomStringConvertible {
     private(set) var fireDate: Date? {
         get {
             guard status != .inActive else { return nil }
-            return dateForCurrentSetting
+            return alarmDateForCurrentSetting
         }
         set { }
     }
 
-    var dateForCurrentSetting: Date {
+    var alarmDateForCurrentSetting: Date {
         var alarmDate = praytime.date(for: selectedPrayer, andDate: Date(), minsAdjustment: adjustMins)
         if alarmDate.timeIntervalSinceNow < 0 {
             alarmDate = praytime.date(for: selectedPrayer, andDate: Date().addingTimeInterval(24*60*60), minsAdjustment: adjustMins)
