@@ -95,7 +95,7 @@ internal class Alarm: CustomStringConvertible {
         self.adjustMins = Alarm.Settings.minsToAdjust ?? 0
         let prayerSetting = Alarm.Settings.prayerTimeSetting ?? PrayTimeSetting(calcMethod: .jafari, latitude: 37.34, longitude: -121.89)
         self.praytime = Praytime(setting: prayerSetting)
-        let soundSetting = SoundSetting(ringtoneID: "AbatharAlHalawaji", ringtoneExtension: "aiff", isRepeated: true)
+        let soundSetting = Alarm.Settings.soundSetting ?? SoundSetting(ringtoneID: "AbatharAlHalawaji", ringtoneExtension: "aiff", isRepeated: true)
         self.soundPlayer = SoundPlayer(setting: soundSetting)
         self.selectedPrayer = Alarm.Settings.selectedPrayer ?? .fajr
         self.status = Alarm.Settings.status ?? .inActive
@@ -178,7 +178,6 @@ internal class Alarm: CustomStringConvertible {
     internal func setSoundSetting(_ setting: SoundSetting) {
         turnOff()
         soundPlayer.setSetting(setting: setting)
-        turnOn()
         Alarm.Settings.soundSetting = setting
     }
     

@@ -25,6 +25,7 @@
 		491E3F4B1F97F3980014B8C1 /* Ocean.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 49A2C65C1F97261E00F7A23E /* Ocean.aiff */; };
 		491E3F4C1F97F3980014B8C1 /* Rozayghi.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 49A2C6511F97261700F7A23E /* Rozayghi.aiff */; };
 		491E3F4D1F97F3980014B8C1 /* TasviehChi.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 49A2C65E1F97261F00F7A23E /* TasviehChi.aiff */; };
+		491E3F4F1F97F91A0014B8C1 /* RingtonesViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491E3F4E1F97F91A0014B8C1 /* RingtonesViewControllers.swift */; };
 		4979A2B31F969C29007071E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4979A2B21F969C29007071E2 /* AppDelegate.swift */; };
 		4979A2B51F969C2A007071E2 /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4979A2B41F969C2A007071E2 /* SetupViewController.swift */; };
 		4979A2B81F969C2A007071E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4979A2B61F969C2A007071E2 /* Main.storyboard */; };
@@ -45,6 +46,7 @@
 		49028AF71F96B1BF009B95D7 /* Prayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prayer.swift; sourceTree = "<group>"; };
 		491E3F3B1F97BA480014B8C1 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
 		491E3F3D1F97BF590014B8C1 /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
+		491E3F4E1F97F91A0014B8C1 /* RingtonesViewControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingtonesViewControllers.swift; sourceTree = "<group>"; };
 		4979A2AF1F969C29007071E2 /* Fajr Wake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fajr Wake.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4979A2B21F969C29007071E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4979A2B41F969C2A007071E2 /* SetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				49A2C63E1F9718AA00F7A23E /* HomeViewController.swift */,
+				491E3F4E1F97F91A0014B8C1 /* RingtonesViewControllers.swift */,
 				4979A2B41F969C2A007071E2 /* SetupViewController.swift */,
 			);
 			path = Controllers;
@@ -286,6 +289,7 @@
 				49A2C6441F9723BB00F7A23E /* Date.swift in Sources */,
 				49A2C6621F97267300F7A23E /* PrayTime.m in Sources */,
 				49A2C64B1F97245B00F7A23E /* Settings.swift in Sources */,
+				491E3F4F1F97F91A0014B8C1 /* RingtonesViewControllers.swift in Sources */,
 				4979A2C51F96ACCD007071E2 /* UIColor.swift in Sources */,
 				49028AF81F96B1BF009B95D7 /* Prayer.swift in Sources */,
 				49A2C6491F97244F00F7A23E /* Ringtones.swift in Sources */,

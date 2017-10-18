@@ -147,6 +147,9 @@
                     <navigationItem key="navigationItem" id="WvB-9r-r0a">
                         <barButtonItem key="leftBarButtonItem" image="Settings" id="rC1-Vp-ha2">
                             <color key="tintColor" red="1" green="0.47772954760000003" blue="0.01278254742" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <segue destination="R46-oE-MuJ" kind="show" id="fgj-OQ-nEv"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="stop" id="EOX-Zu-DxV">
                             <color key="tintColor" red="1" green="0.47772954760000003" blue="0.01278254742" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -282,6 +285,50 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mAT-uX-k99" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="875.20000000000005" y="141.22938530734635"/>
+        </scene>
+        <!--Ringtone Settings View Controller-->
+        <scene sceneID="mEU-QD-NFI">
+            <objects>
+                <viewController id="R46-oE-MuJ" customClass="RingtoneSettingsViewController" customModule="Fajr_Wake" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DHK-6e-6NI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fmF-aa-q1c">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ringtoneCell" id="UMA-xL-Tx9">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UMA-xL-Tx9" id="nyu-n4-yRw">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="R46-oE-MuJ" id="Xp7-g7-SI8"/>
+                                    <outlet property="delegate" destination="R46-oE-MuJ" id="8dM-qK-9Du"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fmF-aa-q1c" firstAttribute="top" secondItem="DHK-6e-6NI" secondAttribute="top" id="A3K-4U-qZf"/>
+                            <constraint firstItem="fmF-aa-q1c" firstAttribute="leading" secondItem="nhx-q4-y3h" secondAttribute="leading" id="VtV-Wk-Bcb"/>
+                            <constraint firstItem="fmF-aa-q1c" firstAttribute="trailing" secondItem="nhx-q4-y3h" secondAttribute="trailing" id="ix9-Hy-y6S"/>
+                            <constraint firstItem="fmF-aa-q1c" firstAttribute="bottom" secondItem="nhx-q4-y3h" secondAttribute="bottom" id="wSQ-iK-T7G"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="nhx-q4-y3h"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="fmF-aa-q1c" id="gtB-6A-uEZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ERW-GI-ob3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="508" y="1072.7136431784108"/>
         </scene>
     </scenes>
     <resources>
