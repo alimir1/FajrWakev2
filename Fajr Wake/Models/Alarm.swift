@@ -58,6 +58,7 @@ internal class Alarm {
     }
     
     var alarmDescription: String {
+        guard status != .inActive else { return "" }
         var retStr = ""
         if adjustMins == 0 {
             retStr = "\(selectedPrayer)"
@@ -69,6 +70,7 @@ internal class Alarm {
     }
     
     var fireDate: Date? {
+        guard status != .inActive else { return nil }
         var dateToAlarm = Date()
         if dateToAlarm.timeIntervalSinceNow < 0 {
             dateToAlarm = Calendar.current.date(byAdding: .day, value: 1, to: Date()) ?? Date()

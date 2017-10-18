@@ -32,15 +32,35 @@ internal class HomeViewController: UIViewController {
         return (time: timeFormatter, ampm: ampmFormatter)
     }()
     
+    private let standardDateFormatter: DateFormatter = {
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "h:mm a"
+        return timeFormatter
+    }()
+    
     // MARK: - Lifecycles
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupOutlets()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupCurrentTimeLabel()
+        
         currentTimeUpdateTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(setupCurrentTimeLabel), userInfo: nil, repeats: true)
     }
     
     // MARK: - Views Setup
+    
+    private func setupOutlets() {
+        let alarm = Alarm.shared
+        setupCurrentTimeLabel()
+        messageLabel.text = alarm.statusMessage
+        alarmDescriptionLabel.text = alarm.alarmDescription
+        alarmTimeLabel.text = alarm.fireDate != nil ? " \(standardDateFormatter.string(from: alarm.fireDate!))" : " Setup Alarm"
+        stopButton.isHidden = alarm.status != .activeAndFired
+    }
     
     @objc private func setupCurrentTimeLabel() {
         let curDate = Date()
