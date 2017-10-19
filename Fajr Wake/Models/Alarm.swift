@@ -37,6 +37,7 @@ internal class Alarm: CustomStringConvertible {
     private(set) var selectedPrayer: Prayer
     private(set) var praytime: Praytime
     private(set) var soundPlayer: SoundPlayer
+    private(set) var placeName: String
     
     // MARK: - Property Observers
     
@@ -99,6 +100,7 @@ internal class Alarm: CustomStringConvertible {
         self.soundPlayer = SoundPlayer(setting: soundSetting)
         self.selectedPrayer = Alarm.Settings.selectedPrayer ?? .fajr
         self.status = Alarm.Settings.status ?? .inActive
+        self.placeName = Alarm.Settings.placeName ?? "San Jose CA"
     }
     
     // MARK: - Methods
@@ -185,6 +187,18 @@ internal class Alarm: CustomStringConvertible {
         turnOff()
         praytime.setting.calcMethod = method
         Alarm.Settings.prayerTimeSetting = praytime.setting
+    }
+    
+    internal func setCoordinates(coordinate: Coordinates) {
+        turnOff()
+        praytime.setting.latitude = coordinate.latitude
+        praytime.setting.longitude = coordinate.longitude
+        Alarm.Settings.prayerTimeSetting = praytime.setting
+    }
+    
+    internal func setPlaceName(_ name: String) {
+        placeName = name
+        Alarm.Settings.placeName = name
     }
     
 //    internal func setPrayerTimeSetting(_ setting: PrayTimeSetting) {

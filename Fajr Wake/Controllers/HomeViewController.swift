@@ -12,6 +12,7 @@ internal class HomeViewController: UIViewController {
     
     // MARK: - Outlets
     
+    @IBOutlet private var placeNameLabel: UILabel!
     @IBOutlet private var currentTimeLabel: UILabel!
     @IBOutlet private var alarmTimeLabel: UILabel!
     @IBOutlet private var alarmDescriptionLabel: UILabel!
@@ -62,6 +63,7 @@ internal class HomeViewController: UIViewController {
     
     private func updateOutlets() {
         let alarm = Alarm.shared
+        placeNameLabel.text = " \(alarm.placeName)"
         updateCurrentTimeLabel()
         messageLabel.text = alarm.statusMessage
         alarmDescriptionLabel.text = alarm.status != .inActive ? alarm.description : ""

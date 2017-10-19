@@ -14,13 +14,13 @@ public struct Coordinates {
     public let longitude: Double
 }
 
-internal enum LocationError: Error, LocalizedError {
+fileprivate enum LocationError: Error, LocalizedError {
     case deniedPermission
     case unknown
     case restricted
     case notDetermined
     
-    internal var errorDescription: String? {
+    var errorDescription: String? {
         switch self {
         case .deniedPermission:
             return NSLocalizedString("Permission Denied", comment: "")
@@ -33,7 +33,7 @@ internal enum LocationError: Error, LocalizedError {
         }
     }
     
-    internal var failureReason: String? {
+    var failureReason: String? {
         switch self {
         case .deniedPermission:
             return NSLocalizedString("You denied this app to use location.", comment: "")
@@ -46,7 +46,7 @@ internal enum LocationError: Error, LocalizedError {
         }
     }
     
-    internal var recoverySuggestion: String? {
+    var recoverySuggestion: String? {
         switch self {
         case .deniedPermission:
             return NSLocalizedString("Please configure your Settings app to allow this app to use location services.", comment: "")
@@ -60,7 +60,7 @@ internal enum LocationError: Error, LocalizedError {
     }
 }
 
-protocol LocationDelegate: class {
+internal protocol LocationDelegate: class {
     func location(_ location: Location, didReceiveCoordinates coordinates: Coordinates)
     func location(_ location: Location, didFailToReceiveCoordinates error: Error)
 }
@@ -69,6 +69,10 @@ internal class Location: NSObject, CLLocationManagerDelegate {
     
     private var manager: CLLocationManager?
     weak var delegate: LocationDelegate?
+    
+    required init(delegate: LocationDelegate) {
+        self.delegate = delegate
+    }
     
     internal func fetchUserLocation() {
         if manager == nil {

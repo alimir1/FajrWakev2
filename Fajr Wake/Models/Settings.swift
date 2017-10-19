@@ -42,10 +42,23 @@ extension DefaultsKeys {
     static let calcMethod = DefaultsKey<CalculationMethod?>("FW-CALCULATIONMETHOD")
     static let latitude = DefaultsKey<Double?>("FW-PRAYERLATITUDE")
     static let longitude = DefaultsKey<Double?>("FW-PRAYERLONGITUDE")
+    static let placeName = DefaultsKey<String?>("FW-LOCATIONPLACENAME")
 }
 
 extension Alarm {
     struct Settings {
+        
+        static var placeName: String? {
+            get {
+                return Defaults[.placeName]
+            }
+            
+            set {
+                if let placeName = newValue {
+                    Defaults[.placeName] = placeName
+                }
+            }
+        }
         
         static var isGrantedPermissionForLocalNotification: Bool? {
             get {
