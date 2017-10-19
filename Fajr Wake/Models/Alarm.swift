@@ -103,7 +103,7 @@ internal class Alarm: CustomStringConvertible {
         self.placeName = Alarm.Settings.placeName ?? "37.33, -121.88"
     }
     
-    // MARK: - Methods
+    // MARK: - Local Notifications
     
     private func removeLocalNotifications() {
         LocalNotifications.removePendingNotifications()
@@ -130,6 +130,8 @@ internal class Alarm: CustomStringConvertible {
         }
     }
     
+    // MARK: - Triggers
+    
     private func triggerAlarmWithTimer() {
         guard let fireDate = fireDate, fireDate.timeIntervalSinceNow > 0 else {
             print("Alarm fireAlarmWithTimer(): invalid FireDate!")
@@ -152,6 +154,23 @@ internal class Alarm: CustomStringConvertible {
         }
     }
     
+    private func saveAlarm() {
+        Alarm.Settings.minsToAdjust = adjustMins
+        Alarm.Settings.prayerTimeSetting = praytime.setting
+        Alarm.Settings.soundSetting = soundPlayer.setting
+        Alarm.Settings.selectedPrayer = selectedPrayer
+        Alarm.Settings.status = status
+    }
+    
+    // MARK: - On, Off, Reset
+    
+    private func resetActiveAlarm() {
+        if status != .activeAndNotFired {
+            turnOff()
+            turnOn()
+        }
+    }
+    
     internal func turnOn() {
         status = .activeAndNotFired
         triggerAlarmWithTimer()
@@ -164,6 +183,8 @@ internal class Alarm: CustomStringConvertible {
         invalidateTimer()
         soundPlayer.stop()
     }
+    
+    // MARK: - Setters
     
     internal func setAdjustMins(_ mins: Int) {
         turnOff()
@@ -178,22 +199,22 @@ internal class Alarm: CustomStringConvertible {
     }
     
     internal func setSoundSetting(_ setting: SoundSetting) {
-        turnOff()
         soundPlayer.setSetting(setting: setting)
         Alarm.Settings.soundSetting = setting
+        resetActiveAlarm()
     }
     
     internal func setCalcMethod(_ method: CalculationMethod) {
-        turnOff()
         praytime.setting.calcMethod = method
         Alarm.Settings.prayerTimeSetting = praytime.setting
+        resetActiveAlarm()
     }
     
     internal func setCoordinate(coordinate: Coordinate) {
-        turnOff()
         praytime.setting.latitude = coordinate.latitude
         praytime.setting.longitude = coordinate.longitude
         Alarm.Settings.prayerTimeSetting = praytime.setting
+        resetActiveAlarm()
     }
     
     internal func setPlaceName(_ name: String) {
@@ -201,11 +222,4 @@ internal class Alarm: CustomStringConvertible {
         Alarm.Settings.placeName = name
     }
     
-    private func saveAlarm() {
-        Alarm.Settings.minsToAdjust = adjustMins
-        Alarm.Settings.prayerTimeSetting = praytime.setting
-        Alarm.Settings.soundSetting = soundPlayer.setting
-        Alarm.Settings.selectedPrayer = selectedPrayer
-        Alarm.Settings.status = status
-    }
 }

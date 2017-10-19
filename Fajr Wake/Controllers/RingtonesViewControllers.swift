@@ -37,7 +37,7 @@ class RingtoneSettingsViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if alarm.status != .activeAndFired {
-            Alarm.shared.soundPlayer.stop()
+            alarm.soundPlayer.stop()
         }
     }
     
@@ -69,28 +69,6 @@ extension RingtoneSettingsViewController: UITableViewDataSource, UITableViewDele
         }
         return 0
     }
-    
-    /*func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: SectionHeaderHeight))
-        let label = UILabel(frame: CGRect(x: 15, y: 0, width: tableView.bounds.width - 30, height: SectionHeaderHeight))
-        label.font = UIFont.boldSystemFont(ofSize: 15)
-        if let tableSection = TableSection(rawValue: section) {
-            switch tableSection {
-            case .athan:
-                label.text = "Athan"
-            case .dua:
-                label.text = "Dua"
-            case .munajat:
-                label.text = "Munajat"
-            case .nature:
-                label.text = "Nature"
-            default:
-                label.text = ""
-            }
-        }
-        view.addSubview(label)
-        return view
-    }*/
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if let tableSection = TableSection(rawValue: section) {
