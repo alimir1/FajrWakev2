@@ -26,7 +26,6 @@ class RingtoneSettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.backgroundColor = .black
         sortData()
     }
     
@@ -71,12 +70,10 @@ extension RingtoneSettingsViewController: UITableViewDataSource, UITableViewDele
         return 0
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    /*func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: SectionHeaderHeight))
-        view.backgroundColor = UIColor(red: 255.0/255.0, green: 215.0/255.0, blue: 0.0/255.0, alpha: 1)
         let label = UILabel(frame: CGRect(x: 15, y: 0, width: tableView.bounds.width - 30, height: SectionHeaderHeight))
         label.font = UIFont.boldSystemFont(ofSize: 15)
-        label.textColor = UIColor.black
         if let tableSection = TableSection(rawValue: section) {
             switch tableSection {
             case .athan:
@@ -93,16 +90,31 @@ extension RingtoneSettingsViewController: UITableViewDataSource, UITableViewDele
         }
         view.addSubview(label)
         return view
+    }*/
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if let tableSection = TableSection(rawValue: section) {
+            switch tableSection {
+            case .athan:
+                 return "Athan"
+            case .dua:
+                return "Dua"
+            case .munajat:
+                return "Munajat"
+            case .nature:
+                return "Nature"
+            default: break
+            }
+        }
+        return ""
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ringtoneCell", for: indexPath)
-        cell.backgroundColor = .black
         
         guard let tableSection = TableSection(rawValue: indexPath.section), let ringtone = data[tableSection]?[indexPath.row] else { return cell }
         
         cell.textLabel?.text = ringtone["title"]
-        cell.textLabel?.textColor = .white
         
         // handle checkmarks
         if let ringtoneID = ringtone["fileName"], let ringtoneExtension = ringtone["fileExtension"] {
