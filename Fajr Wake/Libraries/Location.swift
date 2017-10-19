@@ -9,7 +9,7 @@
 import Foundation
 import CoreLocation
 
-public struct Coordinates {
+public struct Coordinate {
     public let latitude: Double
     public let longitude: Double
 }
@@ -60,18 +60,13 @@ fileprivate enum LocationError: Error, LocalizedError {
     }
 }
 
-internal protocol LocationDelegate: class {
-    func location(_ location: Location, didReceiveCoordinates coordinates: Coordinates)
-    func location(_ location: Location, didFailToReceiveCoordinates error: Error)
-}
-
 internal class Location: NSObject, CLLocationManagerDelegate {
     
     private var manager: CLLocationManager?
-    weak var delegate: LocationDelegate?
+    internal var coordinateCompletion: ((_ coordinate: Coordinate?, _ error: Error?) -> Void)?
     
-    required init(delegate: LocationDelegate) {
-        self.delegate = delegate
+    internal var latestLocation: CLLocation? {
+        return manager?.location
     }
     
     internal func fetchUserLocation() {
@@ -86,11 +81,11 @@ internal class Location: NSObject, CLLocationManagerDelegate {
     internal func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
         case .denied:
-            delegate?.location(self, didFailToReceiveCoordinates: LocationError.deniedPermission)
+            coordinateCompletion?(nil, LocationError.deniedPermission)
         case .notDetermined:
-            delegate?.location(self, didFailToReceiveCoordinates: LocationError.notDetermined)
+            coordinateCompletion?(nil, LocationError.notDetermined)
         case .restricted:
-            delegate?.location(self, didFailToReceiveCoordinates: LocationError.restricted)
+            coordinateCompletion?(nil, LocationError.restricted)
         default:
             manager.startUpdatingLocation()
         }
@@ -98,14 +93,14 @@ internal class Location: NSObject, CLLocationManagerDelegate {
     
     internal func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last {
-            delegate?.location(self, didReceiveCoordinates: Coordinates(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude))
+            coordinateCompletion?(Coordinate(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude), nil)
         }
         manager.stopUpdatingLocation()
         self.manager?.delegate = nil
     }
     
     internal func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        delegate?.location(self, didFailToReceiveCoordinates: error)
+        coordinateCompletion?(nil, error)
         manager.stopUpdatingLocation()
         self.manager?.delegate = nil
     }
@@ -142,5 +137,7 @@ internal class Location: NSObject, CLLocationManagerDelegate {
             completion(nil)
         }
     }
-    
 }
+
+
+

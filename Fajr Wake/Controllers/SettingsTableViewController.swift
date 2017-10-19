@@ -8,7 +8,7 @@
 
 import UIKit
 
-internal class SettingsTableViewController: UITableViewController, LocationDelegate {
+internal class SettingsTableViewController: UITableViewController {
     
     // MARK: - Outlets
     
@@ -19,7 +19,6 @@ internal class SettingsTableViewController: UITableViewController, LocationDeleg
     // MARK: - Other Properties
     
     private var alarm = Alarm.shared
-    private var location: Location!
     
     // MARK: - Lifecycles
     
@@ -54,37 +53,21 @@ internal class SettingsTableViewController: UITableViewController, LocationDeleg
     
     private func fetchLocation() {
         MBProgressHUD.showAdded(to: view, animated: true)
-        location = Location(delegate: self)
-        location.fetchUserLocation()
-    }
-    
-    // MARK: - Location Delegate
-    
-    func location(_ location: Location, didFailToReceiveCoordinates error: Error) {
-        print("Error! \n\(error)") // FIXME: Display error to user
-        MBProgressHUD.hide(for: view, animated: true)
-    }
-    
-    func location(_ location: Location, didReceiveCoordinates coordinates: Coordinates) {
-        
-        // Update coordinates
-        
-        alarm.setCoordinates(coordinate: coordinates)
-        let latStr = String(format: "%0.2f", arguments: [coordinates.latitude])
-        let lngStr = String(format: "%0.2f", arguments: [coordinates.longitude])
-        alarm.setPlaceName("\(latStr), \(lngStr)")
-        setupOutlets()
-        
-        // Update place name
-        
-        location.lookUpCurrentLocationInfo { placeName in
-            if let name = placeName {
-                self.alarm.setPlaceName(name)
-                self.setupOutlets()
+        let location = Location()
+        location.fetchAndSaveLocationForAlarm {
+            [weak self] (error) in
+            guard self != nil else { return }
+            if let error = error {
+                // FIXME: - display error to user
+                print(error.localizedDescription)
+            } else {
+                location.fetchAndStorePlaceName() {
+                    self!.setupOutlets()
+                }
+                self!.setupOutlets()
             }
+            MBProgressHUD.hide(for: self!.view, animated: true)
         }
-        
-        MBProgressHUD.hide(for: view, animated: true)
     }
     
     // MARK: - TableView Setup
@@ -95,7 +78,5 @@ internal class SettingsTableViewController: UITableViewController, LocationDeleg
         if indexPath.row == 1 && indexPath.section == 0 {
             fetchLocation()
         }
-        
     }
-    
 }

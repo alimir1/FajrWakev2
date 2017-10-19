@@ -1,5 +1,5 @@
 //
-//  Extensions.swift
+//  Date+UserDefinedDate.swift
 //  FajrWake
 //
 //  Created by Ali Mir on 9/11/17.

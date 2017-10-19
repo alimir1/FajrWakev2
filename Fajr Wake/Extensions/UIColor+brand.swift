@@ -1,5 +1,5 @@
 //
-//  Brand.swift
+//  UIColor+brand.swift
 //  Fajr Wake
 //
 //  Created by Ali Mir on 10/17/17.

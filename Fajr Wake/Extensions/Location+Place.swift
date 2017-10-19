@@ -1,42 +1,38 @@
-////
-////  Alarm+Location.swift
-////  Fajr Wake
-////
-////  Created by Ali Mir on 10/19/17.
-////  Copyright © 2017 com.AliMir. All rights reserved.
-////
 //
-//import Foundation
+//  Location+Place.swift
+//  Fajr Wake
 //
-//extension Location {
-//
-//    internal func fetchLocation() {
-//
-//    }
-//
-//    internal func location(_ location: Location, didFailToReceiveCoordinates error: Error) {
-//        print("Error! \n\(error)") // FIXME: Display error to user
-//    }
-//
-//    internal func location(_ location: Location, didReceiveCoordinates coordinates: Coordinates) {
-//
-//        // Update coordinates
-//
-//        alarm.setCoordinates(coordinate: coordinates)
-//        let latStr = String(format: "%0.2f", arguments: [coordinates.latitude])
-//        let lngStr = String(format: "%0.2f", arguments: [coordinates.longitude])
-//        alarm.setPlaceName("\(latStr), \(lngStr)")
-//        setupOutlets()
-//
-//        // Update place name
-//
-//        location.lookUpCurrentLocationInfo { placeName in
-//            if let name = placeName {
-//                self.alarm.setPlaceName(name)
-//                self.setupOutlets()
-//            }
-//        }
-//
-//    }
-//}
+//  Created by Ali Mir on 10/19/17.
+//  Copyright © 2017 com.AliMir. All rights reserved.
+
+extension Location {
+    internal func fetchAndSaveLocationForAlarm(completion: @escaping (_ error: Error?) -> Void) {
+        fetchUserLocation()
+        coordinateCompletion = { (coordinate, error) in
+            if let coordinate = coordinate {
+                completion(nil)
+                Alarm.shared.setCoordinate(coordinate: coordinate)
+            } else {
+                completion(error)
+            }
+        }
+    }
+    
+    internal func fetchAndStorePlaceName(completion: (() -> Void)?) {
+        lookUpCurrentLocationInfo() {
+            (placeName) in
+            if let placeName = placeName {
+                Alarm.shared.setPlaceName(placeName)
+            } else {
+                if let latestCoordinate = self.latestLocation?.coordinate {
+                    let latStr = String(format: "%0.2f", arguments: [latestCoordinate.latitude])
+                    let lngStr = String(format: "%0.2f", arguments: [latestCoordinate.longitude])
+                    Alarm.shared.setPlaceName("\(latStr), \(lngStr)")
+                    completion?()
+                }
+            }
+            completion?()
+        }
+    }
+}
 
