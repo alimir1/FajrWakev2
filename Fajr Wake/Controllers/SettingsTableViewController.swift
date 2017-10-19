@@ -66,15 +66,24 @@ internal class SettingsTableViewController: UITableViewController, LocationDeleg
     }
     
     func location(_ location: Location, didReceiveCoordinates coordinates: Coordinates) {
-        print("SUCCESS! \n\(coordinates)")
+        
+        // Update coordinates
+        
         alarm.setCoordinates(coordinate: coordinates)
-        
-        let latitude = String(format: "%0.2f", arguments: [coordinates.latitude])
-        let longitude = String(format: "%0.2f", arguments: [coordinates.longitude])
-        
-        alarm.setPlaceName("\(latitude), \(longitude)") // FIXME: - needs geocoding!
-        
+        let latStr = String(format: "%0.2f", arguments: [coordinates.latitude])
+        let lngStr = String(format: "%0.2f", arguments: [coordinates.longitude])
+        alarm.setPlaceName("\(latStr), \(lngStr)")
         setupOutlets()
+        
+        // Update place name
+        
+        location.lookUpCurrentLocationInfo { placeName in
+            if let name = placeName {
+                self.alarm.setPlaceName(name)
+                self.setupOutlets()
+            }
+        }
+        
         MBProgressHUD.hide(for: view, animated: true)
     }
     

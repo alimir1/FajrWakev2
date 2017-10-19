@@ -185,16 +185,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="4oF-dP-qlo">
-                                <rect key="frame" x="8" y="50" width="359" height="74.5"/>
+                                <rect key="frame" x="8" y="50" width="359" height="47.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" San Jose, CA" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KbI-fw-Pww">
-                                        <rect key="frame" x="0.0" y="0.0" width="359" height="17"/>
-                                        <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="17"/>
-                                        <color key="textColor" red="1" green="0.7603943887369784" blue="0.29228374580459926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 6:35 am" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZn-ql-hpC">
-                                        <rect key="frame" x="0.0" y="27" width="359" height="17"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="359" height="17"/>
                                         <gestureRecognizers/>
                                         <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="17"/>
                                         <color key="textColor" red="1" green="0.47772954760000003" blue="0.01278254742" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -204,7 +198,7 @@
                                         </connections>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="55 mins before Fajr" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wYZ-xe-ae5">
-                                        <rect key="frame" x="0.0" y="54" width="359" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="27" width="359" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -238,17 +232,30 @@
                                     <action selector="onStopAlarmWithSender:" destination="zPH-3f-Jz4" eventType="touchUpInside" id="v8G-Bt-vcb"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" San Jose, CA" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KbI-fw-Pww">
+                                <rect key="frame" x="8" y="620" width="359" height="17"/>
+                                <gestureRecognizers/>
+                                <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.7603943887369784" blue="0.29228374580459926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="KNN-XE-NPj" appends="YES" id="b0P-72-gnY"/>
+                                </connections>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.045161033160000003" green="0.045161033160000003" blue="0.045161033160000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="tOB-6U-g7L" firstAttribute="top" secondItem="yjK-cj-Yxs" secondAttribute="bottom" constant="50" id="30I-Uv-SfV"/>
                             <constraint firstItem="4oF-dP-qlo" firstAttribute="leading" secondItem="LEc-ZL-aSs" secondAttribute="leading" constant="8" id="Dz3-XW-l4L"/>
+                            <constraint firstItem="KbI-fw-Pww" firstAttribute="leading" secondItem="LEc-ZL-aSs" secondAttribute="leading" constant="8" id="Gvp-4p-ZfE"/>
                             <constraint firstItem="LEc-ZL-aSs" firstAttribute="trailing" secondItem="4oF-dP-qlo" secondAttribute="trailing" constant="8" id="I6T-Yd-NRM"/>
                             <constraint firstItem="yjK-cj-Yxs" firstAttribute="centerX" secondItem="c0D-Kv-9qB" secondAttribute="centerX" id="IJu-9k-EUX"/>
                             <constraint firstItem="LEc-ZL-aSs" firstAttribute="trailing" secondItem="yjK-cj-Yxs" secondAttribute="trailing" constant="8" id="Pn0-Ws-Z1s"/>
                             <constraint firstItem="tOB-6U-g7L" firstAttribute="centerX" secondItem="c0D-Kv-9qB" secondAttribute="centerX" id="fk5-8n-SYO"/>
                             <constraint firstItem="yjK-cj-Yxs" firstAttribute="leading" secondItem="LEc-ZL-aSs" secondAttribute="leading" constant="8" id="hON-eR-EQE"/>
                             <constraint firstItem="4oF-dP-qlo" firstAttribute="top" secondItem="LEc-ZL-aSs" secondAttribute="top" constant="30" id="hhm-bZ-lbb"/>
+                            <constraint firstItem="LEc-ZL-aSs" firstAttribute="bottom" secondItem="KbI-fw-Pww" secondAttribute="bottom" constant="30" id="nbH-un-KVd"/>
+                            <constraint firstItem="LEc-ZL-aSs" firstAttribute="trailing" secondItem="KbI-fw-Pww" secondAttribute="trailing" constant="8" id="qIg-kl-5Q2"/>
                             <constraint firstItem="yjK-cj-Yxs" firstAttribute="centerY" secondItem="c0D-Kv-9qB" secondAttribute="centerY" id="x0u-sZ-itJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="LEc-ZL-aSs"/>
@@ -266,6 +273,11 @@
                 <tapGestureRecognizer id="0SR-M5-kp9">
                     <connections>
                         <segue destination="5Hm-21-eyB" kind="presentation" id="Lgf-vK-xhD"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="KNN-XE-NPj">
+                    <connections>
+                        <segue destination="ZDQ-J7-qAF" kind="presentation" id="BQC-BL-ycG"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -497,5 +509,8 @@
     <resources>
         <image name="Settings" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="BQC-BL-ycG"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.47843137250000001" blue="0.01176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

@@ -201,12 +201,6 @@ internal class Alarm: CustomStringConvertible {
         Alarm.Settings.placeName = name
     }
     
-//    internal func setPrayerTimeSetting(_ setting: PrayTimeSetting) {
-//        turnOff()
-//        praytime.setting = setting
-//        Alarm.Settings.prayerTimeSetting = setting
-//    }
-    
     private func saveAlarm() {
         Alarm.Settings.minsToAdjust = adjustMins
         Alarm.Settings.prayerTimeSetting = praytime.setting

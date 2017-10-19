@@ -30,16 +30,17 @@
 		491E3F531F983E560014B8C1 /* CalculationMethodsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491E3F521F983E560014B8C1 /* CalculationMethodsViewController.swift */; };
 		491E3F751F990C320014B8C1 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491E3F741F990C320014B8C1 /* Location.swift */; };
 		491EF5D41F991E6F005AF6FB /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 491EF5D31F991E6F005AF6FB /* MBProgressHUD.m */; };
+		491EF5D61F992FE4005AF6FB /* Location+Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491EF5D51F992FE4005AF6FB /* Location+Place.swift */; };
 		4979A2B31F969C29007071E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4979A2B21F969C29007071E2 /* AppDelegate.swift */; };
 		4979A2B51F969C2A007071E2 /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4979A2B41F969C2A007071E2 /* SetupViewController.swift */; };
 		4979A2B81F969C2A007071E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4979A2B61F969C2A007071E2 /* Main.storyboard */; };
 		4979A2BA1F969C2A007071E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4979A2B91F969C2A007071E2 /* Assets.xcassets */; };
 		4979A2BD1F969C2A007071E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4979A2BB1F969C2A007071E2 /* LaunchScreen.storyboard */; };
-		4979A2C51F96ACCD007071E2 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4979A2C41F96ACCD007071E2 /* UIColor.swift */; };
+		4979A2C51F96ACCD007071E2 /* UIColor+brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4979A2C41F96ACCD007071E2 /* UIColor+brand.swift */; };
 		49A2C63F1F9718AA00F7A23E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A2C63E1F9718AA00F7A23E /* HomeViewController.swift */; };
 		49A2C6421F971F6A00F7A23E /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A2C6411F971F6A00F7A23E /* Alarm.swift */; };
-		49A2C6441F9723BB00F7A23E /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A2C6431F9723BB00F7A23E /* Date.swift */; };
-		49A2C6461F97242000F7A23E /* SwiftyUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A2C6451F97242000F7A23E /* SwiftyUserDefaults.swift */; };
+		49A2C6441F9723BB00F7A23E /* Date+UserDefinedDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A2C6431F9723BB00F7A23E /* Date+UserDefinedDate.swift */; };
+		49A2C6461F97242000F7A23E /* UserDefaults+SwiftyUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A2C6451F97242000F7A23E /* UserDefaults+SwiftyUserDefaults.swift */; };
 		49A2C6491F97244F00F7A23E /* Ringtones.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A2C6481F97244F00F7A23E /* Ringtones.swift */; };
 		49A2C64B1F97245B00F7A23E /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A2C64A1F97245B00F7A23E /* Settings.swift */; };
 		49A2C64D1F97247700F7A23E /* LocalNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A2C64C1F97247700F7A23E /* LocalNotifications.swift */; };
@@ -56,6 +57,7 @@
 		491E3F741F990C320014B8C1 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		491EF5D21F991E6F005AF6FB /* MBProgressHUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		491EF5D31F991E6F005AF6FB /* MBProgressHUD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		491EF5D51F992FE4005AF6FB /* Location+Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+Place.swift"; sourceTree = "<group>"; };
 		4979A2AF1F969C29007071E2 /* Fajr Wake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fajr Wake.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4979A2B21F969C29007071E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4979A2B41F969C2A007071E2 /* SetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
@@ -63,11 +65,11 @@
 		4979A2B91F969C2A007071E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4979A2BC1F969C2A007071E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4979A2BE1F969C2A007071E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4979A2C41F96ACCD007071E2 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		4979A2C41F96ACCD007071E2 /* UIColor+brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+brand.swift"; sourceTree = "<group>"; };
 		49A2C63E1F9718AA00F7A23E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		49A2C6411F971F6A00F7A23E /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
-		49A2C6431F9723BB00F7A23E /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
-		49A2C6451F97242000F7A23E /* SwiftyUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyUserDefaults.swift; sourceTree = "<group>"; };
+		49A2C6431F9723BB00F7A23E /* Date+UserDefinedDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+UserDefinedDate.swift"; sourceTree = "<group>"; };
+		49A2C6451F97242000F7A23E /* UserDefaults+SwiftyUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+SwiftyUserDefaults.swift"; sourceTree = "<group>"; };
 		49A2C6481F97244F00F7A23E /* Ringtones.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ringtones.swift; sourceTree = "<group>"; };
 		49A2C64A1F97245B00F7A23E /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		49A2C64C1F97247700F7A23E /* LocalNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotifications.swift; sourceTree = "<group>"; };
@@ -163,9 +165,10 @@
 		4979A2C61F96ACF0007071E2 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				49A2C6451F97242000F7A23E /* SwiftyUserDefaults.swift */,
-				4979A2C41F96ACCD007071E2 /* UIColor.swift */,
-				49A2C6431F9723BB00F7A23E /* Date.swift */,
+				49A2C6451F97242000F7A23E /* UserDefaults+SwiftyUserDefaults.swift */,
+				491EF5D51F992FE4005AF6FB /* Location+Place.swift */,
+				4979A2C41F96ACCD007071E2 /* UIColor+brand.swift */,
+				49A2C6431F9723BB00F7A23E /* Date+UserDefinedDate.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -303,18 +306,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				491EF5D61F992FE4005AF6FB /* Location+Place.swift in Sources */,
 				491E3F3E1F97BF590014B8C1 /* SoundPlayer.swift in Sources */,
 				491E3F751F990C320014B8C1 /* Location.swift in Sources */,
 				49A2C64D1F97247700F7A23E /* LocalNotifications.swift in Sources */,
-				49A2C6461F97242000F7A23E /* SwiftyUserDefaults.swift in Sources */,
+				49A2C6461F97242000F7A23E /* UserDefaults+SwiftyUserDefaults.swift in Sources */,
 				491E3F531F983E560014B8C1 /* CalculationMethodsViewController.swift in Sources */,
 				49A2C63F1F9718AA00F7A23E /* HomeViewController.swift in Sources */,
 				4979A2B51F969C2A007071E2 /* SetupViewController.swift in Sources */,
-				49A2C6441F9723BB00F7A23E /* Date.swift in Sources */,
+				49A2C6441F9723BB00F7A23E /* Date+UserDefinedDate.swift in Sources */,
 				49A2C6621F97267300F7A23E /* PrayTime.m in Sources */,
 				49A2C64B1F97245B00F7A23E /* Settings.swift in Sources */,
 				491E3F4F1F97F91A0014B8C1 /* RingtonesViewControllers.swift in Sources */,
-				4979A2C51F96ACCD007071E2 /* UIColor.swift in Sources */,
+				4979A2C51F96ACCD007071E2 /* UIColor+brand.swift in Sources */,
 				49028AF81F96B1BF009B95D7 /* Prayer.swift in Sources */,
 				491EF5D41F991E6F005AF6FB /* MBProgressHUD.m in Sources */,
 				491E3F511F983A4C0014B8C1 /* SettingsTableViewController.swift in Sources */,

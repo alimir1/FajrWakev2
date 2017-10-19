@@ -110,4 +110,37 @@ internal class Location: NSObject, CLLocationManagerDelegate {
         self.manager?.delegate = nil
     }
     
+    internal func lookUpCurrentLocationInfo(completion: @escaping (_ name: String?) -> Void) {
+        // Use the last reported location.
+        
+        if let lastLocation = self.manager?.location {
+            let geocoder = CLGeocoder()
+            
+            // Look up the location and pass it to the completion handler
+            geocoder
+                .reverseGeocodeLocation(
+                    lastLocation,
+                    completionHandler: {
+                        (placemarks, error) in
+                        if error == nil {
+                            let firstLocation = placemarks?[0]
+                            if let locality = firstLocation?.locality, let administrativeArea = firstLocation?.administrativeArea {
+                                completion("\(locality), \(administrativeArea)")
+                            } else {
+                                // Couldn't get proper values
+                                completion(nil)
+                            }
+                        }
+                        else {
+                            // An error occurred during geocoding.
+                            completion(nil)
+                        }
+                })
+        }
+        else {
+            // No location was available.
+            completion(nil)
+        }
+    }
+    
 }
