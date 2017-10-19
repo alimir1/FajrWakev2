@@ -50,6 +50,10 @@ internal class CalculationMethodsViewController: UIViewController, UITableViewDe
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
+        // Ignore if selecting the same row
+        guard indexPath != selectedIndexPath else { return }
+        
+        
         guard let newlySelectedCell = tableView.cellForRow(at: indexPath) else { return }
         
         // Add checkmark to newly selected cell
