@@ -165,7 +165,7 @@ internal class Alarm: CustomStringConvertible {
     // MARK: - On, Off, Reset
     
     private func resetActiveAlarm() {
-        if status != .activeAndNotFired {
+        if status == .activeAndNotFired {
             turnOff()
             turnOn()
         }
