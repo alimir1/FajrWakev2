@@ -181,11 +181,17 @@ internal class Alarm: CustomStringConvertible {
         Alarm.Settings.soundSetting = setting
     }
     
-    internal func setPrayerTimeSetting(_ setting: PrayTimeSetting) {
+    internal func setCalcMethod(_ method: CalculationMethod) {
         turnOff()
-        praytime.setting = setting
-        Alarm.Settings.prayerTimeSetting = setting
+        praytime.setting.calcMethod = method
+        Alarm.Settings.prayerTimeSetting = praytime.setting
     }
+    
+//    internal func setPrayerTimeSetting(_ setting: PrayTimeSetting) {
+//        turnOff()
+//        praytime.setting = setting
+//        Alarm.Settings.prayerTimeSetting = setting
+//    }
     
     private func saveAlarm() {
         Alarm.Settings.minsToAdjust = adjustMins

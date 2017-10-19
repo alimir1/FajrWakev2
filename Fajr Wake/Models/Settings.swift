@@ -67,7 +67,7 @@ extension Alarm {
             }
             
             set {
-                guard let setting = prayerTimeSetting else {
+                guard let setting = newValue else {
                     return
                 }
                 Defaults[.latitude] = setting.latitude
@@ -123,7 +123,7 @@ extension Alarm {
                 return Defaults[.status]
             }
             set {
-                if let status = status {
+                if let status = newValue {
                     Defaults[.status] = status
                 }
             }
