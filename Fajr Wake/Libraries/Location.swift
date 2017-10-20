@@ -129,8 +129,8 @@ internal class Location: NSObject, CLLocationManagerDelegate {
                         (placemarks, error) in
                         if error == nil {
                             let firstLocation = placemarks?[0]
-                            if let locality = firstLocation?.locality, let administrativeArea = firstLocation?.administrativeArea {
-                                completion("\(locality), \(administrativeArea)")
+                            if let locality = firstLocation?.locality, let country = firstLocation?.country {
+                                completion("\(locality), \(firstLocation?.administrativeArea ?? country)")
                             } else {
                                 // Couldn't get proper values
                                 completion(nil)
