@@ -69,11 +69,7 @@ internal class SetupViewController: UIViewController {
         
         set {
             Alarm.shared.setAdjustMins(newValue)
-            updateTitleLabel()
-            updateMinsToAdjustLabel()
-            updateWakeupTimeLabel()
-            updateBeforeAfterLabel()
-            beforeAfterSegmentedControl.isEnabled = newValue != 0
+            updateOutlets()
         }
     }
     
@@ -98,7 +94,6 @@ internal class SetupViewController: UIViewController {
         onOffButton.layer.cornerRadius = 10
         if let circularView = circularSliderView as? CircularSlider {
             circularView.addTarget(self, action: #selector(onCircularSliderValueChange), for: .valueChanged)
-            circularView.addTarget(self, action: #selector(onCircularSliderValueChange), for: .editingDidEnd)
         }
     }
     
@@ -168,10 +163,6 @@ internal class SetupViewController: UIViewController {
     @objc private func onCircularSliderValueChange(_ sender: CircularSlider) {
         Alarm.shared.turnOff()
         minsToAdjust = beforeAfterSegmentedControl.selectedSegmentIndex == 0 ? -Int(sender.endPointValue) : abs(Int(sender.endPointValue))
-    }
-    
-    @objc private func onCircularSliderEditingEnded(_ sender: CircularSlider) {
-        print("HOORAY IT ENDED!!!")
     }
     
     @IBAction private func onPrayerSegmentChange(sender: UISegmentedControl) {
