@@ -147,6 +147,10 @@ extension RingtoneSettingsViewController: UITableViewDataSource, UITableViewDele
         
         // set newly selected choice to alarm object
         alarm.setSoundSetting(SoundSetting(ringtoneID: ringtoneID, ringtoneExtension: ringtoneExtension, isRepeated: true))
+        alarm.resetActiveAlarm {
+            _ in
+            // FIXME: Needs to warn user in case of error!
+        }
         if alarm.status != .activeAndFired {
             alarm.soundPlayer.play()
         }

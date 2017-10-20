@@ -52,7 +52,13 @@ internal class SettingsTableViewController: UITableViewController {
     // MARK: - Helpers
     
     private func fetchLocation() {
-        alarm.fetchLocation(withView: view, completionHandler: {self.setupOutlets()})
+        alarm.fetchLocation(withView: view, completionHandler: {
+            self.setupOutlets()
+            Alarm.shared.resetActiveAlarm {
+                _ in
+                // FIXME: Needs to warn user in case of error!
+            }
+        })
     }
     
     // MARK: - TableView Setup

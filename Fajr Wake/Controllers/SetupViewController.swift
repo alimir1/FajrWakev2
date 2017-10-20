@@ -21,6 +21,10 @@ internal class SetupViewController: UIViewController {
     @IBOutlet private var settingsBarButtonItem: UIBarButtonItem!
     @IBOutlet private var closeBarButtonItem: UIBarButtonItem!
     
+    // MARK: - Stored properties
+    
+    private var shouldReactivate = false // only used for UIPanGestureRecognizer
+    
     // MARK: - Getters and setters
     
     private var alarmMode: Prayer {
@@ -29,7 +33,11 @@ internal class SetupViewController: UIViewController {
         }
         set {
             Alarm.shared.setSelectedPrayer(newValue)
-            updateOutlets()
+            self.updateOutlets()
+            Alarm.shared.resetActiveAlarm {
+                _ in
+                // FIXME: Needs to warn user in case of error!
+            }
         }
     }
     
@@ -39,7 +47,9 @@ internal class SetupViewController: UIViewController {
         }
         set {
             if newValue {
-                Alarm.shared.turnOn()
+                Alarm.shared.turnOn { _ in
+                    // FIXME: Needs to warn user in case of error!
+                }
             } else {
                 Alarm.shared.turnOff()
             }
@@ -54,7 +64,9 @@ internal class SetupViewController: UIViewController {
         
         set {
             Alarm.shared.setAdjustMins(newValue)
-            updateOutlets()
+            updateTitleLabel()
+            updateMinsToAdjustLabel()
+            updateWakeupTimeLabel()
         }
     }
     
@@ -135,12 +147,28 @@ internal class SetupViewController: UIViewController {
         let translation = sender.translation(in: minsAdjustLabel)
         guard abs(velocity.x) > abs(velocity.y) else { return }
         let incrementValue = velocity.x > 0 ? 1 : -1
-        if (abs(velocity.x)) > 700 {
-            updateMinsToAdjust(incrementValue: incrementValue)
-        } else {
-            if translation.x.truncatingRemainder(dividingBy: 3) == 0 {
-                updateMinsToAdjust(incrementValue: incrementValue)
+        switch sender.state {
+        case .began:
+            if Alarm.shared.status == .activeAndNotFired {
+                Alarm.shared.turnOff()
+                shouldReactivate = true
             }
+        case .changed:
+            if (abs(velocity.x)) > 700 {
+                updateMinsToAdjust(incrementValue: incrementValue)
+            } else {
+                if translation.x.truncatingRemainder(dividingBy: 3) == 0 {
+                    updateMinsToAdjust(incrementValue: incrementValue)
+                }
+            }
+        case .ended, .cancelled:
+            if shouldReactivate {
+                Alarm.shared.turnOn { _ in
+                    // FIXME: Needs to warn user in case of error!
+                }
+                shouldReactivate = false
+            }
+        default: break
         }
     }
     

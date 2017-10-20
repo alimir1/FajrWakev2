@@ -64,7 +64,9 @@ internal class HomeViewController: UIViewController {
         alarmDescriptionLabel.text = alarm.status != .inActive ? alarm.description : ""
         
         if let fireDate = alarm.fireDate {
-            alarmTimeLabel.text = alarm.fireDate != nil ? " \(standardDateFormatter.string(from: fireDate))" : " Setup Alarm"
+            alarmTimeLabel.text = " \(standardDateFormatter.string(from: fireDate))"
+        } else {
+            alarmTimeLabel.text = " Setup Alarm"
         }
     }
     
@@ -80,7 +82,10 @@ internal class HomeViewController: UIViewController {
     // MARK: - Helpers
     
     private func fetchLocation() {
-        Alarm.shared.fetchLocation(withView: view, completionHandler: {self.updateOutlets()})
+        Alarm.shared.fetchLocation(withView: view, completionHandler: {
+            self.updateOutlets()
+            Alarm.shared.resetActiveAlarm(completion: nil)
+        })
     }
     
     // MARK: - Navigation

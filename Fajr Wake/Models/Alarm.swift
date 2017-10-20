@@ -106,7 +106,7 @@ internal class Alarm: CustomStringConvertible {
         LocalNotifications.removeDeliveredNotifications()
     }
     
-    private func scheduleLocalNotifications() {
+    private func scheduleLocalNotifications(completion: ((_ error: Error)->Void)?) {
         removeLocalNotifications()
         do {
             try LocalNotifications.createNotifications(for: self, numOfNotificationsToCreate: 58) {
@@ -118,11 +118,15 @@ internal class Alarm: CustomStringConvertible {
                 }
             }
         } catch LocalNotificationCreationError.permissionDeined {
+            // FIXME: - Create errors and notify the user!
             print("Local Notification permission denied!")
+            completion?(LocalNotificationCreationError.permissionDeined)
         } catch LocalNotificationCreationError.fireDate {
             print("Fire date error!")
-        } catch {
-            print("Unknown Error!")
+            completion?(LocalNotificationCreationError.fireDate)
+        } catch let error {
+            print("Other Error!")
+            completion?(error)
         }
     }
     
@@ -133,7 +137,6 @@ internal class Alarm: CustomStringConvertible {
             print("Alarm fireAlarmWithTimer(): invalid FireDate!")
             return
         }
-        scheduleLocalNotifications()
         timer = Timer.scheduledTimer(timeInterval: fireDate.timeIntervalSinceNow, target: self, selector: #selector(self.fireAlarm), userInfo: nil, repeats: false)
     }
     
@@ -173,17 +176,18 @@ internal class Alarm: CustomStringConvertible {
     
     // MARK: - On, Off, Reset
     
-    private func resetActiveAlarm() {
+    internal func resetActiveAlarm(completion: ((_ error: Error)->Void)?) {
         if status == .activeAndNotFired {
             turnOff()
-            turnOn()
+            turnOn(completion: completion)
         }
     }
     
-    internal func turnOn() {
+    internal func turnOn(completion: ((_ error: Error)->Void)?) {
         status = .activeAndNotFired
         fireDate = alarmDateForCurrentSetting
         triggerAlarmWithTimer()
+        scheduleLocalNotifications(completion: completion)
     }
     
     internal func turnOff() {
@@ -197,13 +201,11 @@ internal class Alarm: CustomStringConvertible {
     // MARK: - Setters
     
     internal func setAdjustMins(_ mins: Int) {
-        turnOff()
         adjustMins = mins
         Alarm.Settings.minsToAdjust = mins
     }
     
     internal func setSelectedPrayer(_ prayer: Prayer) {
-        turnOff()
         selectedPrayer = prayer
         Alarm.Settings.selectedPrayer = prayer
     }
@@ -211,20 +213,17 @@ internal class Alarm: CustomStringConvertible {
     internal func setSoundSetting(_ setting: SoundSetting) {
         soundPlayer.setSetting(setting: setting)
         Alarm.Settings.soundSetting = setting
-        resetActiveAlarm()
     }
     
     internal func setCalcMethod(_ method: CalculationMethod) {
         praytime.setting.calcMethod = method
         Alarm.Settings.prayerTimeSetting = praytime.setting
-        resetActiveAlarm()
     }
     
     internal func setCoordinate(coordinate: Coordinate) {
         praytime.setting.latitude = coordinate.latitude
         praytime.setting.longitude = coordinate.longitude
         Alarm.Settings.prayerTimeSetting = praytime.setting
-        resetActiveAlarm()
     }
     
     internal func setPlaceName(_ name: String) {

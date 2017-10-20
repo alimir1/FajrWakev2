@@ -72,7 +72,10 @@ internal class CalculationMethodsViewController: UIViewController, UITableViewDe
         selectedIndexPath = indexPath
         
         Alarm.shared.setCalcMethod(calcMethods[indexPath.row])
-        
+        Alarm.shared.resetActiveAlarm {
+            _ in
+            // FIXME: Needs to warn user in case of error!
+        }
     }
     
 }

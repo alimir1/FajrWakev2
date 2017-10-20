@@ -15,10 +15,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        
         if let fireDate = Alarm.Settings.fireDate {
             if fireDate.timeIntervalSinceNow > 0 {
-                Alarm.shared.turnOn()
+                Alarm.shared.turnOn {
+                    _ in
+                    // FIXME: Needs to warn user in case of error!
+                }
             } else {
                 if fireDate.timeIntervalSinceNow < 60*60*24*3 {
                     // FIXME: - handle local notification issue!
