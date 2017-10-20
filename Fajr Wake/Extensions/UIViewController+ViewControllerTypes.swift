@@ -11,17 +11,24 @@ import Foundation
 extension UIViewController {
     
     public class var topViewController: UIViewController? {
-        return UIApplication.shared.keyWindow?.rootViewController != nil ? UIViewController.topViewController(with: UIApplication.shared.keyWindow!.rootViewController!) : nil
+        
+        if let rootVC = UIApplication.shared.keyWindow?.rootViewController {
+            return UIViewController.topViewController(with: rootVC)
+        } else {
+            return nil
+        }
     }
     
-    private class func topViewController(with viewController: UIViewController) -> UIViewController {
+    private class func topViewController(with viewController: UIViewController) -> UIViewController? {
         if viewController is UITabBarController{
-            let tabBarController = viewController as! UITabBarController
-            return topViewController(with: tabBarController.selectedViewController!)
+            if let tabBarController = viewController as? UITabBarController, let selectedVC = tabBarController.selectedViewController {
+                return topViewController(with: selectedVC)
+            }
         }
         if viewController is UINavigationController{
-            let navBarController = viewController as! UINavigationController
-            return topViewController(with: navBarController.visibleViewController!)
+            if let navBarController = viewController as? UINavigationController, let visibleVC = navBarController.visibleViewController {
+                return topViewController(with: visibleVC)
+            }
         }
         if let presentedViewController = viewController.presentedViewController {
             return topViewController(with: presentedViewController)

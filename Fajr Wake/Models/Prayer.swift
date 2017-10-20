@@ -108,8 +108,8 @@ internal class Praytime {
     
     private class func timeComponents(from string: String) -> (hour: Int, minute: Int) {
         let time = string.characters.split {$0 == ":"}.map { String($0) }
-        let hour = Int(time[0])!
-        let minute = Int((time[1].characters.split {$0 == " "}.map { String($0) })[0])!
+        let hour = Int(time[0]) ?? 0
+        let minute = Int((time[1].characters.split {$0 == " "}.map { String($0) })[0]) ?? 0
         return (hour: hour, minute: minute)
     }
     

@@ -62,7 +62,10 @@ internal class HomeViewController: UIViewController {
         updateCurrentTimeLabel()
         messageLabel.text = alarm.statusMessage
         alarmDescriptionLabel.text = alarm.status != .inActive ? alarm.description : ""
-        alarmTimeLabel.text = alarm.fireDate != nil ? " \(standardDateFormatter.string(from: alarm.fireDate!))" : " Setup Alarm"
+        
+        if let fireDate = alarm.fireDate {
+            alarmTimeLabel.text = alarm.fireDate != nil ? " \(standardDateFormatter.string(from: fireDate))" : " Setup Alarm"
+        }
     }
     
     @objc private func updateCurrentTimeLabel() {

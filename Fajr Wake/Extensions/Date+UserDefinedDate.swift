@@ -23,7 +23,7 @@ extension Date {
         components.hour = hour
         components.minute = minute
         components.second = 0
-        return calendar.date(from: components)!
+        return calendar.date(from: components) ?? Date()
     }
 }
 

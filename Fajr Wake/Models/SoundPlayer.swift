@@ -36,7 +36,7 @@ class SoundPlayer {
     
     func play() {
         stop()
-        let url = Bundle.main.url(forResource: setting.ringtoneID, withExtension: setting.ringtoneExtension)!
+        guard let url = Bundle.main.url(forResource: setting.ringtoneID, withExtension: setting.ringtoneExtension) else { return } // FIXME: - Silence error OK?
         do {
             soundPlayer = try AVAudioPlayer(contentsOf: url)
             guard let player = soundPlayer else { return }
