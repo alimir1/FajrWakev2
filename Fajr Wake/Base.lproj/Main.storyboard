@@ -36,12 +36,30 @@
                                     <action selector="onToggleOnOffWithSender:" destination="BN0-Km-3Pg" eventType="touchUpInside" id="NSl-PX-WRk"/>
                                 </connections>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="40D-Ow-uPN">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="29"/>
+                                <color key="backgroundColor" red="0.098039215690000001" green="0.10980392160000001" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <segments>
+                                    <segment title="Before"/>
+                                    <segment title="After"/>
+                                </segments>
+                                <color key="tintColor" red="1" green="0.76078431372549016" blue="0.29411764705882354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="onBeforeAfterSegmentedChangeWithSender:" destination="BN0-Km-3Pg" eventType="valueChanged" id="We1-62-TJp"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 5:35am" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2zO-Qz-LDt">
+                                <rect key="frame" x="130" y="496.5" width="115" height="26"/>
+                                <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="25"/>
+                                <color key="textColor" red="1" green="0.76078431369999999" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ACC-HP-czQ" customClass="CircularSlider" customModule="HGCircularSlider">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
+                                <rect key="frame" x="0.0" y="48" width="375" height="250"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Before Fajr" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5sZ-2Y-NfA">
-                                        <rect key="frame" x="146.5" y="180" width="83" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="151" y="170" width="74" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" red="1" green="0.76078431369999999" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -64,21 +82,21 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wake Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eoQ-a9-zRP">
-                                        <rect key="frame" x="153" y="49" width="69" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="157" y="62" width="61.5" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" red="1" green="0.76078431372549016" blue="0.29411764705882354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.11372549019607843" green="0.12549019607843137" blue="0.19215686274509802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.098039215686274508" green="0.10980392156862745" blue="0.16862745098039217" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="5sZ-2Y-NfA" firstAttribute="top" secondItem="z23-Py-oby" secondAttribute="bottom" constant="20" id="Cte-mX-MDZ"/>
+                                    <constraint firstItem="5sZ-2Y-NfA" firstAttribute="top" secondItem="z23-Py-oby" secondAttribute="bottom" constant="10" id="Cte-mX-MDZ"/>
                                     <constraint firstItem="z23-Py-oby" firstAttribute="centerY" secondItem="ACC-HP-czQ" secondAttribute="centerY" id="IX5-ss-8c7"/>
                                     <constraint firstItem="5sZ-2Y-NfA" firstAttribute="centerX" secondItem="ACC-HP-czQ" secondAttribute="centerX" id="JLy-74-dKH"/>
                                     <constraint firstItem="z23-Py-oby" firstAttribute="centerX" secondItem="ACC-HP-czQ" secondAttribute="centerX" id="PoW-jg-V7O"/>
                                     <constraint firstItem="eoQ-a9-zRP" firstAttribute="centerX" secondItem="ACC-HP-czQ" secondAttribute="centerX" id="aFq-wD-oX3"/>
                                     <constraint firstAttribute="height" constant="250" id="dBv-c9-C0J"/>
-                                    <constraint firstItem="z23-Py-oby" firstAttribute="top" secondItem="eoQ-a9-zRP" secondAttribute="bottom" constant="20" id="zCW-tl-AnZ"/>
+                                    <constraint firstItem="z23-Py-oby" firstAttribute="top" secondItem="eoQ-a9-zRP" secondAttribute="bottom" constant="10" id="zCW-tl-AnZ"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="endThumbStrokeColor">
@@ -88,7 +106,7 @@
                                         <color key="value" red="1" green="0.47843137250000001" blue="0.01176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="diskColor">
-                                        <color key="value" red="0.11372549019607843" green="0.12549019607843137" blue="0.19215686274509802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" red="0.098039215690000001" green="0.10980392160000001" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="minimumValue">
                                         <real key="value" value="0.0"/>
@@ -107,36 +125,18 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="40D-Ow-uPN">
-                                <rect key="frame" x="0.0" y="250" width="375" height="29"/>
-                                <color key="backgroundColor" red="0.1137254902" green="0.12549019610000001" blue="0.19215686269999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <segments>
-                                    <segment title="Before"/>
-                                    <segment title="After"/>
-                                </segments>
-                                <color key="tintColor" red="1" green="0.76078431372549016" blue="0.29411764705882354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <action selector="onBeforeAfterSegmentedChangeWithSender:" destination="BN0-Km-3Pg" eventType="valueChanged" id="We1-62-TJp"/>
-                                </connections>
-                            </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 5:35am" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2zO-Qz-LDt">
-                                <rect key="frame" x="130" y="496.5" width="115" height="26"/>
-                                <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="25"/>
-                                <color key="textColor" red="1" green="0.76078431369999999" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.098039215690000001" green="0.10980392160000001" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="IHu-Hj-OOD" firstAttribute="trailing" secondItem="xc2-Ug-hjr" secondAttribute="trailing" constant="50" id="1qg-Ki-Vs8"/>
                             <constraint firstItem="40D-Ow-uPN" firstAttribute="leading" secondItem="IHu-Hj-OOD" secondAttribute="leading" id="3IG-LY-GK5"/>
-                            <constraint firstItem="ACC-HP-czQ" firstAttribute="top" secondItem="IHu-Hj-OOD" secondAttribute="top" id="AZX-OQ-fiB"/>
-                            <constraint firstItem="40D-Ow-uPN" firstAttribute="top" secondItem="ACC-HP-czQ" secondAttribute="bottom" id="B3C-fO-G0u"/>
                             <constraint firstItem="xc2-Ug-hjr" firstAttribute="leading" secondItem="IHu-Hj-OOD" secondAttribute="leading" constant="50" id="Cgc-wc-nXF"/>
                             <constraint firstItem="IHu-Hj-OOD" firstAttribute="trailing" secondItem="ACC-HP-czQ" secondAttribute="trailing" id="Jm7-4L-Cig"/>
                             <constraint firstItem="IHu-Hj-OOD" firstAttribute="trailing" secondItem="40D-Ow-uPN" secondAttribute="trailing" id="KQw-Ox-hOr"/>
                             <constraint firstItem="xc2-Ug-hjr" firstAttribute="top" secondItem="2zO-Qz-LDt" secondAttribute="bottom" constant="8" id="NRZ-aZ-msy"/>
                             <constraint firstItem="ACC-HP-czQ" firstAttribute="leading" secondItem="IHu-Hj-OOD" secondAttribute="leading" id="P2q-HY-Bg5"/>
+                            <constraint firstItem="ACC-HP-czQ" firstAttribute="top" secondItem="40D-Ow-uPN" secondAttribute="bottom" constant="20" id="Vk1-ot-YxI"/>
+                            <constraint firstItem="40D-Ow-uPN" firstAttribute="top" secondItem="IHu-Hj-OOD" secondAttribute="top" id="XUJ-OP-KgU"/>
                             <constraint firstItem="IHu-Hj-OOD" firstAttribute="bottom" secondItem="xc2-Ug-hjr" secondAttribute="bottom" constant="8" id="anu-4u-tII"/>
                             <constraint firstItem="2zO-Qz-LDt" firstAttribute="centerX" secondItem="BbY-vm-Ssz" secondAttribute="centerX" id="tKy-nw-Rgy"/>
                         </constraints>
