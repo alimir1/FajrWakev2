@@ -53,7 +53,7 @@ fileprivate enum LocationError: Error, LocalizedError {
     var recoverySuggestion: String? {
         switch self {
         case .deniedPermission:
-            return NSLocalizedString("Please configure your Settings app to allow this app to use location services.", comment: "")
+            return NSLocalizedString("Open Settings->Privacy->LocationServices and allow this app to use location services.", comment: "")
         case .unknown:
             return NSLocalizedString("Please try again later.", comment: "")
         case .restricted:
@@ -84,11 +84,13 @@ internal class Location: NSObject, CLLocationManagerDelegate {
         case .denied:
             coordinateCompletion?(nil, LocationError.deniedPermission)
         case .notDetermined:
-            coordinateCompletion?(nil, LocationError.notDetermined)
+            if !isFirstAppLaunch {
+                coordinateCompletion?(nil, LocationError.notDetermined)
+            }
         case .restricted:
             coordinateCompletion?(nil, LocationError.restricted)
         default:
-            manager.startUpdatingLocation()
+            manager.requestLocation()
         }
     }
     

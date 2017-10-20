@@ -43,13 +43,22 @@ extension DefaultsKeys {
     static let latitude = DefaultsKey<Double?>("FW-PRAYERLATITUDE")
     static let longitude = DefaultsKey<Double?>("FW-PRAYERLONGITUDE")
     static let placeName = DefaultsKey<String?>("FW-LOCATIONPLACENAME")
+    static let firstAppLaunch = DefaultsKey<String?>("FW-FIRSTTIMEAPPLAUNCH")
+}
+
+internal var isFirstAppLaunch: Bool {
+    if Defaults[.firstAppLaunch] == nil {
+        Defaults[.firstAppLaunch] = "AppLaunchedBefore"
+        return true
+    } else {
+        return false
+    }
 }
 
 // MARK: - extension Alarm
 
 extension Alarm {
     struct Settings {
-        
         static var placeName: String? {
             get {
                 return Defaults[.placeName]

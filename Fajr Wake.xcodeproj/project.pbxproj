@@ -47,6 +47,7 @@
 		49A2C64B1F97245B00F7A23E /* Alarm+Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A2C64A1F97245B00F7A23E /* Alarm+Settings.swift */; };
 		49A2C64D1F97247700F7A23E /* Alarm+LocalNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A2C64C1F97247700F7A23E /* Alarm+LocalNotifications.swift */; };
 		49A2C6621F97267300F7A23E /* PrayTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A2C6611F97267300F7A23E /* PrayTime.m */; };
+		49E60B081F99BAA600014B0B /* SweetAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E60B071F99BAA600014B0B /* SweetAlert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,6 +96,7 @@
 		49A2C65F1F97265700F7A23E /* PrayTime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrayTime.h; sourceTree = "<group>"; };
 		49A2C6601F97267300F7A23E /* Fajr Wake-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Fajr Wake-Bridging-Header.h"; sourceTree = "<group>"; };
 		49A2C6611F97267300F7A23E /* PrayTime.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PrayTime.m; sourceTree = "<group>"; };
+		49E60B071F99BAA600014B0B /* SweetAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweetAlert.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 				49A2C6611F97267300F7A23E /* PrayTime.m */,
 				491EF5D21F991E6F005AF6FB /* MBProgressHUD.h */,
 				491EF5D31F991E6F005AF6FB /* MBProgressHUD.m */,
+				49E60B071F99BAA600014B0B /* SweetAlert.swift */,
 			);
 			path = Libraries;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				49A2C64B1F97245B00F7A23E /* Alarm+Settings.swift in Sources */,
 				498D75981F99A89A00A0A969 /* UIViewController+ViewControllerTypes.swift in Sources */,
 				491E3F4F1F97F91A0014B8C1 /* RingtonesViewControllers.swift in Sources */,
+				49E60B081F99BAA600014B0B /* SweetAlert.swift in Sources */,
 				4979A2C51F96ACCD007071E2 /* UIColor+brand.swift in Sources */,
 				49028AF81F96B1BF009B95D7 /* Prayer.swift in Sources */,
 				491EF5D41F991E6F005AF6FB /* MBProgressHUD.m in Sources */,
