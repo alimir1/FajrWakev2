@@ -8,6 +8,8 @@
 
 import Foundation
 
+// MARK: - enum Prayer
+
 internal enum Prayer: Int, CustomStringConvertible {
     case fajr, sunrise, dhuhr, asr, sunset, maghrib, isha
     
@@ -31,13 +33,15 @@ internal enum Prayer: Int, CustomStringConvertible {
     }
 }
 
+// MARK: - enum CalculationMethod
+
 internal enum CalculationMethod: Int, CustomStringConvertible {
     case jafari, karachi, isna, mwl, makkah, egypt, tehran = 7
     
     var description: String {
         switch self {
         case .jafari:
-            return "Ithna Ashari"
+            return "Ithna Ashari (Shia)"
         case .karachi:
             return "University of Islamic Sciences, Karachi"
         case .isna:
@@ -55,19 +59,29 @@ internal enum CalculationMethod: Int, CustomStringConvertible {
     
 }
 
+// MARK: - struct PrayTimeSetting
+
 internal struct PrayTimeSetting {
     var calcMethod: CalculationMethod
     var latitude: Double
     var longitude: Double
 }
 
+// MARK: - class Praytime
+
 internal class Praytime {
     
+    // MARK: - Properties
+    
     internal var setting: PrayTimeSetting
+    
+    // MARK: - Initializers
     
     init(setting: PrayTimeSetting) {
         self.setting = setting
     }
+    
+    // MARK: - Convenience Methods
     
     private func praytimes(for date: Date) -> [String] {
         let praytime = PrayTime()

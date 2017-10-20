@@ -8,21 +8,28 @@
 
 import UIKit
 
-class RingtoneSettingsViewController: UIViewController {
+// MARK: - enum TableSection
+
+fileprivate enum TableSection: Int {
+    case athan = 0, dua, munajat, nature, total
+}
+
+// MARK: - RingtoneSettingsViewController
+
+internal class RingtoneSettingsViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
+    // MARK: - Outlets
     
-    let alarm = Alarm.shared
+    @IBOutlet private var tableView: UITableView!
     
-    enum TableSection: Int {
-        case athan = 0, dua, munajat, nature, total
-    }
+    // MARK: - Stored Properties
     
-    var selectedIndexPath: IndexPath?
+    private let alarm = Alarm.shared
+    private var selectedIndexPath: IndexPath?
+    private let SectionHeaderHeight: CGFloat = 25
+    private var data = [TableSection : [[String: String]]]()
     
-    let SectionHeaderHeight: CGFloat = 25
-    
-    var data = [TableSection : [[String: String]]]()
+    // MARK: - Lifecycles
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +48,9 @@ class RingtoneSettingsViewController: UIViewController {
         }
     }
     
-    func sortData() {
+    // MARK: - Helpers
+    
+    private func sortData() {
         data[.athan] = Ringtones.data.filter({ $0["genre"] == "athan" })
         data[.dua] = Ringtones.data.filter({ $0["genre"] == "dua" })
         data[.munajat] = Ringtones.data.filter({ $0["genre"] == "munajat" })
@@ -50,27 +59,28 @@ class RingtoneSettingsViewController: UIViewController {
     
 }
 
+// MARK: - TableView Delegate and DataSource
 
 extension RingtoneSettingsViewController: UITableViewDataSource, UITableViewDelegate {
-    func numberOfSections(in tableView: UITableView) -> Int {
+    internal func numberOfSections(in tableView: UITableView) -> Int {
         return TableSection.total.rawValue
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    internal func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let tableSection = TableSection(rawValue: section), let ringtoneData = data[tableSection] {
             return ringtoneData.count
         }
         return 0
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    internal func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if let tableSection = TableSection(rawValue: section), let ringtoneData = data[tableSection], ringtoneData.count > 0 {
             return SectionHeaderHeight
         }
         return 0
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    internal func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if let tableSection = TableSection(rawValue: section) {
             switch tableSection {
             case .athan:
@@ -87,7 +97,7 @@ extension RingtoneSettingsViewController: UITableViewDataSource, UITableViewDele
         return ""
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ringtoneCell", for: indexPath)
         
         guard let tableSection = TableSection(rawValue: indexPath.section), let ringtone = data[tableSection]?[indexPath.row] else { return cell }
@@ -105,7 +115,9 @@ extension RingtoneSettingsViewController: UITableViewDataSource, UITableViewDele
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    // MARK: - Handle UITableViewCell Selection
+    
+    internal func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
         
         guard indexPath != selectedIndexPath else {

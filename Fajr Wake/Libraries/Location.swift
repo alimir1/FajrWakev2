@@ -9,10 +9,14 @@
 import Foundation
 import CoreLocation
 
+// MARK: - struct Coordinate
+
 public struct Coordinate {
     public let latitude: Double
     public let longitude: Double
 }
+
+// MARK: - enum LocationError
 
 fileprivate enum LocationError: Error, LocalizedError {
     case deniedPermission
@@ -60,7 +64,11 @@ fileprivate enum LocationError: Error, LocalizedError {
     }
 }
 
+// MARK: - class Location
+
 internal class Location: NSObject, CLLocationManagerDelegate {
+    
+    // MARK: - Properties
     
     private var manager: CLLocationManager?
     internal var coordinateCompletion: ((_ coordinate: Coordinate?, _ error: Error?) -> Void)?
@@ -69,14 +77,7 @@ internal class Location: NSObject, CLLocationManagerDelegate {
         return manager?.location
     }
     
-    internal func fetchUserLocation() {
-        if manager == nil {
-            manager = CLLocationManager()
-        }
-        manager?.delegate = self
-        manager?.desiredAccuracy = kCLLocationAccuracyThreeKilometers
-        manager?.requestWhenInUseAuthorization()
-    }
+    // MARK: - Location Manager Delegates
     
     internal func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
@@ -103,6 +104,17 @@ internal class Location: NSObject, CLLocationManagerDelegate {
         coordinateCompletion?(nil, error)
         manager.stopUpdatingLocation()
         self.manager?.delegate = nil
+    }
+    
+    // MARK: - Methods
+    
+    internal func fetchUserLocation() {
+        if manager == nil {
+            manager = CLLocationManager()
+        }
+        manager?.delegate = self
+        manager?.desiredAccuracy = kCLLocationAccuracyThreeKilometers
+        manager?.requestWhenInUseAuthorization()
     }
     
     internal func lookUpCurrentLocationInfo(completion: @escaping (_ name: String?) -> Void) {

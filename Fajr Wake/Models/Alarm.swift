@@ -8,13 +8,7 @@
 
 import Foundation
 
-// MARK: - Alarm Notification
-
-extension Notification.Name {
-    static let AlarmDidFireNotification = Notification.Name("ALARMDIDFIRENOTIFICATION")
-}
-
-// MARK: - Alarm Statuses
+// MARK: - enum AlarmStatuses
 
 internal enum AlarmStatuses: String {
     case activeAndFired
@@ -22,7 +16,7 @@ internal enum AlarmStatuses: String {
     case inActive
 }
 
-// MARK: - Alarm
+// MARK: - class Alarm
 
 internal class Alarm: CustomStringConvertible {
     
@@ -141,12 +135,25 @@ internal class Alarm: CustomStringConvertible {
         timer = Timer.scheduledTimer(timeInterval: fireDate.timeIntervalSinceNow, target: self, selector: #selector(self.fireAlarm), userInfo: nil, repeats: false)
     }
     
-    @objc func fireAlarm() {
+    @objc internal func fireAlarm() {
         status = .activeAndFired
         soundPlayer.play()
-        NotificationCenter.default.post(name: .AlarmDidFireNotification, object: nil)
+        presentFiredAlarmViewController()
     }
     
+    private func presentFiredAlarmViewController() {
+        let fireAlarmVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "firedAlarmVC")
+        if let topVC = UIViewController.topViewController {
+            if topVC.isModal {
+                UIViewController.topViewController?.dismiss(animated: false, completion: {
+                    UIApplication.shared.keyWindow?.rootViewController?.present(fireAlarmVC, animated: false, completion: nil)
+                })
+            } else {
+                UIApplication.shared.keyWindow?.rootViewController?.present(fireAlarmVC, animated: true, completion: nil)
+            }
+        }
+    }
+
     private func invalidateTimer() {
         if timer != nil {
             self.timer?.invalidate()

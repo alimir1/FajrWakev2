@@ -23,23 +23,20 @@ internal class SetupViewController: UIViewController {
     
     // MARK: - Getters and setters
     
-    var alarmMode: Prayer {
-        
+    private var alarmMode: Prayer {
         get {
             return Alarm.shared.selectedPrayer
         }
-        
         set {
             Alarm.shared.setSelectedPrayer(newValue)
             updateOutlets()
         }
     }
     
-    var isAlarmOn: Bool {
+   private var isAlarmOn: Bool {
         get {
             return Alarm.shared.status != .inActive
         }
-        
         set {
             if newValue {
                 Alarm.shared.turnOn()
@@ -50,7 +47,7 @@ internal class SetupViewController: UIViewController {
         }
     }
     
-    var minsToAdjust: Int {
+    private var minsToAdjust: Int {
         get {
             return Alarm.shared.adjustMins
         }
@@ -97,8 +94,6 @@ internal class SetupViewController: UIViewController {
         let ampm = formatter.ampm.string(from: Alarm.shared.alarmDateForCurrentSetting)
         let time = formatter.time.string(from: Alarm.shared.alarmDateForCurrentSetting)
         
-        let attributedString = NSMutableAttributedString(string: time)
-        
         let combination = NSMutableAttributedString()
         let timeThing = NSMutableAttributedString(string: time)
         let amPmThing = NSMutableAttributedString(string: ampm)
@@ -120,7 +115,7 @@ internal class SetupViewController: UIViewController {
         }
     }
     
-    func updateMinsToAdjustLabel() {
+    private func updateMinsToAdjustLabel() {
         if minsToAdjust == 0 {
             minsAdjustLabel.text = "At"
         } else {
@@ -128,7 +123,7 @@ internal class SetupViewController: UIViewController {
         }
     }
     
-    func updateOnOffButton() {
+    private func updateOnOffButton() {
         onOffButton.backgroundColor = isAlarmOn ? .red : UIColor.brand.theme
         onOffButton.setTitle("\(isAlarmOn ? "Turn off" : "Turn on")", for: .normal)
     }
@@ -159,6 +154,15 @@ internal class SetupViewController: UIViewController {
     
     @IBAction private func onDismiss(sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "settingsVC" {
+            let settingsVC = segue.destination
+            settingsVC.navigationItem.rightBarButtonItem = nil
+        }
     }
     
     // MARK: - Helpers

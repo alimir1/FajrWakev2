@@ -9,12 +9,19 @@
 import Foundation
 import UserNotifications
 
+// MARK: - enum LocalNotificationCreationError
+
 internal enum LocalNotificationCreationError: Error {
     case permissionDeined
     case fireDate
 }
 
+// MARK: - extension Alarm
+
 extension Alarm {
+    
+    // MARK: - Convenience Methods
+    
     struct LocalNotifications {
         static func createNotifications(for alarm: Alarm, numOfNotificationsToCreate count: Int, _ completion: @escaping (_ errors: [Error]?) -> Void) throws {
             guard let fireDate = alarm.fireDate else { throw LocalNotificationCreationError.fireDate }

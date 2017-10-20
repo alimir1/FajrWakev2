@@ -9,19 +9,30 @@
 import Foundation
 import AVFoundation
 
+// MARK: - struct SoundSetting
+
 struct SoundSetting {
     var ringtoneID: String
     var ringtoneExtension: String
     var isRepeated: Bool
 }
 
+// MARK: - class SoundPlayer
+
 class SoundPlayer {
+    
+    // MARK: - Properties
+    
     private var soundPlayer: AVAudioPlayer?
-    private(set)var setting: SoundSetting
+    private(set) var setting: SoundSetting
+    
+    // MARK: - Initializers
     
     init(setting: SoundSetting) {
         self.setting = setting
     }
+    
+    // MARK: - Methods
     
     func play() {
         stop()

@@ -33,13 +33,13 @@ internal class SettingsTableViewController: UITableViewController {
     
     // MARK: Viwes Setup
     
-    func setupOutlets() {
+    private func setupOutlets() {
         setupSoundDetailLabel()
         calculationMethodDetailLabel.text = alarm.praytime.setting.calcMethod.description
         placeLabel.text = alarm.placeName
     }
     
-    func setupSoundDetailLabel() {
+    private func setupSoundDetailLabel() {
         for ringtone in Ringtones.data {
             if let soundInfo = ringtone["fileName"], soundInfo == alarm.soundPlayer.setting.ringtoneID {
                 soundDetailLabel.text = ringtone["title"]

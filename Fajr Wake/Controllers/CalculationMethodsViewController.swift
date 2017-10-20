@@ -23,14 +23,13 @@ internal class CalculationMethodsViewController: UIViewController, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         calcMethods = [.jafari, .karachi, .isna, .mwl, .makkah, .egypt, .tehran]
     }
     
     
     // MARK: - TableView methods
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "calcMethodCell", for: indexPath)
         cell.textLabel?.text = calcMethods[indexPath.row].description
         
@@ -43,11 +42,11 @@ internal class CalculationMethodsViewController: UIViewController, UITableViewDe
         return cell
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    internal func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return calcMethods.count
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    internal func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
         // Ignore if selecting the same row

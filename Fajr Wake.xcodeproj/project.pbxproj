@@ -37,6 +37,8 @@
 		4979A2BA1F969C2A007071E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4979A2B91F969C2A007071E2 /* Assets.xcassets */; };
 		4979A2BD1F969C2A007071E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4979A2BB1F969C2A007071E2 /* LaunchScreen.storyboard */; };
 		4979A2C51F96ACCD007071E2 /* UIColor+brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4979A2C41F96ACCD007071E2 /* UIColor+brand.swift */; };
+		498D75961F99588200A0A969 /* FiredAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498D75951F99588200A0A969 /* FiredAlarmViewController.swift */; };
+		498D75981F99A89A00A0A969 /* UIViewController+ViewControllerTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498D75971F99A89A00A0A969 /* UIViewController+ViewControllerTypes.swift */; };
 		49A2C63F1F9718AA00F7A23E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A2C63E1F9718AA00F7A23E /* HomeViewController.swift */; };
 		49A2C6421F971F6A00F7A23E /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A2C6411F971F6A00F7A23E /* Alarm.swift */; };
 		49A2C6441F9723BB00F7A23E /* Date+UserDefinedDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A2C6431F9723BB00F7A23E /* Date+UserDefinedDate.swift */; };
@@ -66,6 +68,8 @@
 		4979A2BC1F969C2A007071E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4979A2BE1F969C2A007071E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4979A2C41F96ACCD007071E2 /* UIColor+brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+brand.swift"; sourceTree = "<group>"; };
+		498D75951F99588200A0A969 /* FiredAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiredAlarmViewController.swift; sourceTree = "<group>"; };
+		498D75971F99A89A00A0A969 /* UIViewController+ViewControllerTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ViewControllerTypes.swift"; sourceTree = "<group>"; };
 		49A2C63E1F9718AA00F7A23E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		49A2C6411F971F6A00F7A23E /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
 		49A2C6431F9723BB00F7A23E /* Date+UserDefinedDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+UserDefinedDate.swift"; sourceTree = "<group>"; };
@@ -169,6 +173,7 @@
 				491EF5D51F992FE4005AF6FB /* Location+Place.swift */,
 				4979A2C41F96ACCD007071E2 /* UIColor+brand.swift */,
 				49A2C6431F9723BB00F7A23E /* Date+UserDefinedDate.swift */,
+				498D75971F99A89A00A0A969 /* UIViewController+ViewControllerTypes.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -180,6 +185,7 @@
 				491E3F501F983A4C0014B8C1 /* SettingsTableViewController.swift */,
 				491E3F4E1F97F91A0014B8C1 /* RingtonesViewControllers.swift */,
 				491E3F521F983E560014B8C1 /* CalculationMethodsViewController.swift */,
+				498D75951F99588200A0A969 /* FiredAlarmViewController.swift */,
 				4979A2B41F969C2A007071E2 /* SetupViewController.swift */,
 			);
 			path = Controllers;
@@ -317,10 +323,12 @@
 				49A2C6441F9723BB00F7A23E /* Date+UserDefinedDate.swift in Sources */,
 				49A2C6621F97267300F7A23E /* PrayTime.m in Sources */,
 				49A2C64B1F97245B00F7A23E /* Settings.swift in Sources */,
+				498D75981F99A89A00A0A969 /* UIViewController+ViewControllerTypes.swift in Sources */,
 				491E3F4F1F97F91A0014B8C1 /* RingtonesViewControllers.swift in Sources */,
 				4979A2C51F96ACCD007071E2 /* UIColor+brand.swift in Sources */,
 				49028AF81F96B1BF009B95D7 /* Prayer.swift in Sources */,
 				491EF5D41F991E6F005AF6FB /* MBProgressHUD.m in Sources */,
+				498D75961F99588200A0A969 /* FiredAlarmViewController.swift in Sources */,
 				491E3F511F983A4C0014B8C1 /* SettingsTableViewController.swift in Sources */,
 				49A2C6491F97244F00F7A23E /* Ringtones.swift in Sources */,
 				4979A2B31F969C29007071E2 /* AppDelegate.swift in Sources */,
