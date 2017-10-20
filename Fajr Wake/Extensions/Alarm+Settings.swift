@@ -45,6 +45,8 @@ extension DefaultsKeys {
     static let placeName = DefaultsKey<String?>("FW-LOCATIONPLACENAME")
 }
 
+// MARK: - extension Alarm
+
 extension Alarm {
     struct Settings {
         

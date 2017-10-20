@@ -44,8 +44,8 @@
 		49A2C6441F9723BB00F7A23E /* Date+UserDefinedDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A2C6431F9723BB00F7A23E /* Date+UserDefinedDate.swift */; };
 		49A2C6461F97242000F7A23E /* UserDefaults+SwiftyUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A2C6451F97242000F7A23E /* UserDefaults+SwiftyUserDefaults.swift */; };
 		49A2C6491F97244F00F7A23E /* Ringtones.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A2C6481F97244F00F7A23E /* Ringtones.swift */; };
-		49A2C64B1F97245B00F7A23E /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A2C64A1F97245B00F7A23E /* Settings.swift */; };
-		49A2C64D1F97247700F7A23E /* LocalNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A2C64C1F97247700F7A23E /* LocalNotifications.swift */; };
+		49A2C64B1F97245B00F7A23E /* Alarm+Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A2C64A1F97245B00F7A23E /* Alarm+Settings.swift */; };
+		49A2C64D1F97247700F7A23E /* Alarm+LocalNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A2C64C1F97247700F7A23E /* Alarm+LocalNotifications.swift */; };
 		49A2C6621F97267300F7A23E /* PrayTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A2C6611F97267300F7A23E /* PrayTime.m */; };
 /* End PBXBuildFile section */
 
@@ -75,8 +75,8 @@
 		49A2C6431F9723BB00F7A23E /* Date+UserDefinedDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+UserDefinedDate.swift"; sourceTree = "<group>"; };
 		49A2C6451F97242000F7A23E /* UserDefaults+SwiftyUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+SwiftyUserDefaults.swift"; sourceTree = "<group>"; };
 		49A2C6481F97244F00F7A23E /* Ringtones.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ringtones.swift; sourceTree = "<group>"; };
-		49A2C64A1F97245B00F7A23E /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
-		49A2C64C1F97247700F7A23E /* LocalNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotifications.swift; sourceTree = "<group>"; };
+		49A2C64A1F97245B00F7A23E /* Alarm+Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alarm+Settings.swift"; sourceTree = "<group>"; };
+		49A2C64C1F97247700F7A23E /* Alarm+LocalNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alarm+LocalNotifications.swift"; sourceTree = "<group>"; };
 		49A2C6501F97261100F7A23E /* AbatharAlHalawaji.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = AbatharAlHalawaji.aiff; sourceTree = "<group>"; };
 		49A2C6511F97261700F7A23E /* Rozayghi.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Rozayghi.aiff; sourceTree = "<group>"; };
 		49A2C6521F97261700F7A23E /* DuaKumayl.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = DuaKumayl.aiff; sourceTree = "<group>"; };
@@ -114,8 +114,6 @@
 				49A2C6411F971F6A00F7A23E /* Alarm.swift */,
 				491E3F3D1F97BF590014B8C1 /* SoundPlayer.swift */,
 				49A2C6481F97244F00F7A23E /* Ringtones.swift */,
-				49A2C64A1F97245B00F7A23E /* Settings.swift */,
-				49A2C64C1F97247700F7A23E /* LocalNotifications.swift */,
 				49028AF71F96B1BF009B95D7 /* Prayer.swift */,
 				49A2C6601F97267300F7A23E /* Fajr Wake-Bridging-Header.h */,
 			);
@@ -171,6 +169,8 @@
 			children = (
 				49A2C6451F97242000F7A23E /* UserDefaults+SwiftyUserDefaults.swift */,
 				491EF5D51F992FE4005AF6FB /* Location+Place.swift */,
+				49A2C64A1F97245B00F7A23E /* Alarm+Settings.swift */,
+				49A2C64C1F97247700F7A23E /* Alarm+LocalNotifications.swift */,
 				4979A2C41F96ACCD007071E2 /* UIColor+brand.swift */,
 				49A2C6431F9723BB00F7A23E /* Date+UserDefinedDate.swift */,
 				498D75971F99A89A00A0A969 /* UIViewController+ViewControllerTypes.swift */,
@@ -315,14 +315,14 @@
 				491EF5D61F992FE4005AF6FB /* Location+Place.swift in Sources */,
 				491E3F3E1F97BF590014B8C1 /* SoundPlayer.swift in Sources */,
 				491E3F751F990C320014B8C1 /* Location.swift in Sources */,
-				49A2C64D1F97247700F7A23E /* LocalNotifications.swift in Sources */,
+				49A2C64D1F97247700F7A23E /* Alarm+LocalNotifications.swift in Sources */,
 				49A2C6461F97242000F7A23E /* UserDefaults+SwiftyUserDefaults.swift in Sources */,
 				491E3F531F983E560014B8C1 /* CalculationMethodsViewController.swift in Sources */,
 				49A2C63F1F9718AA00F7A23E /* HomeViewController.swift in Sources */,
 				4979A2B51F969C2A007071E2 /* SetupViewController.swift in Sources */,
 				49A2C6441F9723BB00F7A23E /* Date+UserDefinedDate.swift in Sources */,
 				49A2C6621F97267300F7A23E /* PrayTime.m in Sources */,
-				49A2C64B1F97245B00F7A23E /* Settings.swift in Sources */,
+				49A2C64B1F97245B00F7A23E /* Alarm+Settings.swift in Sources */,
 				498D75981F99A89A00A0A969 /* UIViewController+ViewControllerTypes.swift in Sources */,
 				491E3F4F1F97F91A0014B8C1 /* RingtonesViewControllers.swift in Sources */,
 				4979A2C51F96ACCD007071E2 /* UIColor+brand.swift in Sources */,
