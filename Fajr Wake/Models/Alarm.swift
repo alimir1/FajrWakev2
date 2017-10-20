@@ -182,6 +182,7 @@ internal class Alarm: CustomStringConvertible {
     
     internal func turnOn() {
         status = .activeAndNotFired
+        fireDate = alarmDateForCurrentSetting
         triggerAlarmWithTimer()
     }
     

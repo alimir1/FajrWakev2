@@ -83,10 +83,6 @@ internal class Location: NSObject, CLLocationManagerDelegate {
         switch status {
         case .denied:
             coordinateCompletion?(nil, LocationError.deniedPermission)
-        case .notDetermined:
-            if !isFirstAppLaunch {
-                coordinateCompletion?(nil, LocationError.notDetermined)
-            }
         case .restricted:
             coordinateCompletion?(nil, LocationError.restricted)
         default:

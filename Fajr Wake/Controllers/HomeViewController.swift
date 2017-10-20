@@ -48,7 +48,9 @@ internal class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchLocation()
+        if isFirstAppLaunch {
+            fetchLocation()
+        }
         currentTimeUpdateTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCurrentTimeLabel), userInfo: nil, repeats: true)
     }
     

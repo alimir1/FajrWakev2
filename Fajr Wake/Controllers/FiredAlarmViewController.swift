@@ -13,6 +13,8 @@ internal class FiredAlarmViewController: UIViewController {
     @IBOutlet private var alarmDescriptionLabel: UILabel!
     @IBOutlet private var dismissButton: UIButton!
     
+    internal var dismissedCompletion: (()->Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         alarmDescriptionLabel.text = "It's \(Alarm.shared.description)!"
@@ -22,6 +24,7 @@ internal class FiredAlarmViewController: UIViewController {
     
     @IBAction private func onDismissVC(sender: Any) {
         Alarm.shared.turnOff()
+        dismissedCompletion?()
         dismiss(animated: true, completion: nil)
     }
 

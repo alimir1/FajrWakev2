@@ -162,31 +162,6 @@ extension Alarm {
                 }
             }
         }
-        
-//
-//        static func saveFireDate(_ date: Date?) {
-//            Defaults[.fireDate] = date
-//        }
-//
-//        static func savePrayertimeDate(_ date: Date?) {
-//            Defaults[.prayertimeDate] = date
-//        }
-//
-//        static func saveUserExitDate(_ date: Date) {
-//            Defaults[.userExitDate] = date
-//        }
-        
-//        static var previousFireDate: Date? {
-//            return Defaults[.fireDate]
-//        }
-//
-//        static var previousPrayertimeDate: Date? {
-//            return Defaults[.prayertimeDate]
-//        }
-//
-//        static var userExitDate: Date? {
-//            return Defaults[.userExitDate]
-//        }
     }
 }
 
