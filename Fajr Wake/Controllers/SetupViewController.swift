@@ -25,10 +25,6 @@ internal class SetupViewController: UIViewController {
     @IBOutlet private var closeBarButtonItem: UIBarButtonItem!
     @IBOutlet private var circularSliderView: UIView!
     
-    // MARK: - Stored properties
-    
-    private var shouldReactivate = false // only used for UIPanGestureRecognizer
-    
     // MARK: - Getters and setters
     
     private var alarmMode: Prayer {
@@ -161,7 +157,10 @@ internal class SetupViewController: UIViewController {
     // MARK: - Target-actions
     
     @objc private func onCircularSliderValueChange(_ sender: CircularSlider) {
-        Alarm.shared.turnOff()
+        if Alarm.shared.status != .inActive {
+            Alarm.shared.turnOff()
+            onOffButton.shake()
+        }
         minsToAdjust = beforeAfterSegmentedControl.selectedSegmentIndex == 0 ? -Int(sender.endPointValue) : abs(Int(sender.endPointValue))
     }
     
