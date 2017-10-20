@@ -47,7 +47,7 @@
 		49A2C64B1F97245B00F7A23E /* Alarm+Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A2C64A1F97245B00F7A23E /* Alarm+Settings.swift */; };
 		49A2C64D1F97247700F7A23E /* Alarm+LocalNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A2C64C1F97247700F7A23E /* Alarm+LocalNotifications.swift */; };
 		49A2C6621F97267300F7A23E /* PrayTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A2C6611F97267300F7A23E /* PrayTime.m */; };
-		49BA6F741F9AA1BB00A5D45C /* UIButton+Animate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA6F731F9AA1BB00A5D45C /* UIButton+Animate.swift */; };
+		49BA6F741F9AA1BB00A5D45C /* UIKit+Animate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA6F731F9AA1BB00A5D45C /* UIKit+Animate.swift */; };
 		49E60B081F99BAA600014B0B /* SweetAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E60B071F99BAA600014B0B /* SweetAlert.swift */; };
 		49E60B0A1F99CE1D00014B0B /* Alarm+Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E60B091F99CE1D00014B0B /* Alarm+Location.swift */; };
 		A505F9F972BD20EF73B5AB4F /* Pods_Fajr_Wake.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E3916DA3BE1428835F8092D /* Pods_Fajr_Wake.framework */; };
@@ -100,7 +100,7 @@
 		49A2C65F1F97265700F7A23E /* PrayTime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrayTime.h; sourceTree = "<group>"; };
 		49A2C6601F97267300F7A23E /* Fajr Wake-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Fajr Wake-Bridging-Header.h"; sourceTree = "<group>"; };
 		49A2C6611F97267300F7A23E /* PrayTime.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PrayTime.m; sourceTree = "<group>"; };
-		49BA6F731F9AA1BB00A5D45C /* UIButton+Animate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Animate.swift"; sourceTree = "<group>"; };
+		49BA6F731F9AA1BB00A5D45C /* UIKit+Animate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit+Animate.swift"; sourceTree = "<group>"; };
 		49E60B071F99BAA600014B0B /* SweetAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweetAlert.swift; sourceTree = "<group>"; };
 		49E60B091F99CE1D00014B0B /* Alarm+Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alarm+Location.swift"; sourceTree = "<group>"; };
 		52BFD9FC514B17D2175F2166 /* Pods-Fajr Wake.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fajr Wake.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fajr Wake/Pods-Fajr Wake.debug.xcconfig"; sourceTree = "<group>"; };
@@ -198,7 +198,7 @@
 				4979A2C41F96ACCD007071E2 /* UIColor+brand.swift */,
 				49A2C6431F9723BB00F7A23E /* Date+UserDefinedDate.swift */,
 				498D75971F99A89A00A0A969 /* UIViewController+ViewControllerTypes.swift */,
-				49BA6F731F9AA1BB00A5D45C /* UIButton+Animate.swift */,
+				49BA6F731F9AA1BB00A5D45C /* UIKit+Animate.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -423,7 +423,7 @@
 				49E60B0A1F99CE1D00014B0B /* Alarm+Location.swift in Sources */,
 				491E3F511F983A4C0014B8C1 /* SettingsTableViewController.swift in Sources */,
 				49A2C6491F97244F00F7A23E /* Ringtones.swift in Sources */,
-				49BA6F741F9AA1BB00A5D45C /* UIButton+Animate.swift in Sources */,
+				49BA6F741F9AA1BB00A5D45C /* UIKit+Animate.swift in Sources */,
 				4979A2B31F969C29007071E2 /* AppDelegate.swift in Sources */,
 				49A2C6421F971F6A00F7A23E /* Alarm.swift in Sources */,
 			);

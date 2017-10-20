@@ -35,7 +35,7 @@ internal class SetupViewController: UIViewController {
             Alarm.shared.setSelectedPrayer(newValue)
             self.updateOutlets()
             if Alarm.shared.status != .inActive {
-                self.onOffButton.shake()
+                self.wakeUpTimeLabel.shake()
             }
             Alarm.shared.resetActiveAlarm {
                 _ in
@@ -181,7 +181,7 @@ internal class SetupViewController: UIViewController {
     @IBAction private func onBeforeAfterSegmentedChange(sender: UISegmentedControl) {
         minsToAdjust = sender.selectedSegmentIndex == 0 ? -minsToAdjust : abs(minsToAdjust)
         if Alarm.shared.status != .inActive {
-            self.onOffButton.shake()
+            self.wakeUpTimeLabel.shake()
         }
         Alarm.shared.resetActiveAlarm {
             _ in // FIXME: - error handling!!
