@@ -48,6 +48,7 @@ internal class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchLocation()
         currentTimeUpdateTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCurrentTimeLabel), userInfo: nil, repeats: true)
     }
     
@@ -69,6 +70,12 @@ internal class HomeViewController: UIViewController {
         let time = formatter.time.string(from: curDate)
         currentTimeLabel.text = "\(time) \(ampm)"
         messageLabel.text = Alarm.shared.statusMessage
+    }
+    
+    // MARK: - Helpers
+    
+    private func fetchLocation() {
+        Alarm.shared.fetchLocation(withView: view, completionHandler: {self.updateOutlets()})
     }
     
     // MARK: - Navigation

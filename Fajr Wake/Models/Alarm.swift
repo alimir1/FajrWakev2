@@ -71,7 +71,9 @@ internal class Alarm: CustomStringConvertible {
             guard status != .inActive else { return nil }
             return alarmDateForCurrentSetting
         }
-        set { }
+        set {
+            Alarm.Settings.fireDate = newValue
+        }
     }
 
     var alarmDateForCurrentSetting: Date {

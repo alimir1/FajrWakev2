@@ -35,7 +35,6 @@ extension DefaultsKeys {
     static let ringtoneExtension = DefaultsKey<String?>("FW-RINGTONEEXTENSION")
     static let isSoundRepeated = DefaultsKey<Bool?>("FW-ISSOUNDREPEATED")
     static let minsToAdjust = DefaultsKey<Int?>("FW-MINSTOADJUST")
-    static let fireDate = DefaultsKey<Date?>("FW-FIREDATE")
     static let userExitDate = DefaultsKey<Date?>("FW-PROGRAMEXITDATE")
     static let isLocalNotificationPermissionGranted = DefaultsKey<Bool>("FW-LOCALPERMNOTIF")
     static let prayertimeDate = DefaultsKey<Date?>("FW-PRAYERTIMEDATE")
@@ -44,6 +43,7 @@ extension DefaultsKeys {
     static let longitude = DefaultsKey<Double?>("FW-PRAYERLONGITUDE")
     static let placeName = DefaultsKey<String?>("FW-LOCATIONPLACENAME")
     static let firstAppLaunch = DefaultsKey<String?>("FW-FIRSTTIMEAPPLAUNCH")
+    static let fireDate = DefaultsKey<Date?>("FW-FIREDATELATEST")
 }
 
 internal var isFirstAppLaunch: Bool {
@@ -59,11 +59,24 @@ internal var isFirstAppLaunch: Bool {
 
 extension Alarm {
     struct Settings {
+        
+        static var fireDate: Date? {
+            get {
+                return Defaults[.fireDate]
+            }
+            set {
+                if let fireDate = newValue {
+                    Defaults[.fireDate] = fireDate
+                } else {
+                    Defaults.remove(.fireDate)
+                }
+            }
+        }
+        
         static var placeName: String? {
             get {
                 return Defaults[.placeName]
             }
-            
             set {
                 if let placeName = newValue {
                     Defaults[.placeName] = placeName
@@ -89,7 +102,6 @@ extension Alarm {
                 }
                 return PrayTimeSetting(calcMethod: calcMethod, latitude: latitude, longitude: longitude)
             }
-            
             set {
                 guard let setting = newValue else {
                     return
@@ -109,7 +121,6 @@ extension Alarm {
                     return nil
                 }
             }
-            
             set {
                 if let setting = newValue {
                     Defaults[.ringtoneID] = setting.ringtoneID
@@ -123,7 +134,6 @@ extension Alarm {
             get {
                 return Defaults[.minsToAdjust]
             }
-            
             set {
                 if let minsToAdjust = newValue {
                     Defaults[.minsToAdjust] = minsToAdjust
