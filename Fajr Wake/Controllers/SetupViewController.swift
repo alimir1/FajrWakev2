@@ -9,17 +9,21 @@
 
 
 import UIKit
+import HGCircularSlider
 
 internal class SetupViewController: UIViewController {
     
     // MARK: - Outlets
     
-    @IBOutlet private var segmentedControl: UISegmentedControl!
+    @IBOutlet private var prayerSegmentedControl: UISegmentedControl!
+    @IBOutlet private var beforeAfterSegmentedControl: UISegmentedControl!
     @IBOutlet private var minsAdjustLabel: UILabel!
+    @IBOutlet private var beforeAfterLabel: UILabel!
     @IBOutlet private var wakeUpTimeLabel: UILabel!
     @IBOutlet private var onOffButton: UIButton!
     @IBOutlet private var settingsBarButtonItem: UIBarButtonItem!
     @IBOutlet private var closeBarButtonItem: UIBarButtonItem!
+    @IBOutlet private var circularSliderView: UIView!
     
     // MARK: - Stored properties
     
@@ -37,6 +41,7 @@ internal class SetupViewController: UIViewController {
             Alarm.shared.resetActiveAlarm {
                 _ in
                 // FIXME: Needs to warn user in case of error!
+                self.updateOutlets()
             }
         }
     }
@@ -67,17 +72,17 @@ internal class SetupViewController: UIViewController {
             updateTitleLabel()
             updateMinsToAdjustLabel()
             updateWakeupTimeLabel()
+            updateBeforeAfterLabel()
+            beforeAfterSegmentedControl.isEnabled = newValue != 0
         }
     }
     
     // MARK: - Computed Properties
     
-    private let dateFormatter: (time: DateFormatter, ampm: DateFormatter) = {
+    private let dateFormatter: DateFormatter = {
         let timeFormatter = DateFormatter()
-        timeFormatter.dateFormat = "h:mm"
-        let ampmFormatter = DateFormatter()
-        ampmFormatter.dateFormat = "a"
-        return (time: timeFormatter, ampm: ampmFormatter)
+        timeFormatter.dateFormat = "h:mm a"
+        return timeFormatter
     }()
     
     // MARK: - Lifecycles
@@ -89,33 +94,34 @@ internal class SetupViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        onOffButton.layer.masksToBounds = true
+        onOffButton.layer.cornerRadius = 10
+        if let circularView = circularSliderView as? CircularSlider {
+            circularView.addTarget(self, action: #selector(onCircularSliderValueChange), for: .valueChanged)
+            circularView.addTarget(self, action: #selector(onCircularSliderValueChange), for: .editingDidEnd)
+        }
     }
     
     // MARK: - Views Setup
     
     private func updateOutlets() {
-        segmentedControl.selectedSegmentIndex = alarmMode.rawValue
+        prayerSegmentedControl.selectedSegmentIndex = alarmMode.rawValue
+        beforeAfterSegmentedControl.selectedSegmentIndex = minsToAdjust < 0 ? 0 : 1
+        beforeAfterSegmentedControl.isEnabled = minsToAdjust != 0
+        if let circularSlider = circularSliderView as? CircularSlider {
+            circularSlider.endPointValue = CGFloat(abs(minsToAdjust))
+        }
         updateTitleLabel()
         updateMinsToAdjustLabel()
         updateOnOffButton()
         updateWakeupTimeLabel()
+        updateBeforeAfterLabel()
     }
     
     private func updateWakeupTimeLabel() {
-        let formatter = dateFormatter
-        let ampm = formatter.ampm.string(from: Alarm.shared.alarmDateForCurrentSetting)
-        let time = formatter.time.string(from: Alarm.shared.alarmDateForCurrentSetting)
-        
-        let combination = NSMutableAttributedString()
-        let timeThing = NSMutableAttributedString(string: time)
-        let amPmThing = NSMutableAttributedString(string: ampm)
-        timeThing.addAttribute(.font, value: UIFont.systemFont(ofSize: 40.0), range: NSMakeRange(0, time.count))
-        amPmThing.addAttribute(.font, value: UIFont.systemFont(ofSize: 20.0), range: NSMakeRange(0, ampm.count))
-        combination.append(timeThing)
-        combination.append(amPmThing)
-        
-        wakeUpTimeLabel.attributedText = combination
-        
+        let calculatedAlarmDate = Alarm.shared.alarmDateForCurrentSetting
+        let timeStr = dateFormatter.string(from: calculatedAlarmDate)
+        wakeUpTimeLabel.text = " \(timeStr)"
     }
     
     private func updateTitleLabel() {
@@ -128,11 +134,28 @@ internal class SetupViewController: UIViewController {
     }
     
     private func updateMinsToAdjustLabel() {
-        if minsToAdjust == 0 {
+        guard self.minsToAdjust != 0 else {
             minsAdjustLabel.text = "At"
-        } else {
-            minsAdjustLabel.text = minsToAdjust > 0 ? "+\(minsToAdjust)" : "\(minsToAdjust)"
+            return
         }
+        let minStr = "min"
+        let adjustMinStr = "\(abs(minsToAdjust))"
+        let combination = NSMutableAttributedString()
+        let adjustMins = NSMutableAttributedString(string: adjustMinStr)
+        let min = NSMutableAttributedString(string: minStr)
+        adjustMins.addAttribute(.font, value: UIFont.systemFont(ofSize: 60.0), range: NSMakeRange(0, adjustMinStr.count))
+        min.addAttribute(.font, value: UIFont.systemFont(ofSize: 30.0), range: NSMakeRange(0, minStr.count))
+        combination.append(adjustMins)
+        combination.append(min)
+        minsAdjustLabel.attributedText = combination
+    }
+    
+    private func updateBeforeAfterLabel() {
+        if minsToAdjust == 0 {
+            beforeAfterLabel.text = alarmMode.description.capitalized
+            return
+        }
+        beforeAfterLabel.text = minsToAdjust < 0 ? "Before \(alarmMode.description.capitalized)" : "After \(alarmMode.description.capitalized)"
     }
     
     private func updateOnOffButton() {
@@ -142,38 +165,17 @@ internal class SetupViewController: UIViewController {
     
     // MARK: - Target-actions
     
-    @IBAction private func onPanMinsLabel(sender: UIPanGestureRecognizer) {
-        let velocity = sender.velocity(in: minsAdjustLabel)
-        let translation = sender.translation(in: minsAdjustLabel)
-        guard abs(velocity.x) > abs(velocity.y) else { return }
-        let incrementValue = velocity.x > 0 ? 1 : -1
-        switch sender.state {
-        case .began:
-            if Alarm.shared.status == .activeAndNotFired {
-                Alarm.shared.turnOff()
-                shouldReactivate = true
-            }
-        case .changed:
-            if (abs(velocity.x)) > 700 {
-                updateMinsToAdjust(incrementValue: incrementValue)
-            } else {
-                if translation.x.truncatingRemainder(dividingBy: 3) == 0 {
-                    updateMinsToAdjust(incrementValue: incrementValue)
-                }
-            }
-        case .ended, .cancelled:
-            if shouldReactivate {
-                Alarm.shared.turnOn { _ in
-                    // FIXME: Needs to warn user in case of error!
-                }
-                shouldReactivate = false
-            }
-        default: break
-        }
+    @objc private func onCircularSliderValueChange(_ sender: CircularSlider) {
+        Alarm.shared.turnOff()
+        minsToAdjust = beforeAfterSegmentedControl.selectedSegmentIndex == 0 ? -Int(sender.endPointValue) : abs(Int(sender.endPointValue))
     }
     
-    @IBAction private func onSegmentChange(sender: Any) {
-        alarmMode = Prayer(rawValue: segmentedControl.selectedSegmentIndex) ?? .fajr
+    @objc private func onCircularSliderEditingEnded(_ sender: CircularSlider) {
+        print("HOORAY IT ENDED!!!")
+    }
+    
+    @IBAction private func onPrayerSegmentChange(sender: UISegmentedControl) {
+        alarmMode = Prayer(rawValue: prayerSegmentedControl.selectedSegmentIndex) ?? .fajr
     }
     
     @IBAction private func onToggleOnOff(sender: Any) {
@@ -184,6 +186,11 @@ internal class SetupViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction private func onBeforeAfterSegmentedChange(sender: UISegmentedControl) {
+        minsToAdjust = sender.selectedSegmentIndex == 0 ? -minsToAdjust : abs(minsToAdjust)
+        updateOutlets()
+    }
+    
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -191,12 +198,6 @@ internal class SetupViewController: UIViewController {
             let settingsVC = segue.destination
             settingsVC.navigationItem.rightBarButtonItem = nil
         }
-    }
-    
-    // MARK: - Helpers
-    
-    private func updateMinsToAdjust(incrementValue: Int) {
-        minsToAdjust = abs(minsToAdjust + incrementValue) != 0 && abs(minsToAdjust + incrementValue) != 60 ? minsToAdjust + incrementValue : 0
     }
 }
 
