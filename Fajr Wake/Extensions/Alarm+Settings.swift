@@ -36,7 +36,6 @@ extension DefaultsKeys {
     static let isSoundRepeated = DefaultsKey<Bool?>("FW-ISSOUNDREPEATED")
     static let minsToAdjust = DefaultsKey<Int?>("FW-MINSTOADJUST")
     static let userExitDate = DefaultsKey<Date?>("FW-PROGRAMEXITDATE")
-    static let isLocalNotificationPermissionGranted = DefaultsKey<Bool>("FW-LOCALPERMNOTIF")
     static let prayertimeDate = DefaultsKey<Date?>("FW-PRAYERTIMEDATE")
     static let calcMethod = DefaultsKey<CalculationMethod?>("FW-CALCULATIONMETHOD")
     static let latitude = DefaultsKey<Double?>("FW-PRAYERLATITUDE")
@@ -80,17 +79,6 @@ extension Alarm {
             set {
                 if let placeName = newValue {
                     Defaults[.placeName] = placeName
-                }
-            }
-        }
-        
-        static var isGrantedPermissionForLocalNotification: Bool? {
-            get {
-                return Defaults[.isLocalNotificationPermissionGranted]
-            }
-            set {
-                if let isGranted = newValue {
-                    Defaults[.isLocalNotificationPermissionGranted] = isGranted
                 }
             }
         }

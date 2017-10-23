@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,6 +15,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) {
+            (isPermissionGranted, error) in
+            // FIXME: - Handle error
+        }
         
         if let fireDate = Alarm.Settings.fireDate {
             if fireDate.timeIntervalSinceNow > 0 {

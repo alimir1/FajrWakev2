@@ -102,30 +102,13 @@ internal class Alarm: CustomStringConvertible {
     // MARK: - Local Notifications
     
     private func removeLocalNotifications() {
-        LocalNotifications.removePendingNotifications()
-        LocalNotifications.removeDeliveredNotifications()
+        LocalNotifications.removeAllNotifications()
     }
     
-    private func scheduleLocalNotifications(completion: ((_ error: Error)->Void)?) {
+    private func scheduleLocalNotifications(completion: ((_ error: Error?)->Void)?) {
         removeLocalNotifications()
-        do {
-            try LocalNotifications.createNotifications(for: self, numOfNotificationsToCreate: 58) {
-                errors in
-                if let errors = errors {
-                    print("Errors:\n \(errors.map {$0.localizedDescription}.joined(separator: "\n"))")
-                } else {
-                    print("Alarm: Local notifications set!")
-                }
-            }
-        } catch LocalNotificationCreationError.permissionDeined {
-            // FIXME: - Create errors and notify the user!
-            print("Local Notification permission denied!")
-            completion?(LocalNotificationCreationError.permissionDeined)
-        } catch LocalNotificationCreationError.fireDate {
-            print("Fire date error!")
-            completion?(LocalNotificationCreationError.fireDate)
-        } catch let error {
-            print("Other Error!")
+        LocalNotifications.createNotifications(for: self, numOfNotificationsToCreate: 58) {
+            error in
             completion?(error)
         }
     }
@@ -176,14 +159,14 @@ internal class Alarm: CustomStringConvertible {
     
     // MARK: - On, Off, Reset
     
-    internal func resetActiveAlarm(completion: ((_ error: Error)->Void)?) {
+    internal func resetActiveAlarm(completion: ((_ error: Error?)->Void)?) {
         if status == .activeAndNotFired {
             turnOff()
             turnOn(completion: completion)
         }
     }
     
-    internal func turnOn(completion: ((_ error: Error)->Void)?) {
+    internal func turnOn(completion: ((_ error: Error?)->Void)?) {
         status = .activeAndNotFired
         fireDate = alarmDateForCurrentSetting
         triggerAlarmWithTimer()

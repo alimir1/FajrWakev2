@@ -11,9 +11,36 @@ import UserNotifications
 
 // MARK: - enum LocalNotificationCreationError
 
-internal enum LocalNotificationCreationError: Error {
+internal enum LocalNotificationCreationError: Error, LocalizedError {
     case permissionDeined
-    case fireDate
+    case nilFireDate
+    
+    var errorDescription: String? {
+        switch self {
+        case .permissionDeined:
+            return NSLocalizedString("Permission Denied", comment: "")
+        case .nilFireDate:
+            return NSLocalizedString("Internal Error", comment: "")
+        }
+    }
+    
+    var failureReason: String? {
+        switch self {
+        case .permissionDeined:
+            return NSLocalizedString("Cannot turn on alarm when permission", comment: "")
+        case .nilFireDate:
+            return NSLocalizedString("Error setting local notification.", comment: "")
+        }
+    }
+    
+    var recoverySuggestion: String? {
+        switch self {
+        case .permissionDeined:
+            return NSLocalizedString("Open Settings->Notifications and allow this app to send local notifications.", comment: "")
+        case .nilFireDate:
+            return NSLocalizedString("Please contact the admin and notify this error immediately.", comment: "")
+        }
+    }
 }
 
 // MARK: - extension Alarm
@@ -24,22 +51,34 @@ extension Alarm {
     
     struct LocalNotifications {
         
-        
-        
-        static func createNotifications(for alarm: Alarm, numOfNotificationsToCreate count: Int, _ completion: @escaping (_ errors: [Error]?) -> Void) throws {
-            guard let fireDate = alarm.fireDate else { throw LocalNotificationCreationError.fireDate }
-            guard let permGranted = Alarm.Settings.isGrantedPermissionForLocalNotification, permGranted else { throw LocalNotificationCreationError.permissionDeined }
-            let content = notificationContentFromAlarm(alarm)
-            let triggers = notificationTriggersFromDate(fireDate: fireDate, numOfTriggersToGenerate: count)
-            guard triggers.count > 0 else { throw LocalNotificationCreationError.fireDate }
-            let requests = triggers.map {notificationRequest(content: content, trigger: $0)}
-            addNotifications(requests: requests) {
-                errors in
-                completion(errors)
+        static func createNotifications(for alarm: Alarm, numOfNotificationsToCreate count: Int, _ completion: @escaping (_ error: Error?) -> Void) {
+            
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) {
+                (isPermissionGranted, error) in
+                
+                guard isPermissionGranted else {
+                    if let error = error {
+                        completion(error)
+                    } else {
+                        completion(LocalNotificationCreationError.permissionDeined)
+                    }
+                    return
+                }
+                guard let fireDate = alarm.fireDate else {
+                    completion(LocalNotificationCreationError.nilFireDate)
+                    print("ERROR: LocalNotifications - nil firedate")
+                    return
+                }
+                let content = notificationContentFromAlarm(alarm)
+                let triggers = notificationTriggersFromDate(fireDate: fireDate, numOfTriggersToGenerate: count)
+                let requests = triggers.map {notificationRequest(content: content, trigger: $0)}
+                addNotifications(requests: requests) {
+                    completion(nil)
+                }
             }
         }
         
-        static func notificationTriggersFromDate(fireDate date: Date, numOfTriggersToGenerate count: Int) -> [UNNotificationTrigger] {
+        static private func notificationTriggersFromDate(fireDate date: Date, numOfTriggersToGenerate count: Int) -> [UNNotificationTrigger] {
             var triggers: [UNNotificationTrigger] = []
             var timeInterval = date.timeIntervalSinceNow
             if timeInterval > 0 {
@@ -54,11 +93,11 @@ extension Alarm {
             return triggers
         }
         
-        static func notificationRequest(content: UNNotificationContent, trigger: UNNotificationTrigger) -> UNNotificationRequest {
+        static private func notificationRequest(content: UNNotificationContent, trigger: UNNotificationTrigger) -> UNNotificationRequest {
             return UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
         }
         
-        static func notificationContentFromAlarm(_ alarm: Alarm) -> UNNotificationContent {
+        static private func notificationContentFromAlarm(_ alarm: Alarm) -> UNNotificationContent {
             let content = UNMutableNotificationContent()
             let alarmSoundName = alarm.soundPlayer.setting.ringtoneID + "." + alarm.soundPlayer.setting.ringtoneExtension
             content.title = "Alarm"
@@ -68,39 +107,20 @@ extension Alarm {
             return content
         }
         
-        static func addNotifications(requests: [UNNotificationRequest], _ completion: @escaping (_ errors: [Error]?) -> Void) {
-            var errors: [Error]? = nil
+        static private func addNotifications(requests: [UNNotificationRequest], _ completionHandler: (() -> Void)?) {
             for (index, request) in requests.enumerated() {
                 UNUserNotificationCenter.current().add(request) {
-                    error in
-                    if let error = error {
-                        errors?.append(error)
-                    }
+                    _ in
                     if index == requests.count - 1 {
-                        completion(errors)
+                        completionHandler?()
                     }
                 }
             }
         }
         
-        static func removeDeliveredNotifications() {
+        static func removeAllNotifications() {
             UNUserNotificationCenter.current().removeAllDeliveredNotifications()
-        }
-        
-        static func removePendingNotifications() {
             UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
-        }
-        
-        static func initNotificationSetupCheck() {
-            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound])
-            { (success, error) in
-                Alarm.Settings.isGrantedPermissionForLocalNotification = success
-                if success {
-                    print("Local Notification Permission Granted")
-                } else {
-                    print("Local Notification Permission Not Granted")
-                }
-            }
         }
     }
 }
