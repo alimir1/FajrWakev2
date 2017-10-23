@@ -99,20 +99,6 @@ internal class Alarm: CustomStringConvertible {
         self.placeName = Alarm.Settings.placeName ?? "37.33, -121.88"
     }
     
-    // MARK: - Local Notifications
-    
-    private func removeLocalNotifications() {
-        LocalNotifications.removeAllNotifications()
-    }
-    
-    private func scheduleLocalNotifications(completion: ((_ error: Error?)->Void)?) {
-        removeLocalNotifications()
-        LocalNotifications.createNotifications(for: self, numOfNotificationsToCreate: 58) {
-            error in
-            completion?(error)
-        }
-    }
-    
     // MARK: - Triggers
     
     private func triggerAlarmWithTimer() {
@@ -130,14 +116,22 @@ internal class Alarm: CustomStringConvertible {
     }
     
     private func presentFiredAlarmViewController() {
-        let fireAlarmVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "firedAlarmVC")
+        presentInRootVC(withIdentifier: "firedAlarmVC")
+    }
+    
+    internal func presentNotificationErrorVC() {
+        presentInRootVC(withIdentifier: "NotificationErrorVC")
+    }
+    
+    private func presentInRootVC(withIdentifier: String) {
+        let presentingVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: withIdentifier)
         if let topVC = UIViewController.topViewController {
             if topVC.isModal {
                 UIViewController.topViewController?.dismiss(animated: false, completion: {
-                    UIApplication.shared.keyWindow?.rootViewController?.present(fireAlarmVC, animated: false, completion: nil)
+                    UIApplication.shared.keyWindow?.rootViewController?.present(presentingVC, animated: false, completion: nil)
                 })
             } else {
-                UIApplication.shared.keyWindow?.rootViewController?.present(fireAlarmVC, animated: true, completion: nil)
+                UIApplication.shared.keyWindow?.rootViewController?.present(presentingVC, animated: true, completion: nil)
             }
         }
     }
@@ -159,25 +153,34 @@ internal class Alarm: CustomStringConvertible {
     
     // MARK: - On, Off, Reset
     
-    internal func resetActiveAlarm(completion: ((_ error: Error?)->Void)?) {
+    internal func resetActiveAlarm(completion: (()->Void)?) {
         if status == .activeAndNotFired {
             turnOff()
             turnOn(completion: completion)
         }
     }
     
-    internal func turnOn(completion: ((_ error: Error?)->Void)?) {
-        status = .activeAndNotFired
-        fireDate = alarmDateForCurrentSetting
-        triggerAlarmWithTimer()
-        print("Alarm: alarm turned on")
-        scheduleLocalNotifications(completion: completion)
+    internal func turnOn(completion: (()->Void)?) {
+        Alarm.scheduleLocalNotifications(withFireDate: self.alarmDateForCurrentSetting, message: description) {
+            error in
+            if let error = error {
+                print("ERROR - Alarm: \(error.localizedDescription)")
+                self.presentNotificationErrorVC()
+                completion?()
+                return
+            }
+            self.status = .activeAndNotFired
+            self.fireDate = self.alarmDateForCurrentSetting
+            self.triggerAlarmWithTimer()
+            print("Alarm: alarm turned on")
+            completion?()
+        }
     }
     
     internal func turnOff() {
         status = .inActive
         fireDate = nil
-        removeLocalNotifications()
+        LocalNotifications.removeAllNotifications()
         invalidateTimer()
         soundPlayer.stop()
     }

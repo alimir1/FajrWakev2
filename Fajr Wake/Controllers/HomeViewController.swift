@@ -35,7 +35,6 @@ internal class HomeViewController: UIViewController {
     private let standardDateFormatter: DateFormatter = {
         let timeFormatter = DateFormatter()
         timeFormatter.dateFormat = "MM-dd-yyyy h:mm a"
-//        timeFormatter.dateFormat = "h:mm a"
         return timeFormatter
     }()
     
@@ -46,12 +45,24 @@ internal class HomeViewController: UIViewController {
         updateOutlets()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setupFirstLaunch()
+    }
+    
+    func setupFirstLaunch() {
+        if isFirstAppLaunch {
+            let welcomeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WelcomeVC") as! WelcomeViewController
+            welcomeVC.successHandler = {
+                self.fetchLocation()
+            }
+            present(welcomeVC, animated: true, completion: nil)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        if isFirstAppLaunch {
-            fetchLocation()
-        }
-        currentTimeUpdateTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCurrentTimeLabel), userInfo: nil, repeats: true)
+         currentTimeUpdateTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCurrentTimeLabel), userInfo: nil, repeats: true)
     }
     
     // MARK: - Views Setup

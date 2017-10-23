@@ -55,8 +55,9 @@ internal class SettingsTableViewController: UITableViewController {
         alarm.fetchLocation(withView: view, completionHandler: {
             self.setupOutlets()
             Alarm.shared.resetActiveAlarm {
-                _ in
-                // FIXME: Needs to warn user in case of error!
+                DispatchQueue.main.async {
+                    self.setupOutlets()
+                }
             }
         })
     }

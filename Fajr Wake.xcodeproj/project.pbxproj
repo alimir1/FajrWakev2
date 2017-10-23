@@ -32,6 +32,8 @@
 		491EF5D41F991E6F005AF6FB /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 491EF5D31F991E6F005AF6FB /* MBProgressHUD.m */; };
 		491EF5D61F992FE4005AF6FB /* Location+Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491EF5D51F992FE4005AF6FB /* Location+Alarm.swift */; };
 		4934E5151F9E7755006FEC04 /* roosterSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4934E5141F9E774E006FEC04 /* roosterSound.wav */; };
+		4934E5171F9E8444006FEC04 /* NotificationErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4934E5161F9E8444006FEC04 /* NotificationErrorViewController.swift */; };
+		4934E5191F9E8CAA006FEC04 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4934E5181F9E8CAA006FEC04 /* WelcomeViewController.swift */; };
 		4979A2B31F969C29007071E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4979A2B21F969C29007071E2 /* AppDelegate.swift */; };
 		4979A2B51F969C2A007071E2 /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4979A2B41F969C2A007071E2 /* SetupViewController.swift */; };
 		4979A2B81F969C2A007071E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4979A2B61F969C2A007071E2 /* Main.storyboard */; };
@@ -67,6 +69,8 @@
 		491EF5D31F991E6F005AF6FB /* MBProgressHUD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		491EF5D51F992FE4005AF6FB /* Location+Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+Alarm.swift"; sourceTree = "<group>"; };
 		4934E5141F9E774E006FEC04 /* roosterSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = roosterSound.wav; sourceTree = "<group>"; };
+		4934E5161F9E8444006FEC04 /* NotificationErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationErrorViewController.swift; sourceTree = "<group>"; };
+		4934E5181F9E8CAA006FEC04 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		4979A2AF1F969C29007071E2 /* Fajr Wake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fajr Wake.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4979A2B21F969C29007071E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4979A2B41F969C2A007071E2 /* SetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
@@ -214,6 +218,8 @@
 				491E3F521F983E560014B8C1 /* CalculationMethodsViewController.swift */,
 				498D75951F99588200A0A969 /* FiredAlarmViewController.swift */,
 				4979A2B41F969C2A007071E2 /* SetupViewController.swift */,
+				4934E5161F9E8444006FEC04 /* NotificationErrorViewController.swift */,
+				4934E5181F9E8CAA006FEC04 /* WelcomeViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -424,6 +430,8 @@
 				49028AF81F96B1BF009B95D7 /* Prayer.swift in Sources */,
 				491EF5D41F991E6F005AF6FB /* MBProgressHUD.m in Sources */,
 				498D75961F99588200A0A969 /* FiredAlarmViewController.swift in Sources */,
+				4934E5171F9E8444006FEC04 /* NotificationErrorViewController.swift in Sources */,
+				4934E5191F9E8CAA006FEC04 /* WelcomeViewController.swift in Sources */,
 				49E60B0A1F99CE1D00014B0B /* Alarm+Location.swift in Sources */,
 				491E3F511F983A4C0014B8C1 /* SettingsTableViewController.swift in Sources */,
 				49A2C6491F97244F00F7A23E /* Ringtones.swift in Sources */,

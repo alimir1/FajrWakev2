@@ -15,33 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) {
-            (isPermissionGranted, error) in
-            // FIXME: - Handle error
-        }
-        
+        self.setupForFireDate()
         UNUserNotificationCenter.current().removeAllDeliveredNotifications()
-        
-        if let fireDate = Alarm.Settings.fireDate {
-            if fireDate.timeIntervalSinceNow > 0 {
-                Alarm.shared.turnOn {
-                    _ in
-                    // FIXME: Needs to warn user in case of error!
-                }
-            } else {
-                if fireDate.timeIntervalSinceNow < 60*60*24*3 {
-                    // FIXME: - handle local notification issue!
-                    Alarm.shared.fireAlarm()
-                    let fireAlarmVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "firedAlarmVC") as! FiredAlarmViewController
-                    fireAlarmVC.dismissedCompletion = {
-                        self.window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "homeViewController")
-                    }
-                    window?.rootViewController = fireAlarmVC
-                }
-            }
-        }
-        
         return true
     }
 
@@ -66,7 +41,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
+    
+    func setupForFireDate() {
+        if let fireDate = Alarm.Settings.fireDate {
+            if fireDate.timeIntervalSinceNow > 0 {
+                Alarm.shared.turnOn(completion: nil)
+            } else {
+                if fireDate.timeIntervalSinceNow < 60*60*24*3 {
+                    // FIXME: - handle local notification issue!
+                    Alarm.shared.fireAlarm()
+                    let fireAlarmVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "firedAlarmVC") as! FiredAlarmViewController
+                    fireAlarmVC.dismissedCompletion = {
+                        self.window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "homeViewController")
+                    }
+                    window?.rootViewController = fireAlarmVC
+                }
+            }
+        }
+    }
 
 }
 

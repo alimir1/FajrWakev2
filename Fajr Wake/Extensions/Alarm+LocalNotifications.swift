@@ -13,14 +13,11 @@ import UserNotifications
 
 internal enum LocalNotificationCreationError: Error, LocalizedError {
     case permissionDeined
-    case nilFireDate
     
     var errorDescription: String? {
         switch self {
         case .permissionDeined:
             return NSLocalizedString("Permission Denied", comment: "")
-        case .nilFireDate:
-            return NSLocalizedString("Internal Error", comment: "")
         }
     }
     
@@ -28,8 +25,6 @@ internal enum LocalNotificationCreationError: Error, LocalizedError {
         switch self {
         case .permissionDeined:
             return NSLocalizedString("Cannot turn on alarm when permission", comment: "")
-        case .nilFireDate:
-            return NSLocalizedString("Error setting local notification.", comment: "")
         }
     }
     
@@ -37,8 +32,6 @@ internal enum LocalNotificationCreationError: Error, LocalizedError {
         switch self {
         case .permissionDeined:
             return NSLocalizedString("Open Settings->Notifications and allow this app to send local notifications.", comment: "")
-        case .nilFireDate:
-            return NSLocalizedString("Please contact the admin and notify this error immediately.", comment: "")
         }
     }
 }
@@ -47,11 +40,19 @@ internal enum LocalNotificationCreationError: Error, LocalizedError {
 
 extension Alarm {
     
+    internal class func scheduleLocalNotifications(withFireDate fireDate: Date, message: String, completion: ((_ error: Error?)->Void)?) {
+        Alarm.LocalNotifications.removeAllNotifications()
+        LocalNotifications.createNotifications(fireDate: fireDate, message: message, numOfNotificationsToCreate: 58) {
+            error in
+            completion?(error)
+        }
+    }
+    
     // MARK: - Convenience Methods
     
     struct LocalNotifications {
         
-        static func createNotifications(for alarm: Alarm, numOfNotificationsToCreate count: Int, _ completion: @escaping (_ error: Error?) -> Void) {
+        static func createNotifications(fireDate: Date, message: String, numOfNotificationsToCreate count: Int, _ completion: @escaping (_ error: Error?) -> Void) {
             
             UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) {
                 (isPermissionGranted, error) in
@@ -64,12 +65,7 @@ extension Alarm {
                     }
                     return
                 }
-                guard let fireDate = alarm.fireDate else {
-                    completion(LocalNotificationCreationError.nilFireDate)
-                    print("ERROR: LocalNotifications - nil firedate")
-                    return
-                }
-                let content = notificationContentFromAlarm(alarm)
+                let content = notificationContent(withMessage: message)
                 let triggers = notificationTriggersFromDate(fireDate: fireDate, numOfTriggersToGenerate: count)
                 let requests = triggers.map {notificationRequest(content: content, trigger: $0)}
                 addNotifications(requests: requests) {
@@ -97,11 +93,11 @@ extension Alarm {
             return UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
         }
         
-        static private func notificationContentFromAlarm(_ alarm: Alarm) -> UNNotificationContent {
+        static private func notificationContent(withMessage: String) -> UNNotificationContent {
             let content = UNMutableNotificationContent()
             let alarmSoundName = "roosterSound.wav"
             content.title = "Alarm"
-            content.subtitle = "It's \(alarm.description)!"
+            content.subtitle = "It's \(withMessage)!"
             content.body = "Open app to stop."
             content.sound = UNNotificationSound(named: alarmSoundName)
             return content

@@ -38,9 +38,9 @@ internal class SetupViewController: UIViewController {
                 self.wakeUpTimeLabel.shake()
             }
             Alarm.shared.resetActiveAlarm {
-                _ in
-                // FIXME: Needs to warn user in case of error!
-                self.updateOutlets()
+                DispatchQueue.main.async {
+                    self.updateOutlets()
+                }
             }
         }
     }
@@ -51,13 +51,15 @@ internal class SetupViewController: UIViewController {
         }
         set {
             if newValue {
-                Alarm.shared.turnOn { _ in
-                    // FIXME: Needs to warn user in case of error!
+                Alarm.shared.turnOn {
+                    DispatchQueue.main.async {
+                        self.updateOutlets()
+                    }
                 }
             } else {
                 Alarm.shared.turnOff()
+                updateOutlets()
             }
-            updateOutlets()
         }
     }
     
@@ -104,7 +106,6 @@ internal class SetupViewController: UIViewController {
         if let circularSlider = circularSliderView as? CircularSlider {
             circularSlider.endPointValue = CGFloat(abs(minsToAdjust))
         }
-        updateTitleLabel()
         updateMinsToAdjustLabel()
         updateOnOffButton()
         updateWakeupTimeLabel()
@@ -115,15 +116,6 @@ internal class SetupViewController: UIViewController {
         let calculatedAlarmDate = Alarm.shared.alarmDateForCurrentSetting
         let timeStr = dateFormatter.string(from: calculatedAlarmDate)
         wakeUpTimeLabel.text = " \(timeStr)"
-    }
-    
-    private func updateTitleLabel() {
-        let wakeupTime = alarmMode.description
-        if minsToAdjust == 0 {
-            navigationItem.title = "At \(wakeupTime)"
-        } else {
-            navigationItem.title = Alarm.shared.description
-        }
     }
     
     private func updateMinsToAdjustLabel() {
@@ -184,8 +176,9 @@ internal class SetupViewController: UIViewController {
             self.wakeUpTimeLabel.shake()
         }
         Alarm.shared.resetActiveAlarm {
-            _ in // FIXME: - error handling!!
-            self.updateOutlets()
+            DispatchQueue.main.async {
+                self.updateOutlets()
+            }
         }
     }
     
