@@ -55,9 +55,7 @@ internal class SettingsTableViewController: UITableViewController {
         alarm.fetchLocation(withView: view, completionHandler: {
             self.setupOutlets()
             Alarm.shared.resetActiveAlarm {
-                DispatchQueue.main.async {
-                    self.setupOutlets()
-                }
+                self.setupOutlets()
             }
         })
     }

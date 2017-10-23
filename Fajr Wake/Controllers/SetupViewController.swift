@@ -38,9 +38,7 @@ internal class SetupViewController: UIViewController {
                 self.wakeUpTimeLabel.shake()
             }
             Alarm.shared.resetActiveAlarm {
-                DispatchQueue.main.async {
-                    self.updateOutlets()
-                }
+                self.updateOutlets()
             }
         }
     }
@@ -52,9 +50,7 @@ internal class SetupViewController: UIViewController {
         set {
             if newValue {
                 Alarm.shared.turnOn {
-                    DispatchQueue.main.async {
-                        self.updateOutlets()
-                    }
+                    self.updateOutlets()
                 }
             } else {
                 Alarm.shared.turnOff()
@@ -176,9 +172,7 @@ internal class SetupViewController: UIViewController {
             self.wakeUpTimeLabel.shake()
         }
         Alarm.shared.resetActiveAlarm {
-            DispatchQueue.main.async {
-                self.updateOutlets()
-            }
+            self.updateOutlets()
         }
     }
     

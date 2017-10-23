@@ -166,13 +166,12 @@ internal class Alarm: CustomStringConvertible {
             if let error = error {
                 print("ERROR - Alarm: \(error.localizedDescription)")
                 self.presentNotificationErrorVC()
-                completion?()
-                return
+            } else {
+                self.status = .activeAndNotFired
+                self.fireDate = self.alarmDateForCurrentSetting
+                self.triggerAlarmWithTimer()
+                print("Alarm: alarm turned on")
             }
-            self.status = .activeAndNotFired
-            self.fireDate = self.alarmDateForCurrentSetting
-            self.triggerAlarmWithTimer()
-            print("Alarm: alarm turned on")
             completion?()
         }
     }

@@ -59,9 +59,13 @@ extension Alarm {
                 
                 guard isPermissionGranted else {
                     if let error = error {
-                        completion(error)
+                        DispatchQueue.main.async {
+                            completion(error)
+                        }
                     } else {
-                        completion(LocalNotificationCreationError.permissionDeined)
+                        DispatchQueue.main.async {
+                            completion(LocalNotificationCreationError.permissionDeined)
+                        }
                     }
                     return
                 }
@@ -69,7 +73,9 @@ extension Alarm {
                 let triggers = notificationTriggersFromDate(fireDate: fireDate, numOfTriggersToGenerate: count)
                 let requests = triggers.map {notificationRequest(content: content, trigger: $0)}
                 addNotifications(requests: requests) {
-                    completion(nil)
+                    DispatchQueue.main.async {
+                        completion(nil)
+                    }
                 }
             }
         }
