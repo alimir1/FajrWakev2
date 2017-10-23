@@ -17,7 +17,7 @@ internal class FiredAlarmViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        alarmDescriptionLabel.text = "It's \(Alarm.shared.description)!"
+        alarmDescriptionLabel.text = "It's \(Alarm.shared.description)."
         dismissButton.layer.masksToBounds = true
         dismissButton.layer.cornerRadius = 10
     }

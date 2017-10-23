@@ -31,6 +31,7 @@
 		491E3F751F990C320014B8C1 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491E3F741F990C320014B8C1 /* Location.swift */; };
 		491EF5D41F991E6F005AF6FB /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 491EF5D31F991E6F005AF6FB /* MBProgressHUD.m */; };
 		491EF5D61F992FE4005AF6FB /* Location+Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491EF5D51F992FE4005AF6FB /* Location+Alarm.swift */; };
+		4934E5151F9E7755006FEC04 /* roosterSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4934E5141F9E774E006FEC04 /* roosterSound.wav */; };
 		4979A2B31F969C29007071E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4979A2B21F969C29007071E2 /* AppDelegate.swift */; };
 		4979A2B51F969C2A007071E2 /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4979A2B41F969C2A007071E2 /* SetupViewController.swift */; };
 		4979A2B81F969C2A007071E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4979A2B61F969C2A007071E2 /* Main.storyboard */; };
@@ -65,6 +66,7 @@
 		491EF5D21F991E6F005AF6FB /* MBProgressHUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		491EF5D31F991E6F005AF6FB /* MBProgressHUD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		491EF5D51F992FE4005AF6FB /* Location+Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+Alarm.swift"; sourceTree = "<group>"; };
+		4934E5141F9E774E006FEC04 /* roosterSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = roosterSound.wav; sourceTree = "<group>"; };
 		4979A2AF1F969C29007071E2 /* Fajr Wake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fajr Wake.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4979A2B21F969C29007071E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4979A2B41F969C2A007071E2 /* SetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 				49A2C6581F97261B00F7A23E /* KazemZadeh.aiff */,
 				49A2C6541F97261800F7A23E /* MozenZadeh.aiff */,
 				49A2C6591F97261B00F7A23E /* MunajatImamAli.aiff */,
+				4934E5141F9E774E006FEC04 /* roosterSound.wav */,
 				49A2C6551F97261900F7A23E /* MunajatMuhibeen.aiff */,
 				49A2C65C1F97261E00F7A23E /* Ocean.aiff */,
 				49A2C6511F97261700F7A23E /* Rozayghi.aiff */,
@@ -334,6 +337,7 @@
 				491E3F3F1F97F3930014B8C1 /* AbatharAlHalawaji.aiff in Resources */,
 				491E3F471F97F3980014B8C1 /* KazemZadeh.aiff in Resources */,
 				491E3F461F97F3980014B8C1 /* DuaMujeer.aiff in Resources */,
+				4934E5151F9E7755006FEC04 /* roosterSound.wav in Resources */,
 				491E3F4C1F97F3980014B8C1 /* Rozayghi.aiff in Resources */,
 				4979A2B81F969C2A007071E2 /* Main.storyboard in Resources */,
 				491E3F3C1F97BAA30014B8C1 /* FontAwesome.ttf in Resources */,

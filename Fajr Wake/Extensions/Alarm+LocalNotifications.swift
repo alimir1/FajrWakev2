@@ -85,7 +85,7 @@ extension Alarm {
                 triggers.append(UNTimeIntervalNotificationTrigger(timeInterval: timeInterval , repeats: false))
             }
             for _ in 0..<count-1 {
-                timeInterval += 30
+                timeInterval += 3
                 if timeInterval > 0 {
                     triggers.append(UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: false))
                 }
@@ -99,7 +99,7 @@ extension Alarm {
         
         static private func notificationContentFromAlarm(_ alarm: Alarm) -> UNNotificationContent {
             let content = UNMutableNotificationContent()
-            let alarmSoundName = alarm.soundPlayer.setting.ringtoneID + "." + alarm.soundPlayer.setting.ringtoneExtension
+            let alarmSoundName = "roosterSound.wav"
             content.title = "Alarm"
             content.subtitle = "It's \(alarm.description)!"
             content.body = "Open app to stop."

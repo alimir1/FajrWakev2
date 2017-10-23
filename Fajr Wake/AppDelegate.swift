@@ -21,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // FIXME: - Handle error
         }
         
+        UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+        
         if let fireDate = Alarm.Settings.fireDate {
             if fireDate.timeIntervalSinceNow > 0 {
                 Alarm.shared.turnOn {

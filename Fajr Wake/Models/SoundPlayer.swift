@@ -40,7 +40,9 @@ class SoundPlayer {
         do {
             soundPlayer = try AVAudioPlayer(contentsOf: url)
             guard let player = soundPlayer else { return }
-            soundPlayer?.setVolume(1.0, fadeDuration: 3)
+            try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            try? AVAudioSession.sharedInstance().setActive(true)
+            player.setVolume(1.0, fadeDuration: 1)
             if setting.isRepeated {
                 player.numberOfLoops = -1
             }
