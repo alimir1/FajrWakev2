@@ -2,4 +2,54 @@
 <Bucket
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Fajr Wake/Controllers/SettingsTableViewController.swift"
+            timestampString = "530473620.39191"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "fetchLocation()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Fajr_Wake.SettingsTableViewController.(fetchLocation in _05D63A5DB4ADDBADABACA36F59F143D9)() -&gt; ()"
+                  moduleName = "Fajr Wake"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/abidi/Documents/FajrWake/Fajr%20Wake/Fajr%20Wake/Controllers/SettingsTableViewController.swift"
+                  timestampString = "530473620.514802"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "55"
+                  endingLineNumber = "55"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in Fajr_Wake.SettingsTableViewController.(fetchLocation in _05D63A5DB4ADDBADABACA36F59F143D9)() -&gt; ()"
+                  moduleName = "Fajr Wake"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/abidi/Documents/FajrWake/Fajr%20Wake/Fajr%20Wake/Controllers/SettingsTableViewController.swift"
+                  timestampString = "530473620.517072"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

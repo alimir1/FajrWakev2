@@ -85,6 +85,8 @@ internal class Location: NSObject, CLLocationManagerDelegate {
             coordinateCompletion?(nil, LocationError.deniedPermission)
         case .restricted:
             coordinateCompletion?(nil, LocationError.restricted)
+        case .notDetermined:
+            break
         default:
             manager.requestLocation()
         }

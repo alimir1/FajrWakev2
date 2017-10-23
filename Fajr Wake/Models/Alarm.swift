@@ -114,7 +114,7 @@ internal class Alarm: CustomStringConvertible {
                 if let errors = errors {
                     print("Errors:\n \(errors.map {$0.localizedDescription}.joined(separator: "\n"))")
                 } else {
-                    print("All set!")
+                    print("Alarm: Local notifications set!")
                 }
             }
         } catch LocalNotificationCreationError.permissionDeined {
@@ -187,6 +187,7 @@ internal class Alarm: CustomStringConvertible {
         status = .activeAndNotFired
         fireDate = alarmDateForCurrentSetting
         triggerAlarmWithTimer()
+        print("Alarm: alarm turned on")
         scheduleLocalNotifications(completion: completion)
     }
     

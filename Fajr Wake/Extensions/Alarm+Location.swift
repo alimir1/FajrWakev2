@@ -32,9 +32,8 @@ extension Alarm {
             } else {
                 location.fetchAndStorePlaceName() {
                     completionHandler?()
+                    _ = SweetAlert().showAlert("Success!", subTitle: "Location has been successfully updated.", style: AlertStyle.success)
                 }
-                _ = SweetAlert().showAlert("Success!", subTitle: "Location has been successfully updated.", style: AlertStyle.success)
-                completionHandler?()
             }
             MBProgressHUD.hide(for: withView, animated: true)
         }
