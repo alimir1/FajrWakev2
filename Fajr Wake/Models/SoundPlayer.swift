@@ -8,6 +8,7 @@
 
 import Foundation
 import AVFoundation
+import MediaPlayer
 
 // MARK: - struct SoundSetting
 
@@ -42,7 +43,8 @@ class SoundPlayer {
             guard let player = soundPlayer else { return }
             try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
             try? AVAudioSession.sharedInstance().setActive(true)
-            player.setVolume(1.0, fadeDuration: 1)
+            try? AVAudioSession.sharedInstance().overrideOutputAudioPort(.speaker)
+            (MPVolumeView().subviews.filter{NSStringFromClass($0.classForCoder) == "MPVolumeSlider"}.first as? UISlider)?.setValue(1.0, animated: false)
             if setting.isRepeated {
                 player.numberOfLoops = -1
             }
