@@ -42,7 +42,7 @@ extension Alarm {
     
     internal class func scheduleLocalNotifications(withFireDate fireDate: Date, message: String, completion: ((_ error: Error?)->Void)?) {
         Alarm.LocalNotifications.removeAllNotifications()
-        LocalNotifications.createNotifications(fireDate: fireDate, message: message, numOfNotificationsToCreate: 58) {
+        LocalNotifications.createNotifications(fireDate: fireDate, message: message, numOfNotificationsToCreate: 63) {
             error in
             completion?(error)
         }
