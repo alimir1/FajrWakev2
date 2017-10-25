@@ -71,14 +71,6 @@ internal class SetupViewController: UIViewController {
         }
     }
     
-    // MARK: - Computed Properties
-    
-    private let dateFormatter: DateFormatter = {
-        let timeFormatter = DateFormatter()
-        timeFormatter.dateFormat = "h:mm a"
-        return timeFormatter
-    }()
-    
     // MARK: - Lifecycles
     
     override func viewWillAppear(_ animated: Bool) {
@@ -112,7 +104,7 @@ internal class SetupViewController: UIViewController {
     
     private func updateWakeupTimeLabel() {
         let calculatedAlarmDate = Alarm.shared.alarmDateForCurrentSetting
-        let timeStr = dateFormatter.string(from: calculatedAlarmDate)
+        let timeStr = calculatedAlarmDate.timeString
         wakeUpTimeLabel.text = " Alarm at \(timeStr)"
     }
     
@@ -123,14 +115,8 @@ internal class SetupViewController: UIViewController {
         }
         let minStr = "min"
         let adjustMinStr = "\(abs(minsToAdjust))"
-        let combination = NSMutableAttributedString()
-        let adjustMins = NSMutableAttributedString(string: adjustMinStr)
-        let min = NSMutableAttributedString(string: minStr)
-        adjustMins.addAttribute(.font, value: UIFont.systemFont(ofSize: 60.0), range: NSMakeRange(0, adjustMinStr.count))
-        min.addAttribute(.font, value: UIFont.systemFont(ofSize: 30.0), range: NSMakeRange(0, minStr.count))
-        combination.append(adjustMins)
-        combination.append(min)
-        minsAdjustLabel.attributedText = combination
+        let attributedStr = NSAttributedString.bigSmallFormattedString(biggerString: adjustMinStr, smallerString: minStr, biggerFontSize: 60, smallerFontSize: 30)
+        minsAdjustLabel.attributedText = attributedStr
     }
     
     private func updateBeforeAfterLabel() {

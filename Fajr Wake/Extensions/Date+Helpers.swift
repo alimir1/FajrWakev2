@@ -1,5 +1,5 @@
 //
-//  Date+UserDefinedDate.swift
+//  Date+Helpers.swift
 //  FajrWake
 //
 //  Created by Ali Mir on 9/11/17.
@@ -8,7 +8,24 @@
 
 import Foundation
 
+extension DateFormatter {
+    static var splitDateFormatter: (time: DateFormatter, ampm: DateFormatter) = {
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "h:mm"
+        let ampmFormatter = DateFormatter()
+        ampmFormatter.dateFormat = "a"
+        return (time: timeFormatter, ampm: ampmFormatter)
+    }()
+}
+
 extension Date {
+    
+    var timeString: String {
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "h:mm a"
+        return timeFormatter.string(from: self)
+    }
+    
     /// Returns `Date` for user-defined `hour` and `minute` components from another date.
     ///
     /// - note: The components from `date` parameter are used to return `Date` object. Exceptoions: `hour`, `minute`, and `second`.

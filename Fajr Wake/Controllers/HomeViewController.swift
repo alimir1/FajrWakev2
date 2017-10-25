@@ -22,22 +22,6 @@ internal class HomeViewController: UIViewController {
     
     private var currentTimeUpdateTimer: Timer?
     
-    // MARK: - Computed Properties
-    
-    /*private let dateFormatter: (time: DateFormatter, ampm: DateFormatter) = {
-        let timeFormatter = DateFormatter()
-        timeFormatter.dateFormat = "h:mm"
-        let ampmFormatter = DateFormatter()
-        ampmFormatter.dateFormat = "a"
-        return (time: timeFormatter, ampm: ampmFormatter)
-    }()*/
-    
-    private let standardDateFormatter: DateFormatter = {
-        let timeFormatter = DateFormatter()
-        timeFormatter.dateFormat = "h:mm a"
-        return timeFormatter
-    }()
-    
     // MARK: - Lifecycles
     
     override func viewWillAppear(_ animated: Bool) {
@@ -78,7 +62,7 @@ internal class HomeViewController: UIViewController {
     private func updateAlarmTimeLabel() {
         let alarm = Alarm.shared
         if let fireDate = alarm.fireDate {
-            let dateString = standardDateFormatter.string(from: fireDate)
+            let dateString = fireDate.timeString
             alarmTimeLabel.text = Calendar.current.isDateInToday(fireDate) ? " Today at \(dateString)" : " Tomorrow at \(dateString)"
         } else {
             alarmTimeLabel.text = " Setup Alarm"
@@ -86,10 +70,11 @@ internal class HomeViewController: UIViewController {
     }
     
     @objc private func updateCurrentTimeLabel() {
-        let curDate = Date()
-        let formatter = standardDateFormatter
-        let time = formatter.string(from: curDate)
-        currentTimeLabel.text = time
+        let formatter = DateFormatter.splitDateFormatter
+        let time = formatter.time.string(from: Date())
+        let amPM = " " + formatter.ampm.string(from: Date())
+        let attributedStr = NSAttributedString.bigSmallFormattedString(biggerString: time, smallerString: amPM, biggerFontSize: 60, smallerFontSize: 30)
+        currentTimeLabel.attributedText = attributedStr
         messageLabel.text = Alarm.shared.statusMessage
         updateAlarmTimeLabel()
     }

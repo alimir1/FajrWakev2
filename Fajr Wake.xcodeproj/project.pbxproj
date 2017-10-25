@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		49028AF81F96B1BF009B95D7 /* Prayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49028AF71F96B1BF009B95D7 /* Prayer.swift */; };
+		490D96111FA1133800314937 /* NSAttributedString+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D96101FA1133800314937 /* NSAttributedString+Helpers.swift */; };
 		491E3F3C1F97BAA30014B8C1 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 491E3F3B1F97BA480014B8C1 /* FontAwesome.ttf */; };
 		491E3F3E1F97BF590014B8C1 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491E3F3D1F97BF590014B8C1 /* SoundPlayer.swift */; };
 		491E3F3F1F97F3930014B8C1 /* AbatharAlHalawaji.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 49A2C6501F97261100F7A23E /* AbatharAlHalawaji.aiff */; };
@@ -44,7 +45,7 @@
 		498D75981F99A89A00A0A969 /* UIViewController+ViewControllerTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498D75971F99A89A00A0A969 /* UIViewController+ViewControllerTypes.swift */; };
 		49A2C63F1F9718AA00F7A23E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A2C63E1F9718AA00F7A23E /* HomeViewController.swift */; };
 		49A2C6421F971F6A00F7A23E /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A2C6411F971F6A00F7A23E /* Alarm.swift */; };
-		49A2C6441F9723BB00F7A23E /* Date+UserDefinedDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A2C6431F9723BB00F7A23E /* Date+UserDefinedDate.swift */; };
+		49A2C6441F9723BB00F7A23E /* Date+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A2C6431F9723BB00F7A23E /* Date+Helpers.swift */; };
 		49A2C6461F97242000F7A23E /* UserDefaults+SwiftyUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A2C6451F97242000F7A23E /* UserDefaults+SwiftyUserDefaults.swift */; };
 		49A2C6491F97244F00F7A23E /* Ringtones.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A2C6481F97244F00F7A23E /* Ringtones.swift */; };
 		49A2C64B1F97245B00F7A23E /* Alarm+Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A2C64A1F97245B00F7A23E /* Alarm+Settings.swift */; };
@@ -59,6 +60,7 @@
 /* Begin PBXFileReference section */
 		3E3916DA3BE1428835F8092D /* Pods_Fajr_Wake.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fajr_Wake.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49028AF71F96B1BF009B95D7 /* Prayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prayer.swift; sourceTree = "<group>"; };
+		490D96101FA1133800314937 /* NSAttributedString+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Helpers.swift"; sourceTree = "<group>"; };
 		491E3F3B1F97BA480014B8C1 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
 		491E3F3D1F97BF590014B8C1 /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
 		491E3F4E1F97F91A0014B8C1 /* RingtonesViewControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingtonesViewControllers.swift; sourceTree = "<group>"; };
@@ -83,7 +85,7 @@
 		498D75971F99A89A00A0A969 /* UIViewController+ViewControllerTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ViewControllerTypes.swift"; sourceTree = "<group>"; };
 		49A2C63E1F9718AA00F7A23E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		49A2C6411F971F6A00F7A23E /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
-		49A2C6431F9723BB00F7A23E /* Date+UserDefinedDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+UserDefinedDate.swift"; sourceTree = "<group>"; };
+		49A2C6431F9723BB00F7A23E /* Date+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Helpers.swift"; sourceTree = "<group>"; };
 		49A2C6451F97242000F7A23E /* UserDefaults+SwiftyUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+SwiftyUserDefaults.swift"; sourceTree = "<group>"; };
 		49A2C6481F97244F00F7A23E /* Ringtones.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ringtones.swift; sourceTree = "<group>"; };
 		49A2C64A1F97245B00F7A23E /* Alarm+Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alarm+Settings.swift"; sourceTree = "<group>"; };
@@ -198,11 +200,12 @@
 			children = (
 				49A2C6451F97242000F7A23E /* UserDefaults+SwiftyUserDefaults.swift */,
 				49E60B091F99CE1D00014B0B /* Alarm+Location.swift */,
+				490D96101FA1133800314937 /* NSAttributedString+Helpers.swift */,
 				491EF5D51F992FE4005AF6FB /* Location+Alarm.swift */,
 				49A2C64A1F97245B00F7A23E /* Alarm+Settings.swift */,
 				49A2C64C1F97247700F7A23E /* Alarm+LocalNotifications.swift */,
 				4979A2C41F96ACCD007071E2 /* UIColor+brand.swift */,
-				49A2C6431F9723BB00F7A23E /* Date+UserDefinedDate.swift */,
+				49A2C6431F9723BB00F7A23E /* Date+Helpers.swift */,
 				498D75971F99A89A00A0A969 /* UIViewController+ViewControllerTypes.swift */,
 				49BA6F731F9AA1BB00A5D45C /* UIKit+Animate.swift */,
 			);
@@ -420,7 +423,7 @@
 				491E3F531F983E560014B8C1 /* CalculationMethodsViewController.swift in Sources */,
 				49A2C63F1F9718AA00F7A23E /* HomeViewController.swift in Sources */,
 				4979A2B51F969C2A007071E2 /* SetupViewController.swift in Sources */,
-				49A2C6441F9723BB00F7A23E /* Date+UserDefinedDate.swift in Sources */,
+				49A2C6441F9723BB00F7A23E /* Date+Helpers.swift in Sources */,
 				49A2C6621F97267300F7A23E /* PrayTime.m in Sources */,
 				49A2C64B1F97245B00F7A23E /* Alarm+Settings.swift in Sources */,
 				498D75981F99A89A00A0A969 /* UIViewController+ViewControllerTypes.swift in Sources */,
@@ -436,6 +439,7 @@
 				491E3F511F983A4C0014B8C1 /* SettingsTableViewController.swift in Sources */,
 				49A2C6491F97244F00F7A23E /* Ringtones.swift in Sources */,
 				49BA6F741F9AA1BB00A5D45C /* UIKit+Animate.swift in Sources */,
+				490D96111FA1133800314937 /* NSAttributedString+Helpers.swift in Sources */,
 				4979A2B31F969C29007071E2 /* AppDelegate.swift in Sources */,
 				49A2C6421F971F6A00F7A23E /* Alarm.swift in Sources */,
 			);
