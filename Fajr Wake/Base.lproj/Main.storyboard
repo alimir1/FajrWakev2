@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xc2-Ug-hjr">
-                                <rect key="frame" x="50" y="343" width="220" height="65"/>
+                                <rect key="frame" x="50" y="331" width="220" height="65"/>
                                 <color key="backgroundColor" red="1" green="0.47772954760000003" blue="0.01278254742" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="AQX-yZ-hgc"/>
@@ -49,22 +49,22 @@
                                 </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Alarm at 5:35am" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2zO-Qz-LDt">
-                                <rect key="frame" x="53.5" y="309.5" width="213.5" height="26"/>
+                                <rect key="frame" x="53" y="285" width="214" height="26"/>
                                 <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="25"/>
                                 <color key="textColor" red="1" green="0.76078431369999999" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ACC-HP-czQ" customClass="CircularSlider" customModule="HGCircularSlider">
-                                <rect key="frame" x="0.0" y="48" width="320" height="250"/>
+                                <rect key="frame" x="20" y="48" width="280" height="217"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Before Fajr" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5sZ-2Y-NfA">
-                                        <rect key="frame" x="123.5" y="170" width="74" height="18"/>
+                                        <rect key="frame" x="103.5" y="154" width="74" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" red="1" green="0.76078431369999999" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z23-Py-oby">
-                                        <rect key="frame" x="119" y="90" width="83" height="70"/>
+                                        <rect key="frame" x="99" y="74" width="83" height="70"/>
                                         <attributedString key="attributedText">
                                             <fragment content="5">
                                                 <attributes>
@@ -82,7 +82,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wake Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eoQ-a9-zRP">
-                                        <rect key="frame" x="129.5" y="62" width="61.5" height="18"/>
+                                        <rect key="frame" x="109.5" y="46" width="61.5" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" red="1" green="0.76078431372549016" blue="0.29411764705882354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -95,7 +95,6 @@
                                     <constraint firstItem="5sZ-2Y-NfA" firstAttribute="centerX" secondItem="ACC-HP-czQ" secondAttribute="centerX" id="JLy-74-dKH"/>
                                     <constraint firstItem="z23-Py-oby" firstAttribute="centerX" secondItem="ACC-HP-czQ" secondAttribute="centerX" id="PoW-jg-V7O"/>
                                     <constraint firstItem="eoQ-a9-zRP" firstAttribute="centerX" secondItem="ACC-HP-czQ" secondAttribute="centerX" id="aFq-wD-oX3"/>
-                                    <constraint firstAttribute="height" constant="250" id="dBv-c9-C0J"/>
                                     <constraint firstItem="z23-Py-oby" firstAttribute="top" secondItem="eoQ-a9-zRP" secondAttribute="bottom" constant="10" id="zCW-tl-AnZ"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -131,14 +130,15 @@
                             <constraint firstItem="IHu-Hj-OOD" firstAttribute="trailing" secondItem="xc2-Ug-hjr" secondAttribute="trailing" constant="50" id="1qg-Ki-Vs8"/>
                             <constraint firstItem="40D-Ow-uPN" firstAttribute="leading" secondItem="IHu-Hj-OOD" secondAttribute="leading" id="3IG-LY-GK5"/>
                             <constraint firstItem="xc2-Ug-hjr" firstAttribute="leading" secondItem="IHu-Hj-OOD" secondAttribute="leading" constant="50" id="Cgc-wc-nXF"/>
-                            <constraint firstItem="IHu-Hj-OOD" firstAttribute="trailing" secondItem="ACC-HP-czQ" secondAttribute="trailing" id="Jm7-4L-Cig"/>
+                            <constraint firstItem="IHu-Hj-OOD" firstAttribute="trailing" secondItem="ACC-HP-czQ" secondAttribute="trailing" constant="20" id="Jm7-4L-Cig"/>
                             <constraint firstItem="IHu-Hj-OOD" firstAttribute="trailing" secondItem="40D-Ow-uPN" secondAttribute="trailing" id="KQw-Ox-hOr"/>
-                            <constraint firstItem="xc2-Ug-hjr" firstAttribute="top" secondItem="2zO-Qz-LDt" secondAttribute="bottom" constant="8" id="NRZ-aZ-msy"/>
-                            <constraint firstItem="ACC-HP-czQ" firstAttribute="leading" secondItem="IHu-Hj-OOD" secondAttribute="leading" id="P2q-HY-Bg5"/>
+                            <constraint firstItem="xc2-Ug-hjr" firstAttribute="top" secondItem="2zO-Qz-LDt" secondAttribute="bottom" constant="20" id="NRZ-aZ-msy"/>
+                            <constraint firstItem="ACC-HP-czQ" firstAttribute="leading" secondItem="IHu-Hj-OOD" secondAttribute="leading" constant="20" id="P2q-HY-Bg5"/>
                             <constraint firstItem="ACC-HP-czQ" firstAttribute="top" secondItem="40D-Ow-uPN" secondAttribute="bottom" constant="20" id="Vk1-ot-YxI"/>
                             <constraint firstItem="40D-Ow-uPN" firstAttribute="top" secondItem="IHu-Hj-OOD" secondAttribute="top" id="XUJ-OP-KgU"/>
-                            <constraint firstItem="IHu-Hj-OOD" firstAttribute="bottom" secondItem="xc2-Ug-hjr" secondAttribute="bottom" constant="8" id="anu-4u-tII"/>
+                            <constraint firstItem="IHu-Hj-OOD" firstAttribute="bottom" secondItem="xc2-Ug-hjr" secondAttribute="bottom" constant="20" id="anu-4u-tII"/>
                             <constraint firstItem="2zO-Qz-LDt" firstAttribute="centerX" secondItem="BbY-vm-Ssz" secondAttribute="centerX" id="tKy-nw-Rgy"/>
+                            <constraint firstItem="2zO-Qz-LDt" firstAttribute="top" secondItem="ACC-HP-czQ" secondAttribute="bottom" constant="20" id="zhw-YC-3yl"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="IHu-Hj-OOD"/>
                     </view>
@@ -183,7 +183,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZtY-75-UbA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1952.1739130434785" y="139.4021739130435"/>
+            <point key="canvasLocation" x="1951.875" y="138.75"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="KOe-Di-cg0">
@@ -438,7 +438,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="To use this app, you must enable notification for this app. Go to Settings-&gt;Notifications-&gt;&quot;Fajr Wake&quot; to enable notifications." textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lVZ-yF-AMY">
-                                <rect key="frame" x="8" y="185" width="304" height="111.5"/>
+                                <rect key="frame" x="8" y="184.5" width="304" height="111.5"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
