@@ -26,7 +26,7 @@ internal class HomeViewController: UIViewController {
     
     private let dateFormatter: (time: DateFormatter, ampm: DateFormatter) = {
         let timeFormatter = DateFormatter()
-        timeFormatter.dateFormat = "h:mm:ss"
+        timeFormatter.dateFormat = "h:mm"
         let ampmFormatter = DateFormatter()
         ampmFormatter.dateFormat = "a"
         return (time: timeFormatter, ampm: ampmFormatter)
