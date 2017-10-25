@@ -48,8 +48,8 @@
                                     <action selector="onBeforeAfterSegmentedChangeWithSender:" destination="BN0-Km-3Pg" eventType="valueChanged" id="We1-62-TJp"/>
                                 </connections>
                             </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 5:35am" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2zO-Qz-LDt">
-                                <rect key="frame" x="102.5" y="309.5" width="115" height="26"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Alarm at 5:35am" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2zO-Qz-LDt">
+                                <rect key="frame" x="53.5" y="309.5" width="213.5" height="26"/>
                                 <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="25"/>
                                 <color key="textColor" red="1" green="0.76078431369999999" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -194,12 +194,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="4oF-dP-qlo">
-                                <rect key="frame" x="8" y="50" width="304" height="47.5"/>
+                                <rect key="frame" x="8" y="50" width="304" height="50.5"/>
                                 <subviews>
                                     <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 6:35 am" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZn-ql-hpC">
-                                        <rect key="frame" x="0.0" y="0.0" width="304" height="17"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="304" height="20"/>
                                         <gestureRecognizers/>
-                                        <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="20"/>
                                         <color key="textColor" red="1" green="0.47772954760000003" blue="0.01278254742" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                         <connections>
@@ -207,7 +207,7 @@
                                         </connections>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="55 mins before Fajr" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wYZ-xe-ae5">
-                                        <rect key="frame" x="0.0" y="27" width="304" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="30" width="304" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -230,6 +230,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Gi3-3Z-s8v" appends="YES" id="2of-kr-07v"/>
+                                </connections>
                             </stackView>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" San Jose, CA" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KbI-fw-Pww">
                                 <rect key="frame" x="8" y="420" width="304" height="30"/>
@@ -277,6 +281,11 @@
                 <tapGestureRecognizer id="KNN-XE-NPj">
                     <connections>
                         <segue destination="fA9-rM-bBn" kind="presentation" id="BQC-BL-ycG"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="Gi3-3Z-s8v">
+                    <connections>
+                        <segue destination="5Hm-21-eyB" kind="presentation" id="Lmo-dh-Idv"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -423,7 +432,6 @@
         <!--Notification Error View Controller-->
         <scene sceneID="C1b-fz-YSV">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BJj-wA-Uyk" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="NotificationErrorVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6ds-60-pNW" customClass="NotificationErrorViewController" customModule="Fajr_Wake" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kL1-fE-zBv">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
@@ -465,6 +473,7 @@
                         <viewLayoutGuide key="safeArea" id="WbB-Mq-RvB"/>
                     </view>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BJj-wA-Uyk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="272" y="2046"/>
         </scene>
@@ -746,6 +755,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="NdB-sO-gyy"/>
+        <segue reference="Lmo-dh-Idv"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.47843137250000001" blue="0.01176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

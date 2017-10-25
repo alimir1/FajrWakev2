@@ -34,7 +34,7 @@ internal class HomeViewController: UIViewController {
     
     private let standardDateFormatter: DateFormatter = {
         let timeFormatter = DateFormatter()
-        timeFormatter.dateFormat = "MM-dd-yyyy h:mm a"
+        timeFormatter.dateFormat = "MM/dd/yyyy 'at' h:mm a"
         return timeFormatter
     }()
     

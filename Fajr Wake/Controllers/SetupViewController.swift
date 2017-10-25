@@ -113,7 +113,7 @@ internal class SetupViewController: UIViewController {
     private func updateWakeupTimeLabel() {
         let calculatedAlarmDate = Alarm.shared.alarmDateForCurrentSetting
         let timeStr = dateFormatter.string(from: calculatedAlarmDate)
-        wakeUpTimeLabel.text = " \(timeStr)"
+        wakeUpTimeLabel.text = " Alarm at \(timeStr)"
     }
     
     private func updateMinsToAdjustLabel() {
