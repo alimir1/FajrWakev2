@@ -65,8 +65,15 @@ internal class SettingsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        if indexPath.row == 1 && indexPath.section == 0 {
+        if indexPath.section == 0 && indexPath.row == 1 {
             fetchLocation()
+        }
+        
+        if indexPath.section == 2 && indexPath.row == 1 {
+            let email = "app@saba-igc.org"
+            if let url = URL(string: "mailto:\(email)") {
+                UIApplication.shared.open(url)
+            }
         }
     }
 }
