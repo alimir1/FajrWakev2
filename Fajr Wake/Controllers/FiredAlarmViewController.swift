@@ -24,7 +24,7 @@ internal class FiredAlarmViewController: UIViewController {
     
     @IBAction private func onDismissVC(sender: Any) {
         Alarm.shared.turnOff()
-        dismissedCompletion?()
+        self.dismissedCompletion?()
         dismiss(animated: true, completion: nil)
     }
 

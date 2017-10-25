@@ -49,8 +49,10 @@ internal class SetupViewController: UIViewController {
         }
         set {
             if newValue {
+                MBProgressHUD.showAdded(to: self.view, animated: true)
                 Alarm.shared.turnOn {
                     self.updateOutlets()
+                    MBProgressHUD.hide(for: self.view, animated: true)
                 }
             } else {
                 Alarm.shared.turnOff()

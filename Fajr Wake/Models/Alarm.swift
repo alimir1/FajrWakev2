@@ -106,37 +106,30 @@ internal class Alarm: CustomStringConvertible {
             print("Alarm fireAlarmWithTimer(): invalid FireDate!")
             return
         }
-        timer = Timer.scheduledTimer(timeInterval: fireDate.timeIntervalSinceNow, target: self, selector: #selector(self.fireAlarm), userInfo: nil, repeats: false)
+        timer = Timer.scheduledTimer(timeInterval: fireDate.timeIntervalSinceNow, target: self, selector: #selector(self.handleFireAlarmTimer), userInfo: nil, repeats: false)
     }
     
-    @objc internal func fireAlarm() {
+    @objc private func handleFireAlarmTimer() {
+        fireAlarm()
+    }
+    
+    internal func fireAlarm(shouldPresentFiredVC: Bool = true) {
         status = .activeAndFired
         soundPlayer.play()
-        presentFiredAlarmViewController()
+        if shouldPresentFiredVC {
+            presentFiredAlarmViewController()
+        }
     }
     
     private func presentFiredAlarmViewController() {
-        presentInRootVC(withIdentifier: "firedAlarmVC")
+        UIViewController.presentInRootVC(withIdentifier: "firedAlarmVC")
     }
     
     internal func presentNotificationErrorVC() {
-        presentInRootVC(withIdentifier: "NotificationErrorVC")
-    }
-    
-    private func presentInRootVC(withIdentifier: String) {
-        let presentingVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: withIdentifier)
-        if let topVC = UIViewController.topViewController {
-            if topVC.isModal {
-                UIViewController.topViewController?.dismiss(animated: false, completion: {
-                    UIApplication.shared.keyWindow?.rootViewController?.present(presentingVC, animated: false, completion: nil)
-                })
-            } else {
-                UIApplication.shared.keyWindow?.rootViewController?.present(presentingVC, animated: true, completion: nil)
-            }
-        }
+        UIViewController.presentInRootVC(withIdentifier: "NotificationErrorVC")
     }
 
-    private func invalidateTimer() {
+    internal func invalidateTimer() {
         if timer != nil {
             self.timer?.invalidate()
             self.timer = nil
@@ -167,13 +160,17 @@ internal class Alarm: CustomStringConvertible {
                 print("ERROR - Alarm: \(error.localizedDescription)")
                 self.presentNotificationErrorVC()
             } else {
-                self.status = .activeAndNotFired
-                self.fireDate = self.alarmDateForCurrentSetting
-                self.triggerAlarmWithTimer()
-                print("Alarm: alarm turned on")
+                self.turnOnAndRunTimer()
             }
             completion?()
         }
+    }
+    
+    private func turnOnAndRunTimer() {
+        self.status = .activeAndNotFired
+        self.fireDate = self.alarmDateForCurrentSetting
+        self.triggerAlarmWithTimer()
+        print("Alarm: alarm turned on")
     }
     
     internal func turnOff() {
@@ -217,4 +214,27 @@ internal class Alarm: CustomStringConvertible {
         Alarm.Settings.placeName = name
     }
     
+    // MARK: - Helpers
+    
+    internal class func setupForBeginningState(shouldPresentAlarmVC: Bool = true) -> Bool {
+        guard let fireDate = Alarm.Settings.fireDate else { return false }
+        if fireDate.timeIntervalSinceNow > 0 {
+            Alarm.shared.turnOnAndRunTimer()
+            return false
+        } else {
+            Alarm.handlePendingStopAlarm(shouldPresentAlarmVC: shouldPresentAlarmVC)
+            return true
+        }
+    }
+    
+    private class func handlePendingStopAlarm(shouldPresentAlarmVC: Bool) {
+        Alarm.LocalNotifications.removeAllNotifications()
+        Alarm.LocalNotifications.createNotifications(fireDate: Date().addingTimeInterval(5), message: Alarm.shared.description, numOfNotificationsToCreate: 63) {
+            error in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+        }
+        Alarm.shared.fireAlarm(shouldPresentFiredVC: shouldPresentAlarmVC)
+    }
 }

@@ -10,8 +10,22 @@ import Foundation
 
 extension UIViewController {
     
+    public class func presentInRootVC(withIdentifier: String) {
+        let presentingVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: withIdentifier)
+        guard let topVC = UIViewController.topViewController else {
+            print("UIViewController ERROR: Could not get topVC")
+            return
+        }
+        if topVC.isModal {
+            UIViewController.topViewController?.dismiss(animated: false, completion: {
+                UIApplication.shared.keyWindow?.rootViewController?.present(presentingVC, animated: false, completion: nil)
+            })
+        } else {
+            UIApplication.shared.keyWindow?.rootViewController?.present(presentingVC, animated: true, completion: nil)
+        }
+    }
+    
     public class var topViewController: UIViewController? {
-        
         if let rootVC = UIApplication.shared.keyWindow?.rootViewController {
             return UIViewController.topViewController(with: rootVC)
         } else {
