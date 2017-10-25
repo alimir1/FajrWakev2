@@ -24,8 +24,12 @@ internal class FiredAlarmViewController: UIViewController {
     
     @IBAction private func onDismissVC(sender: Any) {
         Alarm.shared.turnOff()
-        self.dismissedCompletion?()
-        dismiss(animated: true, completion: nil)
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        Alarm.shared.turnOn {
+            MBProgressHUD.hide(for: self.view, animated: true)
+            self.dismissedCompletion?()
+            self.dismiss(animated: true, completion: nil)
+        }
     }
 
 }
