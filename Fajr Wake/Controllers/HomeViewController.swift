@@ -24,17 +24,17 @@ internal class HomeViewController: UIViewController {
     
     // MARK: - Computed Properties
     
-    private let dateFormatter: (time: DateFormatter, ampm: DateFormatter) = {
+    /*private let dateFormatter: (time: DateFormatter, ampm: DateFormatter) = {
         let timeFormatter = DateFormatter()
         timeFormatter.dateFormat = "h:mm"
         let ampmFormatter = DateFormatter()
         ampmFormatter.dateFormat = "a"
         return (time: timeFormatter, ampm: ampmFormatter)
-    }()
+    }()*/
     
     private let standardDateFormatter: DateFormatter = {
         let timeFormatter = DateFormatter()
-        timeFormatter.dateFormat = "MM/dd/yyyy 'at' h:mm a"
+        timeFormatter.dateFormat = "h:mm a"
         return timeFormatter
     }()
     
@@ -73,9 +73,14 @@ internal class HomeViewController: UIViewController {
         updateCurrentTimeLabel()
         messageLabel.text = alarm.statusMessage
         alarmDescriptionLabel.text = alarm.status != .inActive ? alarm.description : ""
-        
+        updateAlarmTimeLabel()
+    }
+    
+    private func updateAlarmTimeLabel() {
+        let alarm = Alarm.shared
         if let fireDate = alarm.fireDate {
-            alarmTimeLabel.text = " \(standardDateFormatter.string(from: fireDate))"
+            let dateString = standardDateFormatter.string(from: fireDate)
+            alarmTimeLabel.text = Calendar.current.isDateInToday(fireDate) ? " Today at \(dateString)" : " Tomorrow at \(dateString)"
         } else {
             alarmTimeLabel.text = " Setup Alarm"
         }
@@ -83,10 +88,9 @@ internal class HomeViewController: UIViewController {
     
     @objc private func updateCurrentTimeLabel() {
         let curDate = Date()
-        let formatter = dateFormatter
-        let ampm = formatter.ampm.string(from: curDate)
-        let time = formatter.time.string(from: curDate)
-        currentTimeLabel.text = "\(time) \(ampm)"
+        let formatter = standardDateFormatter
+        let time = formatter.string(from: curDate)
+        currentTimeLabel.text = time
         messageLabel.text = Alarm.shared.statusMessage
     }
     
