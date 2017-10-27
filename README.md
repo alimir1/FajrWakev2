@@ -4,7 +4,6 @@ An Islamic iOS alarm clock app that helps Muslims wake up early morning. It lets
 
 <p align="center">
 <img src='http://i.imgur.com/I31FQZn.gif' title='Video Walkthrough' width='' alt='Alarm Adjustments Video Walkthrough' />
-<img src='http://i.imgur.com/I31FQZn.gif' title='Video Walkthrough' width='' alt='Alarm Adjustments Video Walkthrough' />
 <img src='http://i.imgur.com/EhjjP3S.gif' title='Video Walkthrough' width='' alt='Settings Page Video Walkthrough' />
 </p>
 
