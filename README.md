@@ -6,11 +6,11 @@ An Islamic iOS alarm clock app that helps Muslims wake up early morning. It lets
 <a href="https://itunes.apple.com/us/app/fajr-wake/id1143559369?mt=8"><img src="availableInAppStore.svg" alt="Fajr Wake App Store Link Islamic Alarm Clock App iOS" /></a>
 </p>
 
-<p align="center">
 <a href="https://raw.githubusercontent.com/alimir1/FajrWakev2/master/LICENSE"><img src="http://img.shields.io/badge/license-MIT-blue.svg?style=flat" alt="License: MIT" /></a>
 <a href="https://www.apple.com/ios"><img src="https://img.shields.io/badge/platform-iOS-blue.svg?style=flat" alt="Platform iOS" /></a>
+[![CocoaPods](https://img.shields.io/cocoapods/v/IBAnimatable.svg?style=flat)](http://cocoadocs.org/docsets/IBAnimatable/)
 <a href="https://developer.apple.com/swift"><img src="https://img.shields.io/badge/swift4-compatible-brightgreen.svg" alt="Swift 4 compatible" /></a>
-</p>
+
 
 ## Information
 
