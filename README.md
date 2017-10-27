@@ -8,6 +8,13 @@ An Islamic iOS alarm clock app that helps Muslims wake up early morning
 
 </p>
 
+
+<p align="center">
+<a href="https://img.shields.io/badge/license-MIT-lightgrey.svg"><img src="http://img.shields.io/badge/license-MIT-blue.svg?style=flat" alt="License: MIT" /></a>
+<a href="https://img.shields.io/badge/platform-iOS-blue.svg?style=flat"><img src="https://www.apple.com/ios" alt="Platform iOS" /></a>
+<a href="https://developer.apple.com/swift"><img src="https://img.shields.io/badge/swift4-compatible-brightgreen.svg" alt="Swift 4 compatible" /></a>
+</p>
+
 * License: MIT License
 * Source repo: https://github.com/alimir1/FajrWakev2
 * Made by: [Al-Kisa Foundation](https://kisakids.org/)
