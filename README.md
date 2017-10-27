@@ -1,4 +1,4 @@
-![Fajr Wake: Islamic Alarm Clock app for Fajr](https://raw.githubusercontent.com/alimir1/FajrWakev2/master/Fajr%20Wake/Assets/Assets.xcassets/AppIcon.appiconset/App%20Store%20Icon.jpg)
+![Fajr Wake: Islamic Alarm Clock app for Fajr](https://raw.githubusercontent.com/alimir1/FajrWakev2/master/fajrWake.jpg)
 
 <p align="center">
 <a href="https://raw.githubusercontent.com/alimir1/FajrWakev2/master/LICENSE"><img src="http://img.shields.io/badge/license-MIT-blue.svg?style=flat" alt="License: MIT" /></a>
