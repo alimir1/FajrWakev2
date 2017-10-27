@@ -154,7 +154,7 @@ internal class Alarm: CustomStringConvertible {
     }
     
     internal func turnOn(completion: (()->Void)?) {
-        Alarm.scheduleLocalNotifications(withFireDate: self.alarmDateForCurrentSetting, message: description) {
+        Alarm.scheduleLocalNotifications(withFireDate: self.alarmDateForCurrentSetting, message: description, soundFilePathString: "\(soundPlayer.setting.ringtoneID).\(soundPlayer.setting.ringtoneExtension)") {
             error in
             if let error = error {
                 print("ERROR - Alarm: \(error.localizedDescription)")
@@ -229,7 +229,7 @@ internal class Alarm: CustomStringConvertible {
     
     private class func handlePendingStopAlarm(shouldPresentAlarmVC: Bool) {
         Alarm.LocalNotifications.removeAllNotifications()
-        Alarm.LocalNotifications.createNotifications(fireDate: Date().addingTimeInterval(5), message: Alarm.shared.description, numOfNotificationsToCreate: 63) {
+        Alarm.LocalNotifications.createNotifications(fireDate: Date().addingTimeInterval(5), message: Alarm.shared.description, soundFilePathString: "\(Alarm.shared.soundPlayer.setting.ringtoneID).\(Alarm.shared.soundPlayer.setting.ringtoneExtension)", numOfNotificationsToCreate: 63) {
             error in
             if let error = error {
                 print(error.localizedDescription)

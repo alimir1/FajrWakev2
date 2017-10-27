@@ -122,7 +122,7 @@ extension RingtoneSettingsViewController: UITableViewDataSource, UITableViewDele
         
         guard indexPath != selectedIndexPath else {
             if alarm.status != .activeAndFired {
-                alarm.soundPlayer.play()
+                alarm.soundPlayer.play(shouldForceHighVolume: false)
             }
             return
         }
@@ -149,7 +149,7 @@ extension RingtoneSettingsViewController: UITableViewDataSource, UITableViewDele
         alarm.setSoundSetting(SoundSetting(ringtoneID: ringtoneID, ringtoneExtension: ringtoneExtension, isRepeated: true))
         alarm.resetActiveAlarm(completion: nil)
         if alarm.status != .activeAndFired {
-            alarm.soundPlayer.play()
+            alarm.soundPlayer.play(shouldForceHighVolume: false)
         }
     }
 }
