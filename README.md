@@ -6,13 +6,14 @@
 <a href="https://developer.apple.com/swift"><img src="https://img.shields.io/badge/swift4-compatible-brightgreen.svg" alt="Swift 4 compatible" /></a>
 </p>
 
-# FajrWakev2
+# Fajr Wake
 An Islamic iOS alarm clock app that helps Muslims wake up early morning
 
 <a href="https://itunes.apple.com/us/app/fajr-wake/id1143559369?mt=8"><img src="availableInAppStore.svg" alt="Fajr Wake App Store Link Islamic Alarm Clock App iOS" /></a>
 
 * License: MIT License
 * Source repo: https://github.com/alimir1/FajrWakev2
+* Version: 2.0
 * Made for: [Al-Kisa Foundation](https://kisakids.org/)
 * Under the guidance of [Moulana Abidi](http://www.moulananabirazaabidi.com/).
 * Developer: [Ali Mir](https://www.github.com/alimir1)
