@@ -12,7 +12,7 @@ An Islamic iOS alarm clock app that helps Muslims wake up early morning. It lets
 <a href="https://developer.apple.com/swift"><img src="https://img.shields.io/badge/swift4-compatible-brightgreen.svg" alt="Swift 4 compatible" /></a>
 
 
-## Information
+## Overview
 
 * License: MIT License
 * Source repo: https://github.com/alimir1/FajrWakev2
