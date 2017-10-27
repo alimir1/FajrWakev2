@@ -35,7 +35,7 @@ class SoundPlayer {
     
     // MARK: - Methods
     
-    func play() {
+    func play(shouldForceHighVolume: Bool = true) {
         stop()
         guard let url = Bundle.main.url(forResource: setting.ringtoneID, withExtension: setting.ringtoneExtension) else { return } // FIXME: - Silence error OK?
         do {
@@ -44,7 +44,9 @@ class SoundPlayer {
             try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
             try? AVAudioSession.sharedInstance().setActive(true)
             try? AVAudioSession.sharedInstance().overrideOutputAudioPort(.speaker)
-            (MPVolumeView().subviews.filter{NSStringFromClass($0.classForCoder) == "MPVolumeSlider"}.first as? UISlider)?.setValue(1.0, animated: false)
+            if shouldForceHighVolume {
+                (MPVolumeView().subviews.filter{NSStringFromClass($0.classForCoder) == "MPVolumeSlider"}.first as? UISlider)?.setValue(1.0, animated: false)
+            }
             if setting.isRepeated {
                 player.numberOfLoops = -1
             }

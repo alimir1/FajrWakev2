@@ -40,9 +40,9 @@ internal enum LocalNotificationCreationError: Error, LocalizedError {
 
 extension Alarm {
     
-    internal class func scheduleLocalNotifications(withFireDate fireDate: Date, message: String, completion: ((_ error: Error?)->Void)?) {
+    internal class func scheduleLocalNotifications(withFireDate fireDate: Date, message: String, soundFilePathString: String, completion: ((_ error: Error?)->Void)?) {
         Alarm.LocalNotifications.removeAllNotifications()
-        LocalNotifications.createNotifications(fireDate: fireDate, message: message, numOfNotificationsToCreate: 63) {
+        LocalNotifications.createNotifications(fireDate: fireDate, message: message, soundFilePathString: soundFilePathString, numOfNotificationsToCreate: 63) {
             error in
             completion?(error)
         }
@@ -52,7 +52,7 @@ extension Alarm {
     
     struct LocalNotifications {
         
-        static func createNotifications(fireDate: Date, message: String, numOfNotificationsToCreate count: Int, _ completion: @escaping (_ error: Error?) -> Void) {
+        static func createNotifications(fireDate: Date, message: String, soundFilePathString: String, numOfNotificationsToCreate count: Int, _ completion: @escaping (_ error: Error?) -> Void) {
             
             UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) {
                 (isPermissionGranted, error) in
@@ -69,7 +69,7 @@ extension Alarm {
                     }
                     return
                 }
-                let content = notificationContent(withMessage: message)
+                let content = notificationContent(withMessage: message, soundFilePathString: soundFilePathString)
                 let triggers = notificationTriggersFromDate(fireDate: fireDate, numOfTriggersToGenerate: count)
                 let requests = triggers.map {notificationRequest(content: content, trigger: $0)}
                 addNotifications(requests: requests) {
@@ -99,9 +99,9 @@ extension Alarm {
             return UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
         }
         
-        static private func notificationContent(withMessage: String) -> UNNotificationContent {
+        static private func notificationContent(withMessage: String, soundFilePathString: String) -> UNNotificationContent {
             let content = UNMutableNotificationContent()
-            let alarmSoundName = "roosterSound.wav"
+            let alarmSoundName = soundFilePathString
             content.title = "Alarm"
             content.subtitle = "It's \(withMessage)!"
             content.body = "Open app to stop."
