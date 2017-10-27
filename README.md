@@ -1,13 +1,6 @@
 # FajrWakev2
 An Islamic iOS alarm clock app that helps Muslims wake up early morning
 
-<p align="center">
-[![MIT license](https://img.shields.io/badge/license-MIT-lightgrey.svg](https://raw.githubusercontent.com/alimir1/FajrWakev2/master/LICENSE)
-
-[![SWIFT 4 COMPATIBLE](https://img.shields.io/badge/swift4-compatible-brightgreen.svg)](https://developer.apple.com/swift/)
-
-</p>
-
 
 <p align="center">
 <a href="https://img.shields.io/badge/license-MIT-lightgrey.svg"><img src="http://img.shields.io/badge/license-MIT-blue.svg?style=flat" alt="License: MIT" /></a>
