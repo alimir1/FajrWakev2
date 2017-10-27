@@ -3,7 +3,8 @@
 An Islamic iOS alarm clock app that helps Muslims wake up early morning. It lets you wake up at Fajr, 30 mins before sunrise, 5 mins before Fajr, or whenever you choose to wake up. Fajr Wake updates calculations for Fajr and Sunrise time daily so you don't need to reset alarm or check timing. 
 
 <p align="center">
-<img src='http://i.imgur.com/DLLZwgd.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/I31FQZn.gif' title='Video Walkthrough' width='' alt='Alarm Adjustments Video Walkthrough' />
+<img src='http://i.imgur.com/EhjjP3S.gif' title='Video Walkthrough' width='' alt='Settings Page Video Walkthrough' />
 </p>
 
 <p align="center">
