@@ -6,6 +6,9 @@
 <a href="https://developer.apple.com/swift"><img src="https://img.shields.io/badge/swift4-compatible-brightgreen.svg" alt="Swift 4 compatible" /></a>
 </p>
 
+<a href="https://itunes.apple.com/us/app/fajr-wake/id1143559369?mt=8"><img src="availableInAppStore.svg" alt="Fajr Wake App Store Link Islamic Alarm Clock App iOS" /></a>
+
+
 # FajrWakev2
 An Islamic iOS alarm clock app that helps Muslims wake up early morning
 
