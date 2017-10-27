@@ -8,7 +8,11 @@ An Islamic iOS alarm clock app that helps Muslims wake up early morning. It lets
 <a href="https://developer.apple.com/swift"><img src="https://img.shields.io/badge/swift4-compatible-brightgreen.svg" alt="Swift 4 compatible" /></a>
 </p>
 
-## Key Information
+<p align="center">
+<a href="https://itunes.apple.com/us/app/fajr-wake/id1143559369?mt=8"><img src="availableInAppStore.svg" alt="Fajr Wake App Store Link Islamic Alarm Clock App iOS" /></a>
+</p>
+
+## Information
 
 * License: MIT License
 * Source repo: https://github.com/alimir1/FajrWakev2
@@ -16,8 +20,6 @@ An Islamic iOS alarm clock app that helps Muslims wake up early morning. It lets
 * Made for: [Al-Kisa Foundation](https://kisakids.org/)
 * Under the guidance of [Moulana Abidi](http://www.moulananabirazaabidi.com/).
 * Developer: [Ali Mir](https://www.github.com/alimir1)
-
-<a href="https://itunes.apple.com/us/app/fajr-wake/id1143559369?mt=8"><img src="availableInAppStore.svg" alt="Fajr Wake App Store Link Islamic Alarm Clock App iOS" /></a>
 
 ### Minimum Requirements
 * [Xcode](https://itunes.apple.com/us/app/xcode/id497799835) - The easiest way to get Xcode is from the [App Store](https://itunes.apple.com/us/app/xcode/id497799835?mt=12), but you can also download it from [developer.apple.com](https://developer.apple.com/) if you have an AppleID registered with an Apple Developer account.
