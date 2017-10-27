@@ -13,7 +13,7 @@ An Islamic iOS alarm clock app that helps Muslims wake up early morning
 
 * License: MIT License
 * Source repo: https://github.com/alimir1/FajrWakev2
-* Made by: [Al-Kisa Foundation](https://kisakids.org/)
+* Made for: [Al-Kisa Foundation](https://kisakids.org/)
 * Developer: [Ali Mir](https://www.github.com/alimir1)
 
 ### Minimum Requirements
