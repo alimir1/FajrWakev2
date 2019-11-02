@@ -9,7 +9,7 @@
 import Foundation
 
 struct Ringtones {
-    static let data: [[String: String]] = [
+    static let data: [[String: String]] = [ 
         ["title":"Abuzar Halawaji", "fileName" : "AbatharAlHalawaji", "fileExtension" : "aiff", "genre" : "athan"],
         ["title":"Abdul Basit", "fileName" : "AbdulBasit", "fileExtension" : "aiff", "genre" : "athan"],
         ["title":"Kazem Zadeh", "fileName" : "KazemZadeh", "fileExtension" : "aiff", "genre" : "athan"],
