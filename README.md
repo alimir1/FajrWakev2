@@ -16,7 +16,6 @@ An Islamic iOS alarm clock app that helps Muslims wake up early morning. It lets
 [![CocoaPods](https://img.shields.io/cocoapods/v/IBAnimatable.svg?style=flat)](http://cocoadocs.org/docsets/IBAnimatable/)
 <a href="https://developer.apple.com/swift"><img src="https://img.shields.io/badge/swift4-compatible-brightgreen.svg" alt="Swift 4 compatible" /></a>
 
-
 ## Overview
 
 * License: MIT License
