@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension DateFormatter {
+extension DateFormatter { 
     static var splitDateFormatter: (time: DateFormatter, ampm: DateFormatter) = {
         let timeFormatter = DateFormatter()
         timeFormatter.dateFormat = "h:mm"
